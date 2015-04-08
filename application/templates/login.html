@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Need Authorization</h1>
+    <p>Anda harus login terlebih dahulu sebelum berinteraksi lebih jauh disini.</p>
+    <p>Silahkan <a href="{{ url_for('fb_login') }}" class="btn btn-info">klik tombol ini</a> untuk melakukan registrasi / sign in.</p>
+{% endblock %}
+

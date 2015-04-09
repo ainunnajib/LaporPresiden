@@ -12,7 +12,7 @@ from models import *
 
 from flask import Flask, redirect, url_for, session, request
 from flask_oauth import OAuth
-
+import pytz, parser
 
 SECRET_KEY = 'laporpresiden.dev.team'
 DEBUG = True
@@ -92,11 +92,14 @@ def logout():
 def daftar_laporan():
     t_laporans = LaporanModel.query().order(LaporanModel.timestamp)
     laporans = []
+
     for tl in t_laporans:
       tl.user = UserModel.get_by_id(tl.author.id())
       tl.total_komentar = KomentarModel.query().filter(KomentarModel.laporan == tl.key).count()
       tl.total_likes = LikesModel.query().filter(LikesModel.laporan == tl.key).count()
       tl.total_dislikes = DislikesModel.query().filter(DislikesModel.laporan == tl.key).count()
+      tl.timestamp = tl.timestamp.replace(tzinfo=pytz.UTC).astimezone(pytz.timezone('Asia/Jakarta'))
+
       laporans.append(tl)
 
     form = LaporanForm()
@@ -152,6 +155,7 @@ def lihat_laporan(laporan_id):
     t_komentars = KomentarModel.query().order(KomentarModel.timestamp).filter(KomentarModel.laporan == laporan.key).fetch()
     komentars = []
     for komentar in t_komentars:
+      komentar.timestamp = komentar.timestamp.replace(tzinfo=pytz.UTC).astimezone(pytz.timezone('Asia/Jakarta'))
       komentar.user = UserModel.get_by_id(komentar.author.id())
       komentars.append(komentar)
 
@@ -159,6 +163,7 @@ def lihat_laporan(laporan_id):
     form_komentar = KomentarForm()
     user = get_logged()
 
+    laporan.timestamp = laporan.timestamp.replace(tzinfo=pytz.UTC).astimezone(pytz.timezone('Asia/Jakarta'))
     laporan.total_komentar = KomentarModel.query().filter(KomentarModel.laporan == laporan.key).count()
     laporan.total_likes = LikesModel.query().filter(LikesModel.laporan == laporan.key).count()
     laporan.total_dislikes = DislikesModel.query().filter(DislikesModel.laporan == laporan.key).count()

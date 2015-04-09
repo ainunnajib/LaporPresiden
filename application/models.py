@@ -1,3 +1,7 @@
+import os, time
+os.environ['TZ'] = 'Asia/Jakarta'
+time.tzset()
+
 from google.appengine.ext import ndb
 import hashlib
 

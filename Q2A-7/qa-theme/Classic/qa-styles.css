@@ -1362,7 +1362,7 @@ border: 1px solid #AAAAAA;
 		margin: 0;
 		padding:0;
 		width: 100%;
-		background-color:#DD4B37;
+		background-color:#efefef/*#DD4B37*/;
 		color:#EEE;
 		border-radius: 0 0 0 0;
 	}
@@ -1501,15 +1501,27 @@ border: 1px solid #AAAAAA;
 }
 
 .qa-a-count {
-    border: 2px solid #0f5381;
+    border: 1px solid #cbcbcb;
+}
+
+.qa-voting {
+    border: 1px solid #cbcbcb;
+
 }
 
 
 .qa-sidebar {
-    background: none repeat scroll 0 0 #f2deae;
+    background: none repeat scroll 0 0 #efefef;
     border: 1px solid #dddddd;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 18px;
     margin: 24px 0;
     padding: 12px;
+    color:#0c4870;
+}
+
+
+.qa-logo {
+
+    margin-bottom: 5px;
 }

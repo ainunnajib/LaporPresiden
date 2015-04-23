@@ -1474,6 +1474,8 @@ border: 1px solid #AAAAAA;
 }
 .qa-search-button {
   background: none repeat scroll 0 0 black /*#C32E67*/;
+  font-weight:bold;
+
 }
 
 .qa-sub-nav{

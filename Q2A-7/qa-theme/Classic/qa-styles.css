@@ -19,7 +19,7 @@ body {
 	text-align:center;
 }
 body, td, input, textarea {
-	font-family: 'Helvetica Neue',Helvetica,Arial;
+	font-family: 'Segoe UI'; /* 'Helvetica Neue',Helvetica,Arial;*/
     font-size: 13px;
     font-weight: 300;
     line-height: 1.5;
@@ -86,7 +86,7 @@ h2 {
     max-width: 980px;
 }
 .qa-top-header {
-	background-color: #DD4B37;
+	background-color: red /*#DD4B37;*/;
     font-size: 14px;
     white-space: nowrap;
 }

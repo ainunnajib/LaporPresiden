@@ -77,7 +77,7 @@ html {
 }
 
 body {
-	background: #eeeeee url(images/bodybg.jpg) repeat left top;
+	background: #fff;/* #eeeeee url(images/bodybg.jpg) repeat left top;*/
 	text-align: center;
 	margin: 0 0 80px;
 	padding: 0;

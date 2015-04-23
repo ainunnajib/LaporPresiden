@@ -1,4 +1,4 @@
-/*
+/*search
         Theme Name: Classic
         Theme URI: http://qa-themes.com/shop/esteem-theme
         Theme Version: 2.2
@@ -35,7 +35,7 @@ p {
 	margin-top:0;
 }
 .qa-body-wrapper {
-	border: 1px solid #DDDDDD;
+	border: 0px solid #DDDDDD;
     border-radius: 5px 5px 5px 5px;
     margin: 0 auto 5px;
     max-width: 980px;
@@ -86,7 +86,7 @@ h2 {
     max-width: 980px;
 }
 .qa-top-header {
-	background-color: red /*#DD4B37;*/;
+	background-color: #c10808 /*#DD4B37;*/;
     font-size: 14px;
     white-space: nowrap;
 }
@@ -147,7 +147,7 @@ h2 {
 	margin:0 auto;
 }
 .qa-wrap-footer{
-	background-color: #DD4B37;
+	background-color:black; /* #DD4B37;*/
     clear: both;
     color: #FFFFFF;
     font-size: 10px;
@@ -286,8 +286,8 @@ h2 {
 	text-decoration:none;
 }
 .qa-sub-nav{
-	border-bottom: 1px solid #888888;
-    box-shadow: 0 4px 5px -5px #444444;
+	border-bottom: 4px solid #c10808;
+    /*box-shadow: 0 4px 5px -5px #444444;*/
     float: left;
     max-width: 980px;
     width: 100%;
@@ -593,7 +593,7 @@ h2 {
 	margin-top:6px;
 }
 .qa-q-item-who-data .qa-user-link, .author .qa-user-link {
-	color:#0029F2;
+	color:#c10808/*#0029F2*/;
 }
 .qa-q-item-when-data {
 	font-weight:bold;
@@ -1447,7 +1447,7 @@ border: 1px solid #AAAAAA;
 
 /*======= Style Tambahan ===========*/
 .qa-top-header {
-  background-color: #DD4B37;
+  background-color: #c10808;
   font-size: 14px;
   white-space: nowrap;
   height: 40px;
@@ -1470,8 +1470,46 @@ border: 1px solid #AAAAAA;
   white-space: nowrap;
   padding: 0px;
   height: 0px;
+  font-weight:bold;
 }
 .qa-search-button {
-  background: none repeat scroll 0 0 #C32E67;
+  background: none repeat scroll 0 0 black /*#C32E67*/;
 }
 
+.qa-sub-nav{
+	border-bottom: 4px solid #c10808;
+    /*box-shadow: 0 4px 5px -5px #444444;*/
+    float: left;
+    max-width: 980px;
+    width: 100%;
+}
+
+
+.qa-q-item-title a {
+    color: #0f5381;
+}
+.qa-nav-main-link {
+    color: #0f5381;
+}
+
+.qa-q-item-title {
+    font-size: 20px;
+}
+
+.qa-nav-main-list {
+    font-size: 18px;
+}
+
+.qa-a-count {
+    border: 2px solid #0f5381;
+}
+
+
+.qa-sidebar {
+    background: none repeat scroll 0 0 #f2deae;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 24px 0;
+    padding: 12px;
+}

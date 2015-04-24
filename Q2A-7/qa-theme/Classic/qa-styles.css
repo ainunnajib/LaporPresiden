@@ -1525,5 +1525,11 @@ border: 1px solid #AAAAAA;
 
 .qa-logo {
 
-    margin-bottom: 5px;
+    margin-bottom: 0px;
+}
+
+
+.qa-q-list-item {
+    padding-bottom:10px;
+    border-bottom:1px solid #efefef;
 }

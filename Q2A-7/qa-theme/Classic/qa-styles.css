@@ -1486,7 +1486,6 @@ border: 1px solid #AAAAAA;
     width: 100%;
 }
 
-
 .qa-q-item-title a {
     color: #0f5381;
 }
@@ -1511,7 +1510,6 @@ border: 1px solid #AAAAAA;
 
 }
 
-
 .qa-sidebar {
     background: none repeat scroll 0 0 #efefef;
     border: 1px solid #dddddd;
@@ -1522,14 +1520,40 @@ border: 1px solid #AAAAAA;
     color:#0c4870;
 }
 
-
 .qa-logo {
 
     margin-bottom: 0px;
 }
 
-
 .qa-q-list-item {
     padding-bottom:10px;
     border-bottom:1px solid #efefef;
+}
+
+
+.qa-form-tall-button.qa-form-tall-button-ask {
+    background: none repeat scroll 0 0 #c10808;
+    border: medium none;
+    border-radius: 15px;
+    box-shadow: none;
+    color: #fff;
+    font-weight: bold;
+    height: 45px;
+    width: 120px;
+}
+
+.qa-form-tall-button.qa-form-tall-button-ask:hover {
+    background: none repeat scroll 0 0 #bbb;
+    cursor: pointer;
+}
+
+.qa-form-tall-text {
+    border: 1px solid #c10808;
+    padding: 5px;
+}
+
+.qa-form-tall-select {
+    border: 1px solid #c10808;
+    padding: 5px;
+    width: 421px;
 }

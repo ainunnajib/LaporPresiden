@@ -1565,3 +1565,13 @@ a.qa-q-item-what {
 a.qa-nav-cat-link {
      color: #0f5381;
 }
+
+/* hiding daftar*/
+.qa-nav-user-register {
+   display:none;
+}
+
+/* hiding masuk*/
+.qa-nav-user-login {
+    display:none;
+}

@@ -23,4 +23,4 @@ handlers:
 
 # Serve php scripts.
 - url: /.*
-  script: index.php
+  script: mod_rewrite.php

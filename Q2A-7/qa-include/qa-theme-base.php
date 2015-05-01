@@ -329,6 +329,8 @@ class qa_html_theme_base
 	public function head_custom()
 	{
 		// abstract method
+		$this->output('<link rel="shortcut icon" href="favicon.ico">');
+		// ^ hack a bit?
 	}
 
 	public function body()

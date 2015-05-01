@@ -334,7 +334,20 @@
 	{
 		global $qa_plugin_directory, $qa_plugin_urltoroot;
 
-		$pluginfiles = glob(QA_PLUGIN_DIR.'*/qa-plugin.php');
+//		$pluginfiles = glob(QA_PLUGIN_DIR.'*/qa-plugin.php');
+
+		$pluginfiles = array(
+			QA_PLUGIN_DIR.'basic-adsense/qa-plugin.php',
+			QA_PLUGIN_DIR.'event-logger/qa-plugin.php',
+			QA_PLUGIN_DIR.'example-page/qa-plugin.php',
+			QA_PLUGIN_DIR.'facebook-login/qa-plugin.php',
+			QA_PLUGIN_DIR.'mouseover-layer/qa-plugin.php',
+			QA_PLUGIN_DIR.'opensearch-support/qa-plugin.php',
+			QA_PLUGIN_DIR.'recaptcha-captcha/qa-plugin.php',
+			QA_PLUGIN_DIR.'tag-cloud-widget/qa-plugin.php',
+			QA_PLUGIN_DIR.'wysiwyg-editor/qa-plugin.php',
+			QA_PLUGIN_DIR.'xml-sitemap/qa-plugin.php',
+		);
 
 		$metadataUtil = new Q2A_Util_Metadata();
 		foreach ($pluginfiles as $pluginfile) {

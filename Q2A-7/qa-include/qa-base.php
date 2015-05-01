@@ -335,7 +335,7 @@
 		global $qa_plugin_directory, $qa_plugin_urltoroot;
 
 		$pluginfiles = glob(QA_PLUGIN_DIR.'*/qa-plugin.php');
-		echo "<pre>".var_export($pluginfiles)."</pre>";
+		echo "<pre>".QA_PLUGIN_DIR."</pre>";
 		$metadataUtil = new Q2A_Util_Metadata();
 		foreach ($pluginfiles as $pluginfile) {
 			$pluginDirectory = dirname($pluginfile);

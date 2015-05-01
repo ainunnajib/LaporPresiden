@@ -211,7 +211,18 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 		{
 			$this->output('<DIV CLASS="qa-wrap-footer">');
 			
-			qa_html_theme_base::footer();
+			// qa_html_theme_base::footer();
+
+			$this->output('<div class="qa-footer">
+							<div class="qa-nav-footer">
+								<div class="qa-nav-footer-clear"> </div>
+							</div>
+							<div class="qa-attribution">
+								Powered by
+								<a href="http://www.laporpresiden.org/">Lapor Presiden</a>
+							</div>
+							<div class="qa-footer-clear"> </div>
+						</div>');
 			
 			$this->output('</DIV> <!-- END qa-footer -->', '');
 		}

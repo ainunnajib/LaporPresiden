@@ -740,7 +740,7 @@
 						$qa_content['navigation']['user'][implode('-', qa_string_to_words($tryname))]=array('label' => $label);
 				}
 			}
-
+/*
 			if (!empty($userlinks['login']))
 				$qa_content['navigation']['user']['login']=array(
 					'url' => qa_html(@$userlinks['login']),
@@ -752,6 +752,7 @@
 					'url' => qa_html(@$userlinks['register']),
 					'label' => qa_lang_html('main/nav_register'),
 				);
+*/
 		}
 
 		if (QA_FINAL_EXTERNAL_USERS || !qa_is_logged_in()) {

@@ -1,6 +1,6 @@
 application: laporpresiden7
 version: 2
-runtime: php
+runtime: php55
 api_version: 1
 
 handlers:  

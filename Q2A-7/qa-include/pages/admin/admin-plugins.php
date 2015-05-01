@@ -69,7 +69,20 @@
 
 	$qa_content['script_rel'][] = 'qa-content/qa-admin.js?'.QA_VERSION;
 
-	$pluginfiles = glob(QA_PLUGIN_DIR.'*/qa-plugin.php');
+//		$pluginfiles = glob(QA_PLUGIN_DIR.'*/qa-plugin.php');
+
+		$pluginfiles = array(
+			QA_PLUGIN_DIR.'basic-adsense/qa-plugin.php',
+			QA_PLUGIN_DIR.'event-logger/qa-plugin.php',
+			QA_PLUGIN_DIR.'example-page/qa-plugin.php',
+			QA_PLUGIN_DIR.'facebook-login/qa-plugin.php',
+			QA_PLUGIN_DIR.'mouseover-layer/qa-plugin.php',
+			QA_PLUGIN_DIR.'opensearch-support/qa-plugin.php',
+			QA_PLUGIN_DIR.'recaptcha-captcha/qa-plugin.php',
+			QA_PLUGIN_DIR.'tag-cloud-widget/qa-plugin.php',
+			QA_PLUGIN_DIR.'wysiwyg-editor/qa-plugin.php',
+			QA_PLUGIN_DIR.'xml-sitemap/qa-plugin.php',
+		);
 
 	foreach ($moduletypes as $type) {
 		$modules = qa_load_modules_with($type, 'init_queries');

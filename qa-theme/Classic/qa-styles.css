@@ -1651,3 +1651,42 @@ span.entry-title {
 a.qa-nav-user-link {
     color:#fff;
 }
+
+
+/* Responsive */
+
+.qa-q-item-tags {
+    float: right;
+}
+
+@media all and (max-width: 975px) {
+	.qa-sidepanel {
+	    width: 96%;
+	}
+}
+
+@media all and (max-width: 400px) {
+	.qa-voting {
+	    width: 48%;
+	}
+	.qa-a-count {
+	    width: 40%;
+	}
+
+	.qa-form-tall-text {
+	    width: 320px !important;
+	}
+	.qa-form-tall-select {
+	    width: 330px;
+	}
+} 
+
+@media all and (max-width: 325px) {
+	
+	.qa-form-tall-text {
+	    width: 280px !important;
+	}
+	.qa-form-tall-select {
+	    width: 280px !important;
+	}
+}

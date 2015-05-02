@@ -81,7 +81,7 @@
 		'file_upload_limit_exceeded' => 'Ukuran file melebih batas server',
 		'general_error' => 'Error server muncul - coba kembali.',
 		'hidden' => 'tersembunyi',
-		'highest_users' => 'User skor tertinggi',
+		'highest_users' => 'Pengguna dengan skor tertinggi',
 		'hot_qs_in_x' => 'Laporan hot di ^',
 		'hot_qs_title' => 'Laporan hot',
 		'image_not_read' => 'Gambar tidak bisa dibaca. Silakan upload salah satu dari: ^',
@@ -93,7 +93,7 @@
 		'me' => 'saya',
 		'meta_order' => '^what^when^where^who', // you can reorder but DO NOT translate! e.g. <answered> <15 hours ago> <in Problems> <by me (500 points)>
 		'min_length_x' => 'Tolong berikan informasi yang cukup',
-		'max_upload_size_x' => 'Maximal ukutan file adalah ^',
+		'max_upload_size_x' => 'Maximal ukuran file adalah ^',
 		'moved' => 'pindah',
 
 		// Language Nav Start
@@ -119,7 +119,7 @@
 		'nav_tags' => 'Label',
 		'nav_unanswered' => 'Belum Terjawab',
 		'nav_updates' => 'Update Saya',
-		'nav_users' => 'User',
+		'nav_users' => 'Pengguna',
 		// Language Nav End
 
 		'no_active_users' => 'Tidak ada aktif user ditemukan',
@@ -200,14 +200,14 @@
 		'vote_limit' => 'Terlalu banyak vote diterima - coba lagi dalam satu jam',
 		'vote_must_confirm' => 'Silakan ^5konfirmasi email Anda^6 untuk vote.',
 		'vote_must_login' => 'Silakan login FB Anda (kiri atas) untuk vote.',
-		'vote_not_allowed' => 'Voting on this is not allowed',
+		'vote_not_allowed' => 'Vote ini tidak diperbolehkan',
 		'vote_up_popup' => 'Klik untuk vote naik',
 		'voted_down_popup' => 'Anda telah vote turun ini - klik untuk menghapus vote',
 		'voted_qs_in_x' => 'Laporan paling banyak vote di ^',
 		'voted_qs_title' => 'Laporan paling banyak vote',
 		'voted_up_popup' => 'Anda telah vote naik ini - klik untuk menghapus vote',
 		'written' => '', // blank in English - placeholder for other languages
-		'x_ago' => '^ ago',
+		'x_ago' => '^ lalu',
 		'x_answers' => '^ jawaban',
 		'x_comments' => '^ komentar',
 		'x_days' => '^ hari',

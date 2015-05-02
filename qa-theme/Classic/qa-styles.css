@@ -21,7 +21,7 @@ body {
 body, td, input, textarea {
 	font-family: 'Segoe UI'; /* 'Helvetica Neue',Helvetica,Arial;*/
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 500;
     line-height: 1.5;
 }
 a:link, a:active, a:visited {
@@ -320,18 +320,9 @@ h2 {
 }
 .qa-nav-sub-link.qa-nav-selected {
 }
-
-/*
-uncomment this to display category on sidebar
 .qa-nav-cat {
 	margin:24px 0;
 }
-*/
-/*comment this to display category on sidebar*/
-.qa-nav-cat {
-	display: none;
-}
-
 .qa-nav-cat-list {
 	list-style:none;
 	padding:0;
@@ -1583,4 +1574,34 @@ a.qa-nav-cat-link {
 /* hiding masuk*/
 .qa-nav-user-login {
     display:none;
+}
+
+/* edit */
+.qa-voting {
+    border: 1px solid #aaaaaa;
+    border-radius: 80px;
+    float: left;
+    height: 42px;
+    margin-right: 5px;
+    overflow: hidden;
+    padding: 12px 0 25px;
+    width: 140px;
+}
+
+.qa-a-count {
+    border: 1px solid #aaaaaa;
+    border-radius: 80px;
+    float: left;
+    height: 42px;
+    margin-right: 1.5em;
+    overflow: hidden;
+    padding: 12px 0 25px;
+    text-align: center;
+    width: 100px;
+}
+
+
+.qa-netvote-count {
+    display: block;
+    width: 130px;
 }

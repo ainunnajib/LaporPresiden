@@ -320,9 +320,18 @@ h2 {
 }
 .qa-nav-sub-link.qa-nav-selected {
 }
+
+/*
+uncomment this to display category on sidebar
 .qa-nav-cat {
 	margin:24px 0;
 }
+*/
+/*comment this to display category on sidebar*/
+.qa-nav-cat {
+	display: none;
+}
+
 .qa-nav-cat-list {
 	list-style:none;
 	padding:0;

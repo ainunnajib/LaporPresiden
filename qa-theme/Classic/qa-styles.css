@@ -27,6 +27,7 @@ body, td, input, textarea {
 a:link, a:active, a:visited {
 	text-decoration:none;
 	font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+    color: #0f5381;
 }
 a:hover {
 	text-decoration:underline;
@@ -1604,4 +1605,45 @@ a.qa-nav-cat-link {
 .qa-netvote-count {
     display: block;
     width: 130px;
+}
+
+.qa-form-light-button {
+    color: #666;
+}
+.qa-form-light-button, .qa-form-light-hover {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #fff;
+    color: red;
+    cursor: pointer;
+    font-size: 10px;
+    margin-right: 6px;
+    overflow: visible;
+    padding: 0;
+}
+
+/*tombol di laporan kanan bawah*/
+
+.qa-form-light-button {
+    color: #0f5381;
+}
+.qa-form-light-button, .qa-form-light-hover {
+
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 6px;
+    overflow: visible;
+    padding: 0;
+}
+
+.qa-form-light-hover, .qa-form-light-button:hover {
+	color:#c10808;
+}
+
+a.a-q-view-what {
+    color:#c10808;
+}
+
+span.entry-title {
+    color: #0f5381;
 }

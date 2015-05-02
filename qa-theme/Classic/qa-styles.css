@@ -1673,6 +1673,10 @@ a.qa-nav-user-link {
 	    width: 40%;
 	}
 
+	.qa-nav-user {
+	    width: 100%;
+	}
+
 	.qa-form-tall-text {
 	    width: 320px !important;
 	}
@@ -1682,7 +1686,12 @@ a.qa-nav-user-link {
 } 
 
 @media all and (max-width: 325px) {
-	
+	.qa-top-header {
+	    height: 60px;
+	}
+	.qa-nav-user {
+	    width: 100%;
+	}
 	.qa-form-tall-text {
 	    width: 280px !important;
 	}

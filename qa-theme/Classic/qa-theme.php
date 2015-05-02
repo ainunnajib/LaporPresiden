@@ -218,6 +218,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 								<div class="qa-nav-footer-clear"> </div>
 							</div>
 							<div class="qa-attribution">
+								Oleh Tim Lapor Presiden. <a href="/feedback">Kirim Timbal Balik</a> |
 								Powered by <a href="http://www.question2answer.org/">Question2Answer</a>
 							</div>
 							<div class="qa-footer-clear"> </div>

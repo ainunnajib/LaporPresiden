@@ -48,7 +48,7 @@
 			qa_html_theme_base::footer();
 			if(@$this->content['q_view']) {
 				if(qa_opt('share_plugin_twitter')) {
-					$this->output('<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>');
+					$this->output('<script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>');
 				}
 				if(qa_opt('share_plugin_google')) {
 					$this->output('<script type="text/javascript">(function() {var po = document.createElement("script"); po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(po, s);})();</script>');

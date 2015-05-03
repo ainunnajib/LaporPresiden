@@ -347,7 +347,8 @@
 			QA_PLUGIN_DIR.'tag-cloud-widget/qa-plugin.php',
 			QA_PLUGIN_DIR.'wysiwyg-editor/qa-plugin.php',
 			QA_PLUGIN_DIR.'xml-sitemap/qa-plugin.php',
-			QA_PLUGIN_DIR.'q2a-xml-rpc-master/qa-plugin.php'
+			QA_PLUGIN_DIR.'q2a-xml-rpc-master/qa-plugin.php',
+			QA_PLUGIN_DIR.'qa-share/qa-plugin.php'
 		);
 
 		$metadataUtil = new Q2A_Util_Metadata();

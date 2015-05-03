@@ -76,7 +76,7 @@
 			$url = qa_path_html(qa_q_request($q_view['raw']['postid'], $q_view['raw']['title']), null, qa_opt('site_url'));
 
 			$code = array(
-				'facebook'=> '<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>',
+				'facebook'=> '<div class="fb-share-button" data-href="'.$url.'" data-layout="button_count"></div>',
 				
 				'twitter'=>'<a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>',
 				

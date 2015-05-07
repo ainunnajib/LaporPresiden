@@ -6,7 +6,7 @@
         Theme Author: QA-Themes.com
         Theme Author URI: http://www.qa-themes.com/
         Theme Update Check URI: https://raw.github.com/Towhidn/Q2A-Esteem-Theme/master/esteem-theme/qa-styles.css
-        Theme License: MIT License
+        Theme License: MIT License.qa-form-tall-select
 */
 
 
@@ -1556,7 +1556,7 @@ border: 1px solid #AAAAAA;
 .qa-form-tall-select {
     border: 1px solid #c10808;
     padding: 5px;
-    width: 421px;
+    width: 390px;
 }
 
 a.qa-q-item-what {

@@ -175,3 +175,36 @@ function qa_ajax_error()
 {
 	alert('Unexpected response from server - please try again or switch off Javascript.');
 }
+
+
+function hybrid_progressHide()
+{
+	try{
+		var timerReadyState = setInterval(function() {
+			if (/loaded|complete/.test(document.readyState)) {
+                    clearInterval(timerReadyState);
+					$laporHybrid.progressHide();
+			}
+		}, 10);
+	     
+	}catch(e){}	
+}
+
+function hybrid_progressShow()
+{
+	try{
+		$laporHybrid.progressShow();	     
+	}catch(e){}	
+}
+
+function hybrid_getFBUser()
+{
+	try{
+		$userFB=$laporHybrid.getUserFB();
+		alert($userFB)
+	}catch(e){}	
+}
+
+$(document).ready(function(){
+		hybrid_progressHide();				
+});

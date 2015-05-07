@@ -182,8 +182,10 @@ function hybrid_progressHide()
 	try{
 		var timerReadyState = setInterval(function() {
 			if (/loaded|complete/.test(document.readyState)) {
+				try{
                     clearInterval(timerReadyState);
 					$laporHybrid.progressHide();
+				}catch(e){}
 			}
 		}, 10);
 	     

@@ -61,7 +61,7 @@ class qa_html_theme_layer extends qa_html_theme_base {
 
 	function head_css() {
 		parent::head_css();
-		if (qa_opt('qat_custom_css')!='NO Custome Style')
+		if (qa_opt('qat_custom_css')!='NO Custome Style' && qa_opt('qat_custom_css')!='')
 			$this->output('<link href="' . $this->theme_url . 'styles/' . qa_opt('qat_custom_css') . '.css" type="text/css" rel="stylesheet"></link>');
 		if ($this->template=='theme_options'){
 			$this->output('<style type="text/css">.qa-option-header{font-size: 115%;}</style>');

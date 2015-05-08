@@ -217,6 +217,13 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 							<div class="qa-nav-footer">
 								<div class="qa-nav-footer-clear"> </div>
 							</div>
+							<div class="social">
+								<ul>
+									<li><a href="https://www.facebook.com/LaporPresiden" target="blank"><span class="facebook icon-social"></span></a></li>
+									<li><a href="https://twitter.com/LaporPresiden" target="blank"><span class="twitter icon-social"></span></a></li>
+									<li><a href="https://play.google.com/store/apps/details?id=com.laporpresiden.android" target="blank"><span class="apps"></span></a></li>
+								</ul>
+							</div>
 							<div class="qa-attribution">
 								Oleh Tim Lapor Presiden. <a href="/feedback">Kirim Timbal Balik</a> |
 								Powered by <a href="http://www.question2answer.org/">Question2Answer</a>

@@ -1655,6 +1655,43 @@ a.qa-nav-user-link {
     color:#fff;
 }
 
+/* Footer */
+.social {
+    float: left;
+}
+.social > ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.social li {
+	display: inline-block;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.social a:hover {
+    opacity: 0.7;
+}
+.icon-social{
+	display: block;
+	height: 25px;
+	width: 25px;
+}
+.facebook{
+	background-image: url('images/icon/fb.png');
+	background-size: 100% auto;
+}
+.twitter{
+	background-image: url('images/icon/twitter.png');
+	background-size: 100% auto;
+}
+.apps{
+	background-image: url("images/icon/apps.png");
+    background-size: 100% auto;
+    height: 30px;
+    width: 89px;
+    display: inline-block;
+}
 
 /* Responsive */
 

@@ -179,15 +179,7 @@ function qa_ajax_error()
 function hybrid_progressHide()
 {
 	try{
-		var timerReadyState = setInterval(function() {
-			if (/loaded|complete/.test(document.readyState)) {
-				try{
-                    clearInterval(timerReadyState);
-					$laporHybrid.progressHide();
-				}catch(e){}
-			}
-		}, 10);
-	     
+		$laporHybrid.progressHide();
 	}catch(e){}	
 }
 
@@ -195,14 +187,6 @@ function hybrid_progressShow()
 {
 	try{
 		$laporHybrid.progressShow();	     
-	}catch(e){}	
-}
-
-function hybrid_getFBUser()
-{
-	try{
-		$userFB=$laporHybrid.getUserFB();
-		alert($userFB)
 	}catch(e){}	
 }
 

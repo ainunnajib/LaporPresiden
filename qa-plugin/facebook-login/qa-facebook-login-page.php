@@ -97,7 +97,7 @@ class qa_facebook_login_page
 								'avatar' => strlen($_REQUEST['avatar']) ? qa_retrieve_url($_REQUEST['avatar']) : null,	
 								));				
 			 } catch (Exception $e) {}
-			qa_redirect_raw("/");*/				
+			qa_redirect_raw("/");
 		}
 		/*end here khairul.anshar@gmail.com*/
 	}

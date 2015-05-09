@@ -176,7 +176,6 @@ function qa_ajax_error()
 	alert('Unexpected response from server - please try again or switch off Javascript.');
 }
 
-
 function hybrid_progressHide()
 {
 	try{

@@ -1454,6 +1454,11 @@ border: 1px solid #AAAAAA;
 
 
 /*======= Style Tambahan ===========*/
+
+.menu_show_hide {
+    color: #d8331d !important;
+}
+
 .qa-top-header {
   background-color: #c10808;
   font-size: 14px;

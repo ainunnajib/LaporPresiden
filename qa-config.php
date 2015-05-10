@@ -46,14 +46,8 @@
 		define('QA_MYSQL_HOSTNAME', '/var/run/mysqld/mysqld.sock');
 		define('QA_MYSQL_USERNAME', 'root');
 		define('QA_MYSQL_PASSWORD', 'nopassword');
-		define('QA_MYSQL_DATABASE', 'laporpresiden');	
+		define('QA_MYSQL_DATABASE', 'laporpresiden');
 	}
-	
-	
-	// define('QA_MYSQL_HOSTNAME', '/var/run/mysqld/mysqld.sock');
-	// define('QA_MYSQL_USERNAME', 'root');
-	// define('QA_MYSQL_PASSWORD', 'nopassword');
-	// define('QA_MYSQL_DATABASE', 'laporpresiden');	
 
 /*
 	Ultra-concise installation instructions:

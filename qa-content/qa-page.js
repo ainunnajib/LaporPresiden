@@ -190,6 +190,7 @@ function hybrid_progressShow()
 	}catch(e){}	
 }
 
+
 $(document).ready(function(){
-		hybrid_progressHide();				
+        hybrid_progressHide();	
 });

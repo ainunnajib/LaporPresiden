@@ -35,10 +35,11 @@
 		
 		$titles = qa_db_read_all_assoc(
 			qa_db_query_sub(
-				"SELECT postid,title,acount FROM ^posts WHERE postid IN (#,#)",
+				"SELECT postid,title,acount,content FROM ^posts WHERE postid IN (#,#)",
 				qa_post_text('merge_from'),qa_post_text('merge_to')
 			)
 		);
+
 		if(count($titles) != 2) {
 			$error1 = null;
 			$error2 = null;
@@ -58,6 +59,11 @@
 		else {
 			
 			$acount = (int)$titles[0]['acount']+(int)$titles[1]['acount'];
+			$content = $titles[0]['content'].'
+=========================
+'.($titles[0]['postid'] === $from ? $titles[0]['title'] : $titles[1]['title']).'
+=========================
+'.$titles[1]['content'];
 			
 			$text = '<div class="qa-content-merged"> '.str_replace('^post',qa_path(qa_q_request((int)qa_post_text('merge_to'), ($titles[0]['postid'] == $to?$titles[0]['title']:$titles[1]['title'])), null, qa_opt('site_url')),qa_opt('merge_question_merged')).' </div>';
 			
@@ -70,6 +76,11 @@
 				"UPDATE ^posts SET acount=# WHERE postid=#",
 				$acount,$to
 			);
+
+			qa_db_query_sub(
+                                "UPDATE ^posts SET content=# WHERE postid=#",
+                                $content,$to
+                        );
 
 			qa_db_query_sub(
 				'CREATE TABLE IF NOT EXISTS ^postmeta (

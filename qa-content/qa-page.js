@@ -179,15 +179,8 @@ function qa_ajax_error()
 function hybrid_progressHide()
 {
 	try{
-		var timerReadyState = setInterval(function() {
-			if (/loaded|complete/.test(document.readyState)) {
-				try{
-                    clearInterval(timerReadyState);
-					$laporHybrid.progressHide();
-				}catch(ee){}	
-			}
-		}, 10);
-	     
+		$laporHybrid.progressHide();
+		$(".qa-nav-user-nolink").hide(); 
 	}catch(e){}	
 }
 
@@ -198,14 +191,7 @@ function hybrid_progressShow()
 	}catch(e){}	
 }
 
-function hybrid_getFBUser()
-{
-	try{
-		$userFB=$laporHybrid.getUserFB();
-		alert($userFB)
-	}catch(e){}	
-}
 
 $(document).ready(function(){
-		hybrid_progressHide();				
+        hybrid_progressHide();	
 });

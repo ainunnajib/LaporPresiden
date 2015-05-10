@@ -59,11 +59,14 @@
 		else {
 			
 			$acount = (int)$titles[0]['acount']+(int)$titles[1]['acount'];
-			$content = $titles[0]['content'].'
+			$content =
+((int) $titles[0]['postid'] === $to ? $titles[0]['content'] : $titles[1]['content']).'
 =========================
-'.($titles[0]['postid'] === $from ? $titles[0]['title'] : $titles[1]['title']).'
+'.
+((int) $titles[0]['postid'] === $from ? $titles[0]['title'] : $titles[1]['title']).'
 =========================
-'.$titles[1]['content'];
+'.
+((int) $titles[0]['postid'] === $from ? $titles[0]['content'] : $titles[1]['content']);
 			
 			$text = '<div class="qa-content-merged"> '.str_replace('^post',qa_path(qa_q_request((int)qa_post_text('merge_to'), ($titles[0]['postid'] == $to?$titles[0]['title']:$titles[1]['title'])), null, qa_opt('site_url')),qa_opt('merge_question_merged')).' </div>';
 			

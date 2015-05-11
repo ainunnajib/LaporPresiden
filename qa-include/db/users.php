@@ -324,28 +324,6 @@
 				QA_USER_LEVEL_APPROVED, QA_USER_FLAGS_USER_BLOCKED
 			);
 	}
-	
-	function qa_db_nik_find_by_userid($userid)
-/*
-	Return the ids of all users in the database which match $email (should be one or none)
-*/
-	{
-		return qa_db_read_all_values(qa_db_query_sub(
-			'SELECT nik FROM ^user_nik WHERE userid=$',
-			$userid
-		));
-	}
-	
-	function qa_db_insert_nik($userid,$nik,$nama)
-/*
-	Return the ids of all users in the database which match $email (should be one or none)
-*/
-	{
-	    qa_db_query_sub(
-			'insert into ^user_nik value($,$,$)',
-			$userid,$nik,$nama
-		);
-	}
 
 
 /*

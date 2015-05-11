@@ -1159,34 +1159,6 @@ in a category for which they have elevated privileges).
 
 		return (empty($silentproblems) && empty($reportproblems));
 	}
-	
-	function qa_get_nik_by_userid($userid)
-	/*
-		Call to log in a user based on an external identity provider $source with external $identifier
-		A new user is created based on $fields if it's a new combination of $source and $identifier
-	*/
-		{
-			if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
-
-			require_once QA_INCLUDE_DIR.'db/users.php';
-
-			$nik=qa_db_nik_find_by_userid($userid);
-			/*$countusers=count($nik);*/
-			return $nik;
-		}
-		
-	function qa_set_userid_nik($userid,$nik,$nama)
-	/*
-		Call to log in a user based on an external identity provider $source with external $identifier
-		A new user is created based on $fields if it's a new combination of $source and $identifier
-	*/
-		{
-			if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
-
-			require_once QA_INCLUDE_DIR.'db/users.php';
-
-			qa_db_insert_nik($userid,$nik,$nama);
-		}
 
 
 /*

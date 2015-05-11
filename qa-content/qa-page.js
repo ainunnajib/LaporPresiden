@@ -217,7 +217,7 @@ $(document).ready(function(){
                         }
                         try {
                             $laporHybrid.progressHide();
-                            if (!(version === "2.0.1" || userFB>0)) {
+                            if (version === "1" && userFB===0) {
                                 $('body').html("");
                                 var divPopUp = $("<div>").attr("style", "font-size:20px;background-color:white;z-index:9999999;position: absolute;top:0;left:0px;display:table-cell; vertical-align:middle;text-align:center;width:100%;height:100%;overflow:hidden;").appendTo("body");
                                 var div = $("<div>").attr("style","padding:20px;").html("Aplikasi <b><span style='color:#c10808;'>Lapor Presiden</span></b> sudah bisa auto login dg Facebook account.<br>Silahkan mengunduh Aplikasi terbaru <b><span style='color:#c10808;'>Lapor Presiden</span></b>.<br>Terimakasih atas kerjasamanya.<br/>").appendTo(divPopUp);

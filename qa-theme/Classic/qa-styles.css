@@ -137,7 +137,7 @@ h2 {
     float: left;
     margin-bottom: 2em;
     overflow: hidden;
-    padding-left: 15px;
+    padding-left: 5px;
     width: 765px;
 }
 .qa-main-hidden h1 {
@@ -399,7 +399,7 @@ h2 {
 /* Standard form (tall version) */
 
 .qa-form-tall-table {
-	width: 98%;
+	width: 80%;
 }
 .qa-form-tall-spacer {
 	background:#E3F4FF;
@@ -417,7 +417,7 @@ h2 {
 }
 .qa-form-tall-label {
 	color:#253845;
-	padding:12px 8px 2px 8px;
+	padding-top:12px;
 	font-size:13px;
 	font-weight:bold;
 }
@@ -1423,6 +1423,7 @@ border: 1px solid #AAAAAA;
 	}
 	.qa-main {
 		padding: 1%;
+		padding-left:5px;
 		width: 98%;
 	}
 	.qa-attribution {
@@ -1743,6 +1744,7 @@ a.qa-nav-user-link {
 	    float: none;
 	    margin: 0 auto;
 	    padding: 1%;
+	    padding-left:5px;
 	    width: 90%;
 	}
 
@@ -1758,14 +1760,14 @@ a.qa-nav-user-link {
 	}
 
 	.qa-form-tall-text {
-	    width: 320px !important;
+	    width: 80%;
 	}
 	.qa-form-tall-select {
-	    width: 330px;
+	    width: 80%;
 	}
 } 
 
-@media all and (max-width: 325px) {
+@media all and (max-width: 324px) {
 	.qa-top-header {
 	    height: 110px;
 	}
@@ -1773,10 +1775,10 @@ a.qa-nav-user-link {
 	    width: 100%;
 	}
 	.qa-form-tall-text {
-	    width: 280px !important;
+	    width: 80%;
 	}
 	.qa-form-tall-select {
-	    width: 280px !important;
+	    width: 80%;
 	}
 }
 

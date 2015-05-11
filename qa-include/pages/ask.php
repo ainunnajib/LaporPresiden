@@ -305,17 +305,27 @@
 		'style' => 'tall',
 
 		'fields' => array(
+			'custom1' => array(
+			    'type' => 'static',
+				'label' => 'Data Akun Anda harus terverifikasi untuk bisa membuat laporan. Silahkan Isi NIK dan Nama Lengkap sesuai dengan KTP Anda kemudian klik tombol Verifikasi.'
+			),
 			'nikvalidation' => array(
-				'type' => 'custom',
-				'label' => 'Data Akun Anda harus terverifikasi untuk bisa membuat laporan.<br>Silahkan Isi NIK dan Nama Lengkap sesuai dengan KTP Anda kemudian klik tombol Verifikasi.',
-				'html' => '<label for="NoNIK"><b>NIK</b></label><br><input name="NoNIK" id="NoNIK" autocomplete="off" type="text" value="" class="qa-form-tall-text" width="100"><br><label for="NamaNIK"><b>Nama Lengkap</b></label><br/><input name="NamaNIK" id="NamaNIK" autocomplete="off" type="text" value="" class="qa-form-tall-text">',
+			    'label' => 'NIK',
+				'tags' => 'name="NoNIK" id="NoNIK" autocomplete="off"',
+				'value' => '',
+				'error' => '',
+			),
+			'nikvalidation1' => array(
+			    'label' => 'Nama Lengkap sesuai dengan KTP',
+				'tags' => 'name="NamaNIK" id="NamaNIK" autocomplete="off"',
+				'value' => '',
+				'error' => '',
 			),
 			'terimakasih' => array(
-				'type' => 'custom',
-				'label' => '',
-				'html' => '<span style="color:#0f5381">Terimakasih atas kerjasamanya.</span>',
+				'type' => 'static',
+				'label' => 'Terimakasih atas kerjasamanya.'
 			),
-			'terimakasih' => array(
+			'errorVerifikasi' => array(
 				'type' => 'custom',
 				'label' => '',
 				'html' => $errorVerifikasi,
@@ -339,7 +349,7 @@
 		unset($qa_content['form']['fields']['custom']);	
 	
 	
-	$qa_content['focusid']='NamaNIK';
+	$qa_content['focusid']='NoNIK';
 	}
 
 	

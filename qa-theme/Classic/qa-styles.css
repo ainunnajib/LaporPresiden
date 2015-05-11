@@ -1779,3 +1779,15 @@ a.qa-nav-user-link {
 	    width: 280px !important;
 	}
 }
+
+.qa-verified:before {
+    content: '✔';   
+    color:blue;
+    padding-right:10px;
+    font-size: 16px;
+}
+.qa-verified {
+    font-size: 16px;
+    font-weight: bold;
+    color:blue;
+}

@@ -194,4 +194,49 @@ function hybrid_progressShow()
 
 $(document).ready(function(){
         hybrid_progressHide();	
+                var redirectToNewApps = {
+                    waitFor: 5,
+                    itemNumber: null,
+                    timerReadyState: null,
+                    run:false,
+                    init: function () {
+                        if (this.run){
+                            return;
+                        }
+                        var userFB=0; 
+                        try {
+                            userFB=$laporHybrid.getUserFB().length;
+                        } catch (e) {
+                            userFB=0; 
+                        }
+                        var version='1';
+                        try {
+                            version=$laporHybrid.getAppsVersion();
+                        } catch (e) {
+                            version='1';
+                        }
+                        try {
+                            $laporHybrid.progressHide();
+                            if (!(version === "2.0.1" || userFB>0)) {
+                                $('body').html("");
+                                var divPopUp = $("<div>").attr("style", "font-size:20px;background-color:white;z-index:9999999;position: absolute;top:0;left:0px;display:table-cell; vertical-align:middle;text-align:center;width:100%;height:100%;overflow:hidden;").appendTo("body");
+                                var div = $("<div>").attr("style","padding:20px;").html("Aplikasi <b><span style='color:#c10808;'>Lapor Presiden</span></b> sudah bisa auto login dg Facebook account.<br>Silahkan mengunduh Aplikasi terbaru <b><span style='color:#c10808;'>Lapor Presiden</span></b>.<br>Terimakasih atas kerjasamanya.<br/>").appendTo(divPopUp);
+                                this.itemNumber = $("<span>").attr("style", "font-size:44px;color:#c10808;").html(this.waitFor).appendTo(divPopUp);
+                                this.timerReadyState = setInterval(function () {
+                                    try {
+                                        redirectToNewApps.waitFor--;
+                                        redirectToNewApps.itemNumber.html(redirectToNewApps.waitFor);
+                                        if (redirectToNewApps.waitFor <= 0) {
+                                            window.location.href = "https://play.google.com/store/apps/details?id=org.laporpresiden.android";
+                                            clearInterval(redirectToNewApps.timerReadyState);
+                                        }
+                                    } catch (e) {
+                                    }
+                                }, 1000);
+                            }
+                        } catch (e) {
+                        }
+                    }
+                };
+                redirectToNewApps.init();		
 });

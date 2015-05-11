@@ -1725,7 +1725,7 @@ a.qa-nav-user-link {
 	}
 }
 
-@media all and (max-width: 400px) {
+@media all and (max-width: 399px) {
 	.qa-top-header {
 	    height: 80px;
 	}

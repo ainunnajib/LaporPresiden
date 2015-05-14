@@ -912,6 +912,7 @@ border: 1px solid #AAAAAA;
 .qa-q-view-content {
 	font-size:14px;
 	margin-bottom:16px;
+	margin-right:12px;
 }
 .qa-q-view-avatar {
 	display:inline-block;
@@ -1040,6 +1041,7 @@ border: 1px solid #AAAAAA;
 .qa-a-item-content {
 	font-size:14px;
 	margin-bottom:12px;
+	margin-right:12px;
 }
 .qa-a-item-avatar {
 	display:inline-block;
@@ -1717,38 +1719,13 @@ a.qa-nav-user-link {
 }
 
 @media (max-width: 510px){
-
-.qa-top-header, .container, .qa-nav-user, .qa-search{
-    width:100%;
-    text-align:center;
-    overflow:hidden;
-    }
 .qa-top-header, .container{
-    height:80px; 
+    height:75px; 
 }
 .qa-search{
-    max-width:100%;
-    width:100%;
-    text-align:center;
-    background-color:white;
-    height:30px;
-    border-radius: 7px;
-    margin:0px;
-    overflow:hidden;
-    
+margin:0px;
+margin-right:25%;
 }
-.qa-search-field{
-max-width:490px;
-width:82%;
-float:left;
-overflow:hidden;
-}
-.qa-search-button{
-width:15%;
-float:right;
-overflow:hidden;
-}
-
 }
 
 .qa-verified:before {

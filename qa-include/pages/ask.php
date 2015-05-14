@@ -32,8 +32,10 @@
 	require_once QA_INCLUDE_DIR.'util/sort.php';
 
 
-//	Check whether this is a follow-on question and get some info we need from the database
+//	Check whether this is forverifikasi
 
+
+//	Check whether this is a follow-on question and get some info we need from the database
 	$in=array();
 
 	$followpostid=qa_get('follow');
@@ -87,6 +89,12 @@
 
 		return $qa_content;
 	}
+	
+
+	
+	
+	$nik=qa_get_nik_by_userid($userid);
+	$countnik=count($nik);
 
 
 //	Process input
@@ -163,6 +171,8 @@
 	$field['error']=qa_html(@$errors['content']);
 
 	$custom=qa_opt('show_custom_ask') ? trim(qa_opt('custom_ask')) : '';
+	
+	if ($countnik>0){
 
 	$qa_content['form']=array(
 		'tags' => 'name="ask" method="post" action="'.qa_self_html().'"',
@@ -170,6 +180,10 @@
 		'style' => 'tall',
 
 		'fields' => array(
+		    'verified' => array(
+				'type' => 'custom',
+				'html' => '<ul style="list-style: none;list-style-position:outside;"><li class="qa-verified">Data Anda Sudah Terverifikasi.</li></ul>',
+			),
 			'custom' => array(
 				'type' => 'custom',
 				'note' => $custom,
@@ -263,7 +277,7 @@
 
 		qa_array_insert($qa_content['form']['fields'], null, array('tags' => $field));
 	}
-
+	
 	if (!isset($userid))
 		qa_set_up_name_field($qa_content, $qa_content['form']['fields'], @$in['name']);
 
@@ -276,6 +290,69 @@
 	}
 
 	$qa_content['focusid']='title';
+	
+	
+	}else{
+	$from=qa_get('errormsg');
+	$errorVerifikasi='';
+	if (strlen($from)) {
+	   $errorVerifikasi='<div class="qa-error">Nama Lengkap dan/atau NIK Anda tidak sesuai</div>';
+	}
+	$qa_content['title']='Data Akun Anda belum Terverifikasi';
+    $qa_content['form']=array(
+		'tags' => 'name="ask" method="post" action="/facebook-nik-validation"',
+
+		'style' => 'tall',
+
+		'fields' => array(
+			'custom1' => array(
+			    'type' => 'static',
+				'label' => 'Data Akun Anda harus terverifikasi untuk bisa membuat laporan. Silahkan Isi NIK dan Nama Lengkap sesuai dengan KTP Anda kemudian klik tombol Verifikasi.'
+			),
+			'nikvalidation' => array(
+			    'label' => 'NIK',
+				'tags' => 'name="NoNIK" id="NoNIK" autocomplete="off"',
+				'value' => '',
+				'error' => '',
+			),
+			'nikvalidation1' => array(
+			    'label' => 'Nama Lengkap sesuai dengan KTP',
+				'tags' => 'name="NamaNIK" id="NamaNIK" autocomplete="off"',
+				'value' => '',
+				'error' => '',
+			),
+			'terimakasih' => array(
+				'type' => 'static',
+				'label' => 'Terimakasih atas kerjasamanya.'
+			),
+			'errorVerifikasi' => array(
+				'type' => 'custom',
+				'label' => '',
+				'html' => $errorVerifikasi,
+			),			
+		),
+
+		'buttons' => array(
+			'ask' => array(
+				'tags' => 'onclick="qa_show_waiting_after(this, false); '.
+					(method_exists($editor, 'update_script') ? $editor->update_script('content') : '').'"',
+				'label' => 'Verifikasi',
+			),
+		),
+
+		
+	);
+	
+	
+
+	if (!strlen($custom))
+		unset($qa_content['form']['fields']['custom']);	
+	
+	
+	$qa_content['focusid']='NoNIK';
+	}
+
+	
 
 
 	return $qa_content;

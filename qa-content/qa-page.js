@@ -191,6 +191,12 @@ function hybrid_progressShow()
 	}catch(e){}	
 }
 
+function hybrid_progressShow()
+{
+	try{
+		$laporHybrid.progressShow();	     
+	}catch(e){}	
+}
 
 $(document).ready(function(){
         hybrid_progressHide();	

@@ -1,0 +1,19 @@
+dependencies:
+  pre:
+    - curl -o $HOME/google_appengine_1.9.20.zip https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.20.zip
+    - unzip -q -d $HOME $HOME//google_appengine_1.9.20.zip
+
+test:
+  override:
+    - phpunit --bootstrap qa-tests/autoload.php qa-tests
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - $HOME/google_appengine/appcfg.py -A laporpresiden-prod update . --oauth2_refresh_token=$APPENGINE_TOKEN
+  devserver:
+    branch: develop
+    commands:
+      - $HOME/google_appengine/appcfg.py -A laporpresiden7 update . --oauth2_refresh_token=$APPENGINE_TOKEN
+

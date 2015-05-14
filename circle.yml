@@ -11,9 +11,9 @@ deployment:
   production:
     branch: master
     commands:
-      - echo $APPENGINE_PASSWORD | $HOME/google_appengine/appcfg.py -A laporpresiden-prod update --email=$APPENGINE_EMAIL --passin . --noauth_local_webserver
+      - $HOME/google_appengine/appcfg.py -A laporpresiden-prod update . --oauth2_refresh_token=$APPENGINE_TOKEN
   devserver:
     branch: develop
     commands:
-      - echo $APPENGINE_PASSWORD | $HOME/google_appengine/appcfg.py -A laporpresiden7 update --email=$APPENGINE_EMAIL --passin . --noauth_local_webserver
+      - $HOME/google_appengine/appcfg.py -A laporpresiden7 update . --oauth2_refresh_token=$APPENGINE_TOKEN
 

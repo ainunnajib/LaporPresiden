@@ -330,8 +330,18 @@
 	Return the ids of all users in the database which match $email (should be one or none)
 */
 	{
+	      qa_db_query_sub(
+				"CREATE TABLE IF NOT EXISTS ^user_nik (
+  				userid INT(10) NOT NULL,
+  				nik BINARY(16) NOT NULL,
+  				nama VARCHAR(250) NOT NULL,
+  				PRIMARY KEY (userid),
+  				UNIQUE INDEX nik_u1 (userid ASC, nik ASC))
+				"
+			);	
+	
 		return qa_db_read_all_values(qa_db_query_sub(
-			'SELECT nik FROM ^user_nik WHERE userid=$',
+			'SELECT nama FROM ^user_nik WHERE userid=$',
 			$userid
 		));
 	}
@@ -342,8 +352,8 @@
 */
 	{
 	    qa_db_query_sub(
-			'insert into ^user_nik value($,$,$)',
-			$userid,$nik,$nama
+			'insert into ^user_nik value($,UNHEX($),$)',
+			$userid,md5($nik),$nama
 		);
 	}
 

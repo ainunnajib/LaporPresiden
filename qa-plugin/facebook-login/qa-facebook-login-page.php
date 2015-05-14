@@ -112,7 +112,7 @@ class qa_facebook_login_page
                      // Set some options - we are passing in a useragent too here
                      curl_setopt_array($curl, array(
                      CURLOPT_RETURNTRANSFER => 1,
-                     CURLOPT_URL => "http://104.197.45.237:3000/verify-nik/".$NoNIK_input
+					 CURLOPT_URL => "https://data.kpu.go.id/search.php?cmd=cari&nik=".$NoNIK_input
                      ));
                      // Send the request & save response to $resp
                      $testresponse = curl_exec($curl);
@@ -129,7 +129,6 @@ class qa_facebook_login_page
                         $errormsg="";
                      }
                   }
-                  $errormsg="";
               } catch (Exception $ex) {
               }
               qa_redirect_raw("/ask?errormsg=".$errormsg);

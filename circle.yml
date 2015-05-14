@@ -11,4 +11,4 @@ deployment:
   appengine:
     branch: master
     commands:
-      - $HOME/google_appengine/appcfg.py -A laporpresiden-prod update . --noauth_local_webserver
+      - echo $APPENGINE_PASSWORD | $HOME/google_appengine/appcfg.py -A laporpresiden-prod update --email=$APPENGINE_EMAIL --passin .

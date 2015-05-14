@@ -119,7 +119,7 @@ class qa_facebook_login_page
                      // Close request to clear up some resources
                      curl_close($curl);
                      $arrayresponse = json_decode($testresponse, true);
-                     $namaresponse=@$arrayresponse['name'];
+                     $namaresponse=@$arrayresponse['nama'];
                      $namaresponse=strtoupper($namaresponse);
                      
                      if ($NamaNIK_input==$namaresponse){

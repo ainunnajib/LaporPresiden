@@ -296,7 +296,7 @@
 	$from=qa_get('errormsg');
 	$errorVerifikasi='';
 	if (strlen($from)) {
-	   $errorVerifikasi='<div class="qa-error">Nama Lengkap dan/atau NIK Anda tidak sesuai</div>';
+	   $errorVerifikasi='<div class="qa-error">Nama Lengkap dan/atau NIK Anda tidak valid. Mohon periksa kembali sesuai KTP anda yang terdaftar pada Pemilu 2014.</div>';
 	}
 	$qa_content['title']='Data Akun Anda belum Terverifikasi';
     $qa_content['form']=array(
@@ -307,7 +307,7 @@
 		'fields' => array(
 			'custom1' => array(
 			    'type' => 'static',
-				'label' => 'Data Akun Anda harus terverifikasi untuk bisa membuat laporan. Silahkan Isi NIK dan Nama Lengkap sesuai dengan KTP Anda kemudian klik tombol Verifikasi.'
+				'label' => 'Data Akun Anda harus terverifikasi untuk bisa membuat laporan. Silahkan Isi NIK dan Nama Lengkap sesuai dengan KTP Anda yang terdaftar pada Pemilu 2014 kemudian klik tombol Verifikasi.'
 			),
 			'nikvalidation' => array(
 			    'label' => 'NIK',
@@ -316,7 +316,7 @@
 				'error' => '',
 			),
 			'nikvalidation1' => array(
-			    'label' => 'Nama Lengkap sesuai dengan KTP',
+			    'label' => 'Nama Lengkap sesuai dengan KTP yang terdaftar pada Pemilu 2014',
 				'tags' => 'name="NamaNIK" id="NamaNIK" autocomplete="off"',
 				'value' => '',
 				'error' => '',

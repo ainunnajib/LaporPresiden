@@ -1726,6 +1726,12 @@ a.qa-nav-user-link {
 margin:0px;
 margin-right:25%;
 }
+
+.qa-q-item-main, .qa-q-view-main, .qa-a-item-main {
+display:block;
+float:left;
+}
+
 }
 
 .qa-verified:before {

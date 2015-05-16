@@ -105,10 +105,54 @@
 	$in['extra']=qa_opt('extra_field_active') ? qa_post_text('extra') : null;
 	if (qa_using_tags())
 		$in['tags']=qa_get_tags_field_value('tags');
-
+    
+	$errorVerifikasi='';
+	$NamaNIKError='';
+	$NIKError='';
 	if (qa_clicked('doask')) {
 		require_once QA_INCLUDE_DIR.'app/post-create.php';
 		require_once QA_INCLUDE_DIR.'util/string.php';
+		require_once QA_INCLUDE_DIR.'db/users.php';
+
+		$NoNIK_input=$_REQUEST['NoNIK'];
+        $NamaNIK_input=$_REQUEST['NamaNIK'];
+        $NamaNIK_input = strtoupper($NamaNIK_input);
+		try {
+			if (!strlen($NamaNIK_input)){
+				$NamaNIKError='Silahkan isi Nama Lengkap Anda';
+				$errorVerifikasi='Data Tidak Lengkap';
+			}
+			if (!strlen($NoNIK_input)){
+				$NIKError='Silahkan isi NIK Anda';
+				$errorVerifikasi='Data Tidak Lengkap';
+			}
+			if (strlen($NoNIK_input) && strlen($NamaNIK_input)) {
+				    $errorVerifikasi='NIK atau Nama Lengkap tidak valid. Mohon periksa kembali, NIK dan Nama Lengkap harus sesuai dengan KTP Anda yang terdaftar pada Pemilu 2014.';
+					$curl = curl_init();
+                     curl_setopt_array($curl, array(
+                     CURLOPT_RETURNTRANSFER => 1,
+					 CURLOPT_URL => "https://data.kpu.go.id/search.php?cmd=cari&nik=".$NoNIK_input,
+                     ));
+                     $testresponse = curl_exec($curl);
+                     curl_close($curl);
+					 if (strlen($testresponse)){
+						$arrayresponse = json_decode($testresponse, true);
+						$namaresponse=@$arrayresponse['nama'];
+						$namaresponse=strtoupper($namaresponse);
+						if ($NamaNIK_input==$namaresponse){
+							try {            
+								qa_db_user_profile_set($userid,'verified-name',$NamaNIK_input);
+							} catch (Exception $e) {}
+							$errorVerifikasi="";
+						}    
+					 }else{
+						$errorVerifikasi='Koneksi verifikasi tidak berhasil. Mohon dicoba kembali dalam beberapa saat lagi.';
+					 }
+			}
+		} catch (Exception $ex) {
+			$errorVerifikasi='Koneksi verifikasi tidak berhasil. Mohon dicoba kembali dalam beberapa saat lagi.';
+        }
+		
 
 		$categoryids=array_keys(qa_category_path($categories, @$in['categoryid']));
 		$userlevel=qa_user_level_for_categories($categoryids);
@@ -121,8 +165,11 @@
 		qa_get_post_content('editor', 'content', $in['editor'], $in['content'], $in['format'], $in['text']);
 
 		$errors=array();
-
-		if (!qa_check_form_security_code('ask', qa_post_text('code')))
+        
+		if (strlen($errorVerifikasi)){
+		   $errors['page']=$errorVerifikasi;
+		}else{
+		if (!qa_check_form_security_code('ask', qa_post_text('code'))) 
 			$errors['page']=qa_lang_html('misc/form_security_again');
 
 		else {
@@ -153,6 +200,7 @@
 				qa_redirect(qa_q_request($questionid, $in['title'])); // our work is done here
 			}
 		}
+		}
 	}
 
 
@@ -172,36 +220,31 @@
 
 	$custom=qa_opt('show_custom_ask') ? trim(qa_opt('custom_ask')) : '';
 	
-	if ($countnik>0){
+    
 
 	$qa_content['form']=array(
-		'tags' => 'name="ask" method="post" action="'.qa_self_html().'"',
+		'tags' => 'name="ask" id="ask" method="post" action="'.qa_self_html().'"',
 
 		'style' => 'tall',
 
 		'fields' => array(
-		    'verified' => array(
-				'type' => 'custom',
-				'html' => '<ul style="list-style: none;list-style-position:outside;"><li class="qa-verified">Data Anda Sudah Terverifikasi.</li></ul>',
-			),
-			'custom' => array(
+		    'custom' => array(
 				'type' => 'custom',
 				'note' => $custom,
 			),
-
 			'title' => array(
 				'label' => qa_lang_html('question/q_title_label'),
 				'tags' => 'name="title" id="title" autocomplete="off"',
 				'value' => qa_html(@$in['title']),
 				'error' => qa_html(@$errors['title']),
 			),
-
 			'similar' => array(
 				'type' => 'custom',
 				'html' => '<span id="similar"></span>',
 			),
-
 			'content' => $field,
+			
+			
 		),
 
 		'buttons' => array(
@@ -216,6 +259,7 @@
 			'editor' => qa_html($editorname),
 			'code' => qa_get_form_security_code('ask'),
 			'doask' => '1',
+			'nikvalidation' => '0',
 		),
 	);
 
@@ -278,6 +322,34 @@
 		qa_array_insert($qa_content['form']['fields'], null, array('tags' => $field));
 	}
 	
+	$field=array(
+		'type' => 'static',
+		'label' => 'Untuk bisa membuat laporan, silahkan Isi NIK dan Nama Lengkap sesuai dengan KTP Anda yang terdaftar pada Pemilu 2014. LaporPresiden.org tidak menyimpan data NIK Anda, verifikasi ini terjadi secara real-time dengan website Lembaga Negara.'
+	);
+
+	qa_array_insert($qa_content['form']['fields'], null, array('static1' => $field));
+	
+	$field=array(
+		'label' => 'NIK',
+		'tags' => 'name="NoNIK" id="NoNIK" autocomplete="off"',
+		'value' => '',
+		'error' => $NIKError
+	);
+
+	qa_array_insert($qa_content['form']['fields'], null, array('NIK' => $field));
+	
+	$field=array(
+		'label' => 'Nama Lengkap sesuai dengan KTP',
+		'tags' => 'name="NamaNIK" id="NamaNIK" autocomplete="off"',
+		'value' => '',
+		'error' => $NamaNIKError
+	);
+
+	qa_array_insert($qa_content['form']['fields'], null, array('NamaNIK' => $field));	
+	
+	
+	
+	
 	if (!isset($userid))
 		qa_set_up_name_field($qa_content, $qa_content['form']['fields'], @$in['name']);
 
@@ -292,65 +364,6 @@
 	$qa_content['focusid']='title';
 	
 	
-	}else{
-	$from=qa_get('errormsg');
-	$errorVerifikasi='';
-	if (strlen($from)) {
-	   $errorVerifikasi='<div class="qa-error">Nama Lengkap dan/atau NIK Anda tidak valid. Mohon periksa kembali sesuai KTP anda yang terdaftar pada Pemilu 2014.</div>';
-	}
-	$qa_content['title']='Data Akun Anda belum Terverifikasi';
-    $qa_content['form']=array(
-		'tags' => 'name="ask" method="post" action="/facebook-nik-validation"',
-
-		'style' => 'tall',
-
-		'fields' => array(
-			'custom1' => array(
-			    'type' => 'static',
-				'label' => 'Data Akun Anda harus terverifikasi untuk bisa membuat laporan. Silahkan Isi NIK dan Nama Lengkap sesuai dengan KTP Anda yang terdaftar pada Pemilu 2014 kemudian klik tombol Verifikasi.'
-			),
-			'nikvalidation' => array(
-			    'label' => 'NIK',
-				'tags' => 'name="NoNIK" id="NoNIK" autocomplete="off"',
-				'value' => '',
-				'error' => '',
-			),
-			'nikvalidation1' => array(
-			    'label' => 'Nama Lengkap sesuai dengan KTP yang terdaftar pada Pemilu 2014',
-				'tags' => 'name="NamaNIK" id="NamaNIK" autocomplete="off"',
-				'value' => '',
-				'error' => '',
-			),
-			'terimakasih' => array(
-				'type' => 'static',
-				'label' => 'Terimakasih atas kerjasamanya.'
-			),
-			'errorVerifikasi' => array(
-				'type' => 'custom',
-				'label' => '',
-				'html' => $errorVerifikasi,
-			),			
-		),
-
-		'buttons' => array(
-			'ask' => array(
-				'tags' => 'onclick="qa_show_waiting_after(this, false); '.
-					(method_exists($editor, 'update_script') ? $editor->update_script('content') : '').'"',
-				'label' => 'Verifikasi',
-			),
-		),
-
-		
-	);
-	
-	
-
-	if (!strlen($custom))
-		unset($qa_content['form']['fields']['custom']);	
-	
-	
-	$qa_content['focusid']='NoNIK';
-	}
 
 	
 

@@ -35,7 +35,7 @@ class qa_facebook_login_page
 	public function match_request($request)
 	{
 		//'facebook-login-android' added by khairul.anshar@gmail.com
-		return ($request=='facebook-login' || $request=='facebook-login-android' || $request=='facebook-nik-validation' );
+		return ($request=='facebook-login' || $request=='facebook-login-android');
 	}
 
 	public function process_request($request)
@@ -98,40 +98,6 @@ class qa_facebook_login_page
 								));				
 			 } catch (Exception $e) {}
 			qa_redirect_raw("/");
-			
-		}else if ($request=='facebook-nik-validation'){	
-		    $testresponse="";
-		    $errormsg="Nama%20Lengkap%20dan/atau%20NIK%20Anda%20tidak%20sesuai";
-			try {
-                  $NoNIK_input=$_REQUEST['NoNIK'];
-                  $NamaNIK_input=$_REQUEST['NamaNIK'];
-                  $NamaNIK_input = strtoupper($NamaNIK_input);
-                  $userid=qa_get_logged_in_userid();
-                  if (strlen($NoNIK_input) && strlen($NamaNIK_input)) {
-                     $curl = curl_init();
-                     // Set some options - we are passing in a useragent too here
-                     curl_setopt_array($curl, array(
-                     CURLOPT_RETURNTRANSFER => 1,
-					 CURLOPT_URL => "https://data.kpu.go.id/search.php?cmd=cari&nik=".$NoNIK_input
-                     ));
-                     // Send the request & save response to $resp
-                     $testresponse = curl_exec($curl);
-                     // Close request to clear up some resources
-                     curl_close($curl);
-                     $arrayresponse = json_decode($testresponse, true);
-                     $namaresponse=@$arrayresponse['nama'];
-                     $namaresponse=strtoupper($namaresponse);
-                     
-                     if ($NamaNIK_input==$namaresponse){
-                        try {            
-                          qa_set_userid_nik($userid,$NoNIK_input,$NamaNIK_input);
-                        } catch (Exception $e) {}
-                        $errormsg="";
-                     }
-                  }
-              } catch (Exception $ex) {
-              }
-              qa_redirect_raw("/ask?errormsg=".$errormsg);
 		}
 		/*end here khairul.anshar@gmail.com*/
 	}

@@ -90,13 +90,6 @@
 		return $qa_content;
 	}
 	
-
-	
-	
-	$nik=qa_get_nik_by_userid($userid);
-	$countnik=count($nik);
-
-
 //	Process input
 
 	$captchareason=qa_user_captcha_reason();

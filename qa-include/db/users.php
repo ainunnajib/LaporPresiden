@@ -325,39 +325,6 @@
 			);
 	}
 	
-	function qa_db_nik_find_by_userid($userid)
-/*
-	Return the ids of all users in the database which match $email (should be one or none)
-*/
-	{
-	      qa_db_query_sub(
-				"CREATE TABLE IF NOT EXISTS ^user_nik (
-  				userid INT(10) NOT NULL,
-  				nik BINARY(16) NOT NULL,
-  				nama VARCHAR(250) NOT NULL,
-  				PRIMARY KEY (userid),
-  				UNIQUE INDEX nik_u1 (userid ASC, nik ASC))
-				"
-			);	
-	
-		return qa_db_read_all_values(qa_db_query_sub(
-			'SELECT nama FROM ^user_nik WHERE userid=$',
-			$userid
-		));
-	}
-	
-	function qa_db_insert_nik($userid,$nik,$nama)
-/*
-	Return the ids of all users in the database which match $email (should be one or none)
-*/
-	{
-	    qa_db_query_sub(
-			'insert into ^user_nik value($,UNHEX($),$)',
-			$userid,md5($nik),$nama
-		);
-	}
-
-
 /*
 	Omit PHP closing tag to help avoid accidental output
 */

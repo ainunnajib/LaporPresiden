@@ -1555,7 +1555,7 @@ a.qa-nav-user-link {
   position: absolute;
   text-align:center;
   display:none;
-  margin-top:8px;
+  margin-top:7px;
 }
 
 .navbar-toggle:hover{
@@ -1573,14 +1573,57 @@ a.qa-nav-user-link {
 
 
 @media (max-width: 989px){
+   body{
+    background-color: #f3f3f3;
+   }
    .qa-top-header, .qa-header, .qa-sidepanel, .qa-wrap-footer, .qa-footer, .qa-attribution, .social,
    .qa-sub-nav, .qa-main, .qa-nav-user, .container, .qa-form-tall-text, .qa-form-tall-select {
      width: 100%;
      overflow:hidden;
    }
    
+   .qa-sidebar, .qa-header, .qa-nav-cat, .qa-feed, .qa-q-list-item, .qa-part-q-view, .qa-part-a-form, .qa-a-list {
+     background-color: white;
+   }
+   
+   
+   
+   
+   .qa-sidebar, .qa-nav-cat, .qa-feed, .qa-q-list-item, .qa-part-q-view, .qa-part-a-form, .qa-a-list{
+     border: 1px solid #dddddd;
+	 padding:12px;
+	 border-radius: 5px;
+	 box-shadow: 1px 2px 2px #CCCCCC;
+	 margin-bottom:10px;
+   }
+   
+   .qa-feed{
+      background: url(images/feed-icon-14x14.png) no-repeat 1% 52%;
+	  background-color: white;
+   }
+   
+   .qa-feed > a{
+      margin-left:2%;
+	  background-color: white;
+	  font-size:14px;
+   }
+   .qa-nav-cat-list > li{
+     border-bottom: 1px solid #dddddd;
+   }
+   
+   .qa-a-list-item{
+      padding:12px;
+	  margin:0px;
+      border-bottom: 1px solid #dddddd;
+   }
+   
+   .qa-nav-cat-item{
+     font-size:14px;
+	 padding-bottom:5px;
+   }
+   
    .qa-body-wrapper{
-     width:95%;
+     width:98%;
 	 overflow:hidden;
    }
    
@@ -1620,7 +1663,6 @@ a.qa-nav-user-link {
 	#navigate:target ~ nav {
 		display: block;
 	}
-	
 	.qa-sidepanel {
 		float: left;
 		padding: 1%;
@@ -1629,9 +1671,6 @@ a.qa-nav-user-link {
 	.qa-header{
 		padding:0;
 	}
-	
-	
-	
 	.qa-nav-user div,.qa-nav-user ul,.qa-nav-user ul li{
 		float:left;
 	}
@@ -1690,11 +1729,7 @@ a.qa-nav-user-link {
 	.qa-activity-count{
 		display:none;
 	}
-	.qa-q-list-item {
-		border-bottom: 1px dashed #DDDDDD;
-		margin-bottom: 10px;
-		padding-bottom: 10px;
-	}
+	
 	.qa-main {
 		padding:0px;
 	}

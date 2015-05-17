@@ -1582,14 +1582,14 @@ a.qa-nav-user-link {
      overflow:hidden;
    }
    
-   .qa-sidebar, .qa-header, .qa-nav-cat, .qa-feed, .qa-q-list-item, .qa-part-q-view, .qa-part-a-form, .qa-a-list {
+   .qa-sidebar, .qa-header, .qa-nav-cat, .qa-feed, .qa-q-list-item, .qa-part-q-view, .qa-part-a-form, .qa-a-list, .qa-part-form {
      background-color: white;
    }
    
    
    
    
-   .qa-sidebar, .qa-nav-cat, .qa-feed, .qa-q-list-item, .qa-part-q-view, .qa-part-a-form, .qa-a-list{
+   .qa-sidebar, .qa-nav-cat, .qa-feed, .qa-q-list-item, .qa-part-q-view, .qa-part-a-form, .qa-a-list, .qa-part-form{
      border: 1px solid #dddddd;
 	 padding:12px;
 	 border-radius: 5px;

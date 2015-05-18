@@ -1691,6 +1691,40 @@
 
 		return $selectspec;
 	}
+	
+	function qa_db_find_trackingid($questionid)
+	{
+	      qa_db_query_sub(
+				"CREATE TABLE IF NOT EXISTS ^questionlapor (
+  				questionid INT(10) NOT NULL,
+  				trackingid VARCHAR(250) NOT NULL,
+				userid INT(10) NOT NULL,
+  				PRIMARY KEY (questionid),
+  				UNIQUE INDEX nik_u1 (questionid ASC, trackingid ASC))
+				"
+			);	
+	
+		return qa_db_read_all_values(qa_db_query_sub(
+			'SELECT trackingid FROM ^questionlapor WHERE questionid=$',
+			$questionid
+		));
+	}
+	
+	function qa_db_insert_trackingid($questionid,$trackingid,$userid)
+	{
+	    qa_db_query_sub(
+			'insert into ^questionlapor value($,$,$)',
+			$questionid,$trackingid,$userid
+		);
+	}
+	
+		function qa_db_find_email($userid)
+	{
+	    return qa_db_read_all_values(qa_db_query_sub(
+			'SELECT email FROM ^users WHERE userid=$',
+			$userid
+		));
+	}
 
 
 /*

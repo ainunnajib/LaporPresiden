@@ -274,3 +274,38 @@ function qa_scroll_page_to(scroll)
 {
 	$('html,body').animate({scrollTop: scroll}, 400);
 }
+
+function qa_lapor(id,elm){
+	
+	$(elm).hide();
+	$("#SedangDiprosesBtn").show();
+	$.ajax({
+            url: "/qa-laporgoid-page"
+            , type: "POST"
+            , data: {id:id,title:$('.entry-title').html(),content:$('.entry-content').html()}
+            , cache: false
+            , success: function (result) {
+				console.log(result)
+				var obj=jQuery.parseJSON(result);
+                if (obj.status==="not ok"){
+					alert(obj.errormsg);
+					$(elm).show();
+				}else{
+					window.location.reload();
+				}
+            }
+            , error: function (xhr, status, error) {
+               var err = eval("(" + xhr.responseText + ")");
+			   alert(err);
+			   $(elm).show();
+            }
+            , complete: function () {
+				$("#SedangDiprosesBtn").hide();
+            }
+	});
+	return false;
+}
+function qa_statuslapor(trackingid){
+	window.open('https://www.lapor.go.id/pengaduan/'+trackingid);
+	return false;
+}

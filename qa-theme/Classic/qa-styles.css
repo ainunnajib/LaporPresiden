@@ -528,20 +528,47 @@ h2 {
 /* Standard form (light version - buttons only) */
 
 .qa-form-light-button, .qa-form-light-hover {
-	background:none;
-	border:1px solid #fff;
+    background-color:white;
+	padding:2px 5px 2px 5px;
+	border-radius: 5px;
+	box-shadow: 1px 2px 2px #0f5381;
+	border:1px solid #0f5381;
 	cursor:pointer;
-	padding:0;
 	margin-right:6px;
-	font-size:10px;
+	margin-bottom:6px;
+	font-size:12px;
 	overflow: visible;
+	text-transform: capitalize;
 } /* overflow:visible for IE, 1px border needed for tooltips to work more reliably in IE */
+
+
 .qa-form-light-button {
-	color:#666;
+	color:#0f5381;
 }
 .qa-form-light-hover, .qa-form-light-button:hover {
-	color:#000;
+	color:white;
+	background-color:#0f5381;
 }
+
+.qa-lapor-button{
+    background-color:#c10808;
+	padding:5px 10px 5px 10px;
+	border-radius: 5px;
+	box-shadow: 1px 2px 2px #c10808;
+	border:1px solid #c10808;
+	cursor:pointer;
+	margin:10px;
+	font-size:14px;
+	overflow: visible;
+	text-align:center;
+	color:white;
+}
+.qa-lapor-button:hover {
+	color:#c10808;
+	background-color:white;
+	box-shadow: 1px 2px 2px #CCCCCC;
+}
+
 /* Standard form (basic version - buttons only) */
 
 .qa-form-basic-button, .qa-form-basic-hover {
@@ -964,8 +991,7 @@ border: 1px solid #AAAAAA;
 .qa-q-view-buttons {
 	text-align:right;
 	clear:both;
-	margin-left:10px;
-	margin-right:10px;
+	margin:10px;
 	margin-bottom:12px;
 }
 .qa-q-view-c-list {
@@ -1001,9 +1027,9 @@ border: 1px solid #AAAAAA;
 /* Answer view  */
 
 .qa-a-list-item {
-	margin-bottom:40px;
+	margin-bottom:10px;
+	padding-bottom:10px;
 	zoom:1;
-	padding-bottom:1px;
 } /* zoom for IE, padding for early FF */
 .qa-a-list-item-hidden {
 }
@@ -1071,13 +1097,7 @@ border: 1px solid #AAAAAA;
 	padding:2px 5px;
 	display:inline-block;
 }
-.qa-a-item-buttons {
-	float:right;
-	clear:both;
-	margin-bottom:12px;
-	margin-left:10px;
-    margin-right:10px;	
-}
+
 .qa-a-item-c-list {
 	clear:both;
 	margin:12px 0 0 12px;
@@ -1194,11 +1214,13 @@ border: 1px solid #AAAAAA;
 	padding:2px 5px;
 	display:inline-block;
 }
-.qa-c-item-buttons {
+.qa-c-item-buttons, .qa-a-item-buttons {
 	display:block;
-	position:absolute;
-	bottom:0px;
-	right:0px;
+	float:right;
+	text-align:right;
+	margin-right:10px;
+	margin-bottom:10px;
+	margin-top:10px;
 }
 /* Footer parts */
 
@@ -1398,6 +1420,24 @@ border: 1px solid #AAAAAA;
     cursor: pointer;
 }
 
+
+.qa-form-tall-button-answer, .qa-form-tall-button-comment, .qa-form-tall-button-cancel {
+    background: none repeat scroll 0 0 #0f5381;
+    border: medium none;
+    border-radius: 15px;
+    box-shadow: none;
+    color: #fff;
+    font-weight: bold;
+	padding: 15px;
+	text-transform: capitalize;
+}
+
+.qa-form-tall-button-answer:hover , .qa-form-tall-button-comment:hover , .qa-form-tall-button-cancel:hover {
+    background: none repeat scroll 0 0 #bbb;
+    cursor: pointer;
+}
+
+
 .qa-form-tall-text {
     border: 1px solid #c10808;
     padding: 5px;
@@ -1452,44 +1492,15 @@ a.qa-nav-cat-link {
     width: 100px;
 }
 
-
 .qa-netvote-count {
     display: block;
     width: 130px;
 }
 
-.qa-form-light-button {
-    color: #666;
-}
-.qa-form-light-button, .qa-form-light-hover {
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
-    border: 1px solid #fff;
-    color: red;
-    cursor: pointer;
-    font-size: 10px;
-    margin-right: 6px;
-    overflow: visible;
-    padding: 0;
-}
 
 /*tombol di laporan kanan bawah*/
 
-.qa-form-light-button {
-    color: #0f5381;
-}
-.qa-form-light-button, .qa-form-light-hover {
 
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    margin-right: 6px;
-    overflow: visible;
-    padding: 0;
-}
-
-.qa-form-light-hover, .qa-form-light-button:hover {
-	color:#c10808;
-}
 
 a.a-q-view-what {
     color:#c10808;
@@ -1582,28 +1593,33 @@ a.qa-nav-user-link {
      overflow:hidden;
    }
    
-   .qa-sidebar, .qa-header, .qa-nav-cat, .qa-feed, .qa-q-list-item, .qa-part-q-view, .qa-part-a-form, .qa-a-list, .qa-part-form {
+   .qa-sidebar, .qa-header, .qa-nav-cat, .qa-feed, .qa-q-list-item, .qa-part-q-view, .qa-a-form, .qa-a-list, .qa-part-form {
      background-color: white;
    }
    
-   
-   
-   
-   .qa-sidebar, .qa-nav-cat, .qa-feed, .qa-q-list-item, .qa-part-q-view, .qa-part-a-form, .qa-a-list, .qa-part-form{
+   .qa-sidebar, .qa-nav-cat, .qa-feed, .qa-q-list-item, .qa-part-q-view, .qa-a-form, .qa-a-list, .qa-part-form{
      border: 1px solid #dddddd;
-	 padding:12px;
+	 padding:15px;
 	 border-radius: 5px;
 	 box-shadow: 1px 2px 2px #CCCCCC;
 	 margin-bottom:10px;
    }
    
+   .qa-q-view-main{
+    margin:0px;
+   }
+   
+   .qa-page-links{
+   text-align:center;
+   }
+   
    .qa-feed{
-      background: url(images/feed-icon-14x14.png) no-repeat 1% 52%;
+      background: url(images/feed-icon-14x14.png) no-repeat 15px 52%;
 	  background-color: white;
    }
    
    .qa-feed > a{
-      margin-left:2%;
+      margin-left:20px;
 	  background-color: white;
 	  font-size:14px;
    }
@@ -1612,8 +1628,6 @@ a.qa-nav-user-link {
    }
    
    .qa-a-list-item{
-      padding:12px;
-	  margin:0px;
       border-bottom: 1px solid #dddddd;
    }
    
@@ -1742,10 +1756,6 @@ a.qa-nav-user-link {
 		float: left;
 		width: auto;
 	}
-	.qa-part-a-list{
-	     margin-left:30px;
-	}
-	
 }
 
 @media (max-width: 537px){

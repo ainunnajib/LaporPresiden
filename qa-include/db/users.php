@@ -325,6 +325,18 @@
 			);
 	}
 	
+	
+	function qa_verified_name($userid,$name)
+/*
+	Get the information required for sending a mailing to the next $count users with userids greater than $lastuserid
+*/
+	{
+		return qa_db_read_all_assoc(qa_db_query_sub(
+			'SELECT content FROM ^userprofile WHERE userid=# and title=#',
+			$userid,$name
+		));
+	}
+	
 /*
 	Omit PHP closing tag to help avoid accidental output
 */

@@ -244,5 +244,15 @@ $(document).ready(function(){
                         }
                     }
                 };
-                redirectToNewApps.init();		
+                redirectToNewApps.init();	
+
+                $( window ).resize( function(){
+					if ($('.navbar-toggle').is(':hidden')){
+						$(".qa-body-wrapper").hide();
+						$(".qa-nav-main").show();
+						window.setTimeout('$(".qa-body-wrapper").fadeIn()', 100);
+					}
+				});
 });
+
+

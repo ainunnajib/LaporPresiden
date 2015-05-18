@@ -324,8 +324,7 @@
 				QA_USER_LEVEL_APPROVED, QA_USER_FLAGS_USER_BLOCKED
 			);
 	}
-
-
+	
 /*
 	Omit PHP closing tag to help avoid accidental output
 */

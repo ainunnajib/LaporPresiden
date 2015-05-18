@@ -1159,8 +1159,7 @@ in a category for which they have elevated privileges).
 
 		return (empty($silentproblems) && empty($reportproblems));
 	}
-
-
+	
 /*
 	Omit PHP closing tag to help avoid accidental output
 */

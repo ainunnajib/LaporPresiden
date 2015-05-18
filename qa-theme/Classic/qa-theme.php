@@ -62,6 +62,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 			
 			$this->output('<DIV CLASS="qa-top-header">', '');
 				$this->output('<DIV CLASS="container">', '');
+				    $this->output('<a href="#" class="menu_show_hide"><nav CLASS="navbar-toggle"><div class="icon-bar"></div><div class="icon-bar"></div><div class="icon-bar"></div></nav></a>', '');
 					$this->nav('user');
 					$this->nav_user_search();
 				$this->output('</DIV>', '');
@@ -113,7 +114,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 		{
 			$navigation=@$this->content['navigation'][$navtype];
 			if ($navtype=='main'){
-				$this->output('<nav id="mobilenav"><a href="#" class="menu_show_hide">Menu</a></nav>');
+				//$this->output('<div></div>');
 			}
 			
 			

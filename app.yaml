@@ -1,11 +1,11 @@
 application: laporpresiden-prod
-version: 20
+version: 30
 runtime: php55
 api_version: 1
 
-instance_class: B8
+instance_class: B4
 basic_scaling:
-  max_instances: 3
+  max_instances: 2
   idle_timeout: 30s
 
 handlers:  

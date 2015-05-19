@@ -125,10 +125,12 @@ class qa_example_page
 						$testresponse = curl_exec($c);
 						$arrayresponse = json_decode($testresponse, true);
 						$arraylapor=@$arrayresponse['lapor'];
+						$statuslapor=@$arraylapor['status'];
 						$trackingid=@$arraylapor['trackingid'];
-						$status=@$arraylapor['status'];
-						if (strlen($arraylapor) && strlen($status) && $status=="1"){
-							qa_db_insert_trackingid($questionid,$trackingid,$userid);
+						if ($statuslapor=="1"){
+							try{
+								qa_db_insert_trackingid($_POST['id'],$trackingid,$userid);
+							} catch (Exception $e) {}
 							$status='ok';
 							$errormmsg='';
 						}else{

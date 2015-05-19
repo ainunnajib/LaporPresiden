@@ -285,7 +285,6 @@ function qa_lapor(id,elm){
             , data: {id:id,title:$('.entry-title').html(),content:$('.entry-content').html()}
             , cache: false
             , success: function (result) {
-				console.log(result)
 				var obj=jQuery.parseJSON(result);
                 if (obj.status==="not ok"){
 					alert(obj.errormsg);

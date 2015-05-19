@@ -346,10 +346,11 @@
 					'popup' => qa_lang_html('question/comment_q_popup'),
 				);
 			
-			$userlevel=qa_get_logged_in_user_field("level");
-			if ($userlevel>=100){
-				$trackingid=qa_db_find_trackingid($questionid);
-				if (count($nik)==0){
+			
+			$trackingid=qa_db_find_trackingid($questionid);
+				if (count($trackingid)==0){
+					$userlevel=qa_get_logged_in_user_field("level");
+					if ($userlevel>=100){
 					$buttons['laporgoid']=array(
 						'tags' => ' onclick="return qa_lapor(\''.$questionid.'\',this)" class="qa-lapor-button"',
 						'label' => 'Teruskan Ke lapor.go.id',
@@ -360,14 +361,16 @@
 						'label' => 'Sedang Diproses...',
 						'popup' => '',
 					);
+					}
 				}else{
+					$trackingid=$trackingid[0];
 					$buttons['laporgoid']=array(
 						'tags' => ' onclick="return qa_statuslapor(\''.$trackingid.'\')" class="qa-lapor-button"',
 						'label' => 'Status Laporan di Lapor.go.id',
 						'popup' => '',
 					);
 				}
-			}
+			
 
 			$q_view['form']=array(
 				'style' => 'light',

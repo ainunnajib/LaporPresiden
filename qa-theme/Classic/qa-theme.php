@@ -229,8 +229,8 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 								Oleh Tim Lapor Presiden. <a href="/feedback">Kirim Timbal Balik</a> |
 								Powered by <a href="http://www.question2answer.org/">Question2Answer</a>
 								<br />
-								<a href="/Privasi+Dan+Kebijakan">Privasi Dan Kebijakan</a> |
-								<a href="/Tim+Lapor+Presiden">Tim Lapor Presiden</a>
+								<a href="/privasi-dan-kebijakan">Privasi Dan Kebijakan</a> |
+								<a href="/tim-lapor-presiden">Tim Lapor Presiden</a>
 							</div>
 							<div class="qa-footer-clear"> </div>
 						</div>');

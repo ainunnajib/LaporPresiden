@@ -84,7 +84,8 @@
 			QA_PLUGIN_DIR.'xml-sitemap/qa-plugin.php',
 			QA_PLUGIN_DIR.'q2a-xml-rpc-master/qa-plugin.php',
 			QA_PLUGIN_DIR.'qa-share/qa-plugin.php',
-			QA_PLUGIN_DIR.'q2a-post-merge-master/qa-plugin.php'
+			QA_PLUGIN_DIR.'q2a-post-merge-master/qa-plugin.php',
+			QA_PLUGIN_DIR.'laporpresiden-report/qa-plugin.php'
 		);
 
 	foreach ($moduletypes as $type) {

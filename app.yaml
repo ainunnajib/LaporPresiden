@@ -26,6 +26,10 @@ handlers:
   static_files: \1
   upload: .+\.(js)$
 
+- url: /(.+\.(html))$
+  static_files: \1
+  upload: .+\.(html)$
+
 # Serve php scripts.
 - url: /.*
   script: mod_rewrite.php

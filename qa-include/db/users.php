@@ -324,6 +324,14 @@
 				QA_USER_LEVEL_APPROVED, QA_USER_FLAGS_USER_BLOCKED
 			);
 	}
+
+	function qa_verified_name($userid,$name)
+	{
+		return qa_db_read_all_assoc(qa_db_query_sub(
+			'SELECT content FROM ^userprofile WHERE userid=# and title=#',
+			$userid,$name
+		));
+	}
 	
 /*
 	Omit PHP closing tag to help avoid accidental output

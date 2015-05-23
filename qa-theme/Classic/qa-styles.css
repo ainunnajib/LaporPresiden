@@ -531,7 +531,6 @@ h2 {
     background-color:white;
 	padding:2px 5px 2px 5px;
 	border-radius: 5px;
-	box-shadow: 1px 2px 2px #0f5381;
 	border:1px solid #0f5381;
 	cursor:pointer;
 	margin-right:6px;
@@ -554,7 +553,6 @@ h2 {
     background-color:#c10808;
 	padding:5px 10px 5px 10px;
 	border-radius: 5px;
-	box-shadow: 1px 2px 2px #c10808;
 	border:1px solid #c10808;
 	cursor:pointer;
 	margin:10px;
@@ -978,7 +976,7 @@ border: 1px solid #AAAAAA;
 	margin-bottom:12px;
 	margin-right:10px;
 	margin-left:10px;
-	float:right;
+	text-align:right;
 }
 .qa-q-view-tag-list {
 	list-style:none;
@@ -1555,7 +1553,7 @@ a.qa-nav-user-link {
 /* Responsive */
 
 .qa-q-item-tags {
-    float: right;
+    text-align: right;
 }
 
 .navbar-toggle {

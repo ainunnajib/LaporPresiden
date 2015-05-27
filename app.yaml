@@ -12,23 +12,28 @@ handlers:
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
+  secure: always
 
 - url: /(.+\.(gif|png|jpg))$
   static_files: \1
   upload: .+\.(gif|png|jpg)$
   application_readable: true
+  secure: always
 
 - url: /(.+\.(css))$
   static_files: \1
   upload: .+\.(css)$
+  secure: always
   
 - url: /(.+\.(js))$
   static_files: \1
   upload: .+\.(js)$
+  secure: always
 
 - url: /(.+\.(html))$
   static_files: \1
   upload: .+\.(html)$
+  secure: always
 
 # Serve php scripts.
 - url: /.*

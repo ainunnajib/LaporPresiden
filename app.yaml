@@ -33,3 +33,4 @@ handlers:
 # Serve php scripts.
 - url: /.*
   script: mod_rewrite.php
+  secure: always

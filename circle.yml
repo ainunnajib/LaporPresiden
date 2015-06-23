@@ -1,7 +1,7 @@
 dependencies:
   pre:
-    - curl -o $HOME/google_appengine_1.9.20.zip https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.20.zip
-    - unzip -q -d $HOME $HOME//google_appengine_1.9.20.zip
+    - curl -o $HOME/$GAE_SDK_NAME $GAE_SDK_LINK
+    - unzip -q -d $HOME $HOME/$GAE_SDK_NAME
 
 test:
   override:
@@ -11,9 +11,10 @@ deployment:
   production:
     branch: master
     commands:
-      - $HOME/google_appengine/appcfg.py -A laporpresiden-prod update . --oauth2_refresh_token=$APPENGINE_TOKEN
+      - sudo apt-get install sshpass
+      - sshpass -p $PROD_PASSWORD ssh ${PROD_USERNAME}@${PROD_HOSTNAME} -p $PROD_SSH_PORT 'git clone $LAPPRES_GIT_LINK'
   devserver:
     branch: develop
     commands:
-      - $HOME/google_appengine/appcfg.py -A laporpresiden7 update . --oauth2_refresh_token=$APPENGINE_TOKEN
+      - $HOME/$GAE_PUSH_SCRIPT -A $LAPPRES_DEV_NAME update . --oauth2_refresh_token=$APPENGINE_TOKEN
 

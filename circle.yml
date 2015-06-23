@@ -12,8 +12,7 @@ deployment:
     branch: master
     commands:
       - sudo apt-get install sshpass
-      - sshpass -p $PROD_PASSWORD ssh ${PROD_USERNAME}@${PROD_HOSTNAME} -p $PROD_SSH_PORT 'apt-get -y install git'
-      - sshpass -p $PROD_PASSWORD ssh ${PROD_USERNAME}@${PROD_HOSTNAME} -p $PROD_SSH_PORT "git clone ${LAPPRES_GIT_LINK}"
+      - sshpass -p $PROD_PASSWORD scp -P $PROD_SSH_PORT -r . ${PROD_USERNAME}@${PROD_HOSTNAME}:/ci/
   devserver:
     branch: develop
     commands:

@@ -37,16 +37,16 @@
 */
 
 	if (isset($_SERVER['SERVER_SOFTWARE']) &&
-  		strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false){
-		define('QA_MYSQL_HOSTNAME', '/cloudsql/laporpresiden-prod:lappresdb-prod');
-		define('QA_MYSQL_USERNAME', 'root');
-		define('QA_MYSQL_PASSWORD', 'R17081945i');
-		define('QA_MYSQL_DATABASE', 'laporpresiden');	
-	}else{
+  		strpos($_SERVER['SERVER_SOFTWARE'],'Development') !== false){
 		define('QA_MYSQL_HOSTNAME', '/var/run/mysqld/mysqld.sock');
 		define('QA_MYSQL_USERNAME', 'root');
 		define('QA_MYSQL_PASSWORD', 'nopassword');
 		define('QA_MYSQL_DATABASE', 'laporpresiden');
+	} else {
+	        define('QA_MYSQL_HOSTNAME', '192.168.24.7');
+	        define('QA_MYSQL_USERNAME', 'laporpresiden');
+	        define('QA_MYSQL_PASSWORD', 'BFnjt9ypDkN&');
+	        define('QA_MYSQL_DATABASE', 'laporpresiden');
 	}
 
 /*

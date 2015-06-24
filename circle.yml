@@ -12,7 +12,7 @@ deployment:
     branch: master
     commands:
       - sudo apt-get install sshpass
-      - sshpass -p $PROD_PASSWORD rsync -avz -e "ssh -p $PROD_SSH_PORT" -r . $PROD_USERNAME@$PROD_HOSTNAME:/ci
+      - sshpass -p $PROD_PASSWORD rsync -avz -e "ssh -p $PROD_SSH_PORT" -r . $PROD_USERNAME@$PROD_HOSTNAME:/home/laporpresiden
   devserver:
     branch: develop
     commands:

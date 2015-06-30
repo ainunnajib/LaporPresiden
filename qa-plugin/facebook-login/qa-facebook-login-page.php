@@ -46,14 +46,10 @@ class qa_facebook_login_page
 			$tourl=qa_get('to');
 			if (!strlen($tourl))
 				$tourl=qa_path_absolute('');
-			
+
 			if (strlen($app_id) && strlen($app_secret)) {
-				try {
-				
-				require_once $this->directory.'facebook.php';                
-				
-				echo 'after require_once';
-				
+				require_once $this->directory.'facebook.php';
+
 				$facebook = new Facebook(array(
 					'appId'  => $app_id,
 					'secret' => $app_secret,
@@ -61,12 +57,12 @@ class qa_facebook_login_page
 				));
 
 				$fb_userid=$facebook->getUser();
-				
+
 				if ($fb_userid) {
 					try {
 						/*$user=$facebook->api('/me?fields=email,name,verified,location,website,about,picture');*/
 						$user=$facebook->api('/me?fields=email,public_profile');
-                        
+
 						if (is_array($user))
 							qa_log_in_external_user('facebook', $fb_userid, array(
 								'email' => @$user['email'],
@@ -80,22 +76,14 @@ class qa_facebook_login_page
 							));
 
 					} catch (FacebookApiException $e) {
-						echo "Code: " . $e["error"]["code"];
-						phpinfo();
 					}
 
 				} else {
 					qa_redirect_raw($facebook->getLoginUrl(array('redirect_uri' => $tourl)));
 				}
-				qa_redirect_raw($tourl);
-				} catch (Exception $e) {
-					echo "Code: " . $e->getMessage();
-				}
-			}else{
-				qa_redirect_raw($tourl);
 			}
 
-			
+			qa_redirect_raw($tourl);
 		/*added by khairul.anshar@gmail.com*/
 		}else if ($request=='facebook-login-android'){
 		    try {

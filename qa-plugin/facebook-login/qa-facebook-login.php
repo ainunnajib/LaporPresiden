@@ -68,7 +68,7 @@ class qa_facebook_login
        var parts = full.split('.');
        var sub = parts[0];
        if (sub.toLowerCase() !== 'www'){
-           window.location.href ="www.laporpresiden.org";
+           window.location.href ="https://www.laporpresiden.org";
        }
 	});
 	/*end redirect to www*/

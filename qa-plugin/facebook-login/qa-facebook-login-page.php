@@ -48,6 +48,8 @@ class qa_facebook_login_page
 				$tourl=qa_path_absolute('');
 			
 			if (strlen($app_id) && strlen($app_secret)) {
+				try {
+				
 				require_once $this->directory.'facebook.php';                
 				
 				echo 'after require_once';
@@ -84,6 +86,7 @@ class qa_facebook_login_page
 				} else {
 					qa_redirect_raw($facebook->getLoginUrl(array('redirect_uri' => $tourl)));
 				}
+				} catch (Exception $e) {echo "Code: " . $e->getMessage();}
 			}
 
 			qa_redirect_raw($tourl);

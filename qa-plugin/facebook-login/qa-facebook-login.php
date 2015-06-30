@@ -60,6 +60,20 @@ class qa_facebook_login
 ?>
 	<div id="fb-root" style="display:inline;"></div>
 	<script>
+	/*redirect to www*/
+	$( document ).ready(function() {
+       var full = window.location.host;
+       //console.log(full)
+       //window.location.host is subdomain.domain.com
+       var parts = full.split('.');
+       var sub = parts[0];
+       if (sub.toLowerCase() !== 'www'){
+           window.location.href ="www.laporpresiden.org";
+       }
+	});
+	/*end redirect to www*/
+	
+	
 	window.fbAsyncInit = function() {
 		FB.init({
 			appId  : <?php echo qa_js(qa_opt('facebook_app_id'), true)?>,

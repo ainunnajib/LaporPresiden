@@ -62,13 +62,14 @@ class qa_facebook_login
 	<script>
 	/*redirect to www*/
 	$( document ).ready(function() {
+       
        var full = window.location.host;
        //console.log(full)
        //window.location.host is subdomain.domain.com
        var parts = full.split('.');
        var sub = parts[0];
        if (sub.toLowerCase() !== 'www'){
-           window.location.href ="https://www.laporpresiden.org";
+           window.location.href = "https://www." + window.location.href.substring(window.location.protocol.length+2);
        }
 	});
 	/*end redirect to www*/

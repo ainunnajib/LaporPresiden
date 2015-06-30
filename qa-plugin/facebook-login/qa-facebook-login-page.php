@@ -86,10 +86,15 @@ class qa_facebook_login_page
 				} else {
 					qa_redirect_raw($facebook->getLoginUrl(array('redirect_uri' => $tourl)));
 				}
-				} catch (Exception $e) {echo "Code: " . $e->getMessage();}
+				qa_redirect_raw($tourl);
+				} catch (Exception $e) {
+					echo "Code: " . $e->getMessage();
+				}
+			}else{
+				qa_redirect_raw($tourl);
 			}
 
-			qa_redirect_raw($tourl);
+			
 		/*added by khairul.anshar@gmail.com*/
 		}else if ($request=='facebook-login-android'){
 		    try {

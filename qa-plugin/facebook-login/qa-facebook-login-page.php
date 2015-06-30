@@ -81,6 +81,7 @@ class qa_facebook_login_page
 
 					} catch (FacebookApiException $e) {
 						echo "Code: " . $e["error"]["code"];
+						phpinfo();
 					}
 
 				} else {

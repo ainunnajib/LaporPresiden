@@ -80,7 +80,7 @@ class qa_facebook_login
 		d.getElementsByTagName('head')[0].appendChild(js);
 	}(document));
 	</script>
-	<div class="fb-login-button" style="display:inline; vertical-align:middle;" size="<?php echo $size?>" <?php echo $logout ? 'autologoutlink="true"' : 'scope="public_profile,email"'?>>
+	<div class="fb-login-button" style="display:inline; vertical-align:middle;" size="<?php echo $size?>" <?php echo $logout ? 'autologoutlink="true"' : 'scope="email,user_about_me,user_location,user_website"'?>>
 	</div>
 <?php
 

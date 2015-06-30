@@ -1,8 +1,3 @@
-dependencies:
-  pre:
-    - curl -o $HOME/$GAE_SDK_NAME $GAE_SDK_LINK
-    - unzip -q -d $HOME $HOME/$GAE_SDK_NAME
-
 test:
   override:
     - phpunit --bootstrap qa-tests/autoload.php qa-tests
@@ -16,5 +11,7 @@ deployment:
   devserver:
     branch: develop
     commands:
+      - curl -o $HOME/$GAE_SDK_NAME $GAE_SDK_LINK
+      - unzip -q -d $HOME $HOME/$GAE_SDK_NAME
       - $HOME/$GAE_PUSH_SCRIPT -A $LAPPRES_DEV_NAME update . --oauth2_refresh_token=$APPENGINE_TOKEN
 

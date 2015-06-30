@@ -40,9 +40,6 @@ class qa_facebook_login_page
 
 	public function process_request($request)
 	{
-		echo "directory".$this->directory;
-		echo "request".$request;
-		
 		if ($request=='facebook-login') {
 			$app_id=qa_opt('facebook_app_id');
 			$app_secret=qa_opt('facebook_app_secret');
@@ -50,7 +47,9 @@ class qa_facebook_login_page
 			if (!strlen($tourl))
 				$tourl=qa_path_absolute('');
 			
-			echo "tourl".$tourl;
+			echo "app_id".$app_id;
+			echo "app_secret".$app_secret;
+
 
 			if (strlen($app_id) && strlen($app_secret)) {
 				require_once $this->directory.'facebook.php';

@@ -48,9 +48,10 @@ class qa_facebook_login_page
 				$tourl=qa_path_absolute('');
 			
 			if (strlen($app_id) && strlen($app_secret)) {
-				echo "directory".$this->directory.'facebook.php';
 				require_once $this->directory.'facebook.php';                
-				echo " after require_once";				
+				
+				echo 'after require_once';
+				
 				$facebook = new Facebook(array(
 					'appId'  => $app_id,
 					'secret' => $app_secret,
@@ -58,7 +59,6 @@ class qa_facebook_login_page
 				));
 
 				$fb_userid=$facebook->getUser();
-                echo "fb_userid".$fb_userid;
 				
 				if ($fb_userid) {
 					try {

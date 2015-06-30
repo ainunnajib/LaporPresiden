@@ -70,9 +70,6 @@ class qa_facebook_login
 		});
 
 		FB.Event.subscribe('<?php echo $logout ? 'auth.logout' : 'auth.login'?>', function(response) {
-			try{
-				console.log(response);
-			}catch(e){}
 			setTimeout("window.location=<?php echo qa_js($tourl)?>", 100);
 		});
 	};

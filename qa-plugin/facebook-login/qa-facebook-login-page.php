@@ -47,13 +47,10 @@ class qa_facebook_login_page
 			if (!strlen($tourl))
 				$tourl=qa_path_absolute('');
 			
-			echo "app_id".$app_id;
-			echo "app_secret".$app_secret;
-
-
 			if (strlen($app_id) && strlen($app_secret)) {
-				require_once $this->directory.'facebook.php';
-
+				echo "directory".$this->directory.'facebook.php';
+				require_once $this->directory.'facebook.php';                
+				echo " after require_once";				
 				$facebook = new Facebook(array(
 					'appId'  => $app_id,
 					'secret' => $app_secret,

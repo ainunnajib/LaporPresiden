@@ -40,12 +40,17 @@ class qa_facebook_login_page
 
 	public function process_request($request)
 	{
+		echo "directory".$this->directory;
+		echo "request".$request;
+		
 		if ($request=='facebook-login') {
 			$app_id=qa_opt('facebook_app_id');
 			$app_secret=qa_opt('facebook_app_secret');
 			$tourl=qa_get('to');
 			if (!strlen($tourl))
 				$tourl=qa_path_absolute('');
+			
+			echo "tourl".$tourl;
 
 			if (strlen($app_id) && strlen($app_secret)) {
 				require_once $this->directory.'facebook.php';
@@ -57,12 +62,13 @@ class qa_facebook_login_page
 				));
 
 				$fb_userid=$facebook->getUser();
-
+                echo "fb_userid".$fb_userid;
+				
 				if ($fb_userid) {
 					try {
 						/*$user=$facebook->api('/me?fields=email,name,verified,location,website,about,picture');*/
 						$user=$facebook->api('/me?fields=email,public_profile');
-
+                        
 						if (is_array($user))
 							qa_log_in_external_user('facebook', $fb_userid, array(
 								'email' => @$user['email'],
@@ -76,6 +82,7 @@ class qa_facebook_login_page
 							));
 
 					} catch (FacebookApiException $e) {
+						echo "Code: " . $e["error"]["code"];
 					}
 
 				} else {

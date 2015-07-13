@@ -43,7 +43,7 @@
 		define('QA_MYSQL_PASSWORD', 'nopassword');
 		define('QA_MYSQL_DATABASE', 'laporpresiden');
 	} else {
-	        define('QA_MYSQL_HOSTNAME', '192.168.24.7');
+	        define('QA_MYSQL_HOSTNAME', '192.168.24.1');
 	        define('QA_MYSQL_USERNAME', 'laporpresiden');
 	        define('QA_MYSQL_PASSWORD', 'BFnjt9ypDkN&');
 	        define('QA_MYSQL_DATABASE', 'laporpresiden');

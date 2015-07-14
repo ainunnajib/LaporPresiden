@@ -34,7 +34,7 @@ class qa_facebook_login_page
 
 	public function match_request($request)
 	{
-		//'facebook-login-android' added by khairul.anshar@gmail.com
+		//'facebook-login-android'
 		return ($request=='facebook-login' || $request=='facebook-login-android');
 	}
 
@@ -76,14 +76,13 @@ class qa_facebook_login_page
 
 					} catch (FacebookApiException $e) {
 					}
-
 				} else {
 					qa_redirect_raw($facebook->getLoginUrl(array('redirect_uri' => $tourl)));
 				}
 			}
 
 			qa_redirect_raw($tourl);
-		/*added by khairul.anshar@gmail.com*/
+		/*facebook-login-android*/
 		}else if ($request=='facebook-login-android'){
 		    try {
                		qa_log_in_external_user('facebook', $_REQUEST['user_id'], array(
@@ -99,6 +98,6 @@ class qa_facebook_login_page
 			 } catch (Exception $e) {}
 			qa_redirect_raw("/");
 		}
-		/*end here khairul.anshar@gmail.com*/
+		/*facebook-login-android end here*/
 	}
 }

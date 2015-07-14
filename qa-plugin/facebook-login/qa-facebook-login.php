@@ -69,7 +69,7 @@ class qa_facebook_login
        var parts = full.split('.');
        var sub = parts[0];
        if (sub.toLowerCase() !== 'www'){
-           window.location.href = "https://www." + window.location.href.substring(window.location.protocol.length+2);
+           //window.location.href = "https://www." + window.location.href.substring(window.location.protocol.length+2);
        }
 	});
 	/*end redirect to www*/

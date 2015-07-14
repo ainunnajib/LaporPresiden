@@ -64,17 +64,8 @@ class qa_facebook_login_page
 				if ($fb_userid) {
 					try {
 						$user=$facebook->api('/me?fields=public_profile,email');
-						
-					    echo @$user['email'];
-					    echo @$user['email'];
-echo @$user['email'];
-echo @$user['name'];
-echo @$user['verified'];
-echo @$user['location']['name'];
-echo @$user['website'];
-echo @$user['bio'];
-echo @$user['picture'];
-
+									   
+echo $user;
 
 						if (is_array($user))
 							qa_log_in_external_user('facebook', $fb_userid, array(
@@ -89,6 +80,7 @@ echo @$user['picture'];
 							));
 
 					} catch (FacebookApiException $e) {
+					  echo $e->getMessage();
 					}
 
 				} else {

@@ -1718,7 +1718,7 @@
 		);
 	}
 	
-		function qa_db_find_email($userid)
+	function qa_db_find_email($userid)
 	{
 	    return qa_db_read_all_values(qa_db_query_sub(
 			'SELECT email FROM ^users WHERE userid=$',

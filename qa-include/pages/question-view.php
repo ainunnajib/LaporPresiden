@@ -345,9 +345,7 @@
 					'label' => qa_lang_html('question/comment_button'),
 					'popup' => qa_lang_html('question/comment_q_popup'),
 				);
-			
-			
-			$trackingid=qa_db_find_trackingid($questionid);
+				$trackingid=qa_db_find_trackingid($questionid);
 				if (count($trackingid)==0){
 					$userlevel=qa_get_logged_in_user_field("level");
 					if ($userlevel>=100){
@@ -370,7 +368,6 @@
 						'popup' => '',
 					);
 				}
-			
 
 			$q_view['form']=array(
 				'style' => 'light',

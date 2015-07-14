@@ -109,7 +109,6 @@ class qa_example_page
 						$content=array("isi"=>$question['content']);
 						$input = array("ident"=> "true","token"=> "{E82A621E-FD7F-2DCC-8F72-90ED79B9E407}","attachments"=>[],"content"=>$content,"subject"=>$subject);
 						$data_string = json_encode($input);    				
-                        
 						$c = curl_init('http://104.197.45.237/lapor');
 						$auth_string = 'dob1DSh6nlHBMVhjifLi#ffcc0314-871a-4c44-9e90-d2bfae0f80d4';
 						curl_setopt($c, CURLOPT_HTTPHEADER, array(                                                                          

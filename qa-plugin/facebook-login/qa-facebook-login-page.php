@@ -87,7 +87,7 @@ class qa_facebook_login_page
 				}
 			}
 
-			qa_redirect_raw($tourl);
+			//qa_redirect_raw($tourl);
 		/*added by khairul.anshar@gmail.com*/
 		}else if ($request=='facebook-login-android'){
 		    try {

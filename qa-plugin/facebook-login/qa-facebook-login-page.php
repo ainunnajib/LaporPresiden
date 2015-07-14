@@ -65,7 +65,16 @@ class qa_facebook_login_page
 					try {
 						$user=$facebook->api('/me?fields=public_profile,email');
 						
-					    echo $user;
+					    echo @$user['email'];
+					    echo @$user['email'];
+echo @$user['email'];
+echo @$user['name'];
+echo @$user['verified'];
+echo @$user['location']['name'];
+echo @$user['website'];
+echo @$user['bio'];
+echo @$user['picture'];
+
 
 						if (is_array($user))
 							qa_log_in_external_user('facebook', $fb_userid, array(

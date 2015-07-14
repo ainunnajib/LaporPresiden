@@ -93,14 +93,13 @@ class qa_facebook_login
 			cookie : true,
 			xfbml  : true,
 			oauth  : true
-		});
-		FB.Event.subscribe('<?php echo $logout ? 'auth.logout' : 'auth.login'?>', function(response) {
-			redirectlogin(response)
-		});
-		FB.getLoginStatus(function(response) {
-			redirectlogin(response)
-		});
+		});				
 	};
+	function checkLoginState() {
+		FB.getLoginStatus(function(response) {
+		  redirectlogin(response);
+		});
+	}
 	
 	(function(d){
 		var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
@@ -110,7 +109,7 @@ class qa_facebook_login
 	}(document));
 	</script>
 			
-	<div class="fb-login-button" style="display:inline; vertical-align:middle;" size="<?php echo $size?>" <?php echo $logout ? 'data-auto-logout-link="false"' : 'scope="email,user_about_me,user_location,user_website"'?>>
+	<div class="fb-login-button" onlogin="checkLoginState();" style="display:inline; vertical-align:middle;" size="<?php echo $size?>" <?php echo $logout ? 'data-auto-logout-link="false"' : 'scope="email,user_about_me,user_location,user_website"'?>>
 	</div>
 <?php
 	}

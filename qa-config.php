@@ -35,24 +35,18 @@
 	define('QA_MYSQL_PASSWORD', 'your-mysql-password');
 	define('QA_MYSQL_DATABASE', 'your-mysql-db-name');
 */
-
-	/*if (isset($_SERVER['SERVER_SOFTWARE']) &&
-  		strpos($_SERVER['SERVER_SOFTWARE'],'Development') !== false){
-		define('QA_MYSQL_HOSTNAME', '/var/run/mysqld/mysqld.sock');
-		define('QA_MYSQL_USERNAME', 'root');
-		define('QA_MYSQL_PASSWORD', 'nopassword');
-		define('QA_MYSQL_DATABASE', 'laporpresiden');
-	} else {
-	        define('QA_MYSQL_HOSTNAME', '192.168.24.1');
-	        define('QA_MYSQL_USERNAME', 'laporpresiden');
-	        define('QA_MYSQL_PASSWORD', 'BFnjt9ypDkN&');
-	        define('QA_MYSQL_DATABASE', 'laporpresiden');
-	}*/
-	define('QA_MYSQL_HOSTNAME', '/cloudsql/laporpresiden7:db');
-	define('QA_MYSQL_USERNAME', 'root');
-	define('QA_MYSQL_PASSWORD', 'R17081945i');
-	define('QA_MYSQL_DATABASE', 'laporpresiden');
-
+    if (isset($_SERVER['SERVER_SOFTWARE']) &&
+  		(strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false || strpos($_SERVER['SERVER_SOFTWARE'],'Development') !== false)){
+		define('QA_MYSQL_HOSTNAME', '/cloudsql/laporpresiden7:db');
+	    define('QA_MYSQL_USERNAME', 'root');
+	    define('QA_MYSQL_PASSWORD', 'R17081945i');
+	    define('QA_MYSQL_DATABASE', 'laporpresiden');	
+	}else{
+		define('QA_MYSQL_HOSTNAME', '192.168.24.1');
+	    define('QA_MYSQL_USERNAME', 'laporpresiden');
+	    define('QA_MYSQL_PASSWORD', 'BFnjt9ypDkN&');
+	    define('QA_MYSQL_DATABASE', 'laporpresiden');
+	}
 /*
 	Ultra-concise installation instructions:
 

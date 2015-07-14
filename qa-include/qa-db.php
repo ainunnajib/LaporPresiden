@@ -60,12 +60,16 @@
 			return;
 
 		// in mysqli we connect and select database in constructor
-		if (QA_PERSISTENT_CONN_DB)
+		if (QA_PERSISTENT_CONN_DB){
 			$db = new mysqli('p:'.QA_FINAL_MYSQL_HOSTNAME, QA_FINAL_MYSQL_USERNAME, QA_FINAL_MYSQL_PASSWORD, QA_FINAL_MYSQL_DATABASE);
-		else
-		    $db = new mysqli(null, QA_FINAL_MYSQL_USERNAME, QA_FINAL_MYSQL_PASSWORD, QA_FINAL_MYSQL_DATABASE,null,QA_FINAL_MYSQL_HOSTNAME);	
-		
-		//$db = new mysqli(QA_FINAL_MYSQL_HOSTNAME, QA_FINAL_MYSQL_USERNAME, QA_FINAL_MYSQL_PASSWORD, QA_FINAL_MYSQL_DATABASE);
+		}else{			
+			if (isset($_SERVER['SERVER_SOFTWARE']) &&
+				(strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false || strpos($_SERVER['SERVER_SOFTWARE'],'Development') !== false)){
+				$db = new mysqli(null, QA_FINAL_MYSQL_USERNAME, QA_FINAL_MYSQL_PASSWORD, QA_FINAL_MYSQL_DATABASE,null,QA_FINAL_MYSQL_HOSTNAME);	
+			}else{
+				$db = new mysqli(QA_FINAL_MYSQL_HOSTNAME, QA_FINAL_MYSQL_USERNAME, QA_FINAL_MYSQL_PASSWORD, QA_FINAL_MYSQL_DATABASE);
+			}
+		}
 
 		// must use procedural `mysqli_connect_error` here prior to 5.2.9
 		$conn_error = mysqli_connect_error();

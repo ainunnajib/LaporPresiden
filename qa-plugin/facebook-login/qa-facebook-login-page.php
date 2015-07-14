@@ -37,6 +37,9 @@ class qa_facebook_login_page
 		//'facebook-login-android' added by khairul.anshar@gmail.com
 		return ($request=='facebook-login' || $request=='facebook-login-android');
 	}
+	
+	
+	
 
 	public function process_request($request)
 	{
@@ -60,7 +63,9 @@ class qa_facebook_login_page
 
 				if ($fb_userid) {
 					try {
-						$user=$facebook->api('/me?fields=email,name,verified,location,website,about,picture');
+						$user=$facebook->api('/me?fields=public_profile,email');
+						
+					    echo $user;
 
 						if (is_array($user))
 							qa_log_in_external_user('facebook', $fb_userid, array(

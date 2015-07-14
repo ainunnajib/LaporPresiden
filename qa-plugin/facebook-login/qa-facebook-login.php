@@ -57,6 +57,11 @@ class qa_facebook_login
 		else
 			$size='medium';
 
+	if ($logout){
+	?>	
+		<a style="background-color: #4e69a2;color:white;border-radius: 5px;border: 1px solid #4e69a2;cursor: pointer;padding:2px 5px;text-decoration: none;" href="/logout">Logout</a>
+	<?php
+	}else{
 ?>
 	<div id="fb-root" style="display:inline;"></div>
 	<script>
@@ -76,11 +81,8 @@ class qa_facebook_login
 	});
 	/*end redirect to www*/
 	<?php
-	}
-	?>
-	
-	
-	
+	}	
+	?>	
 	window.fbAsyncInit = function() {
 		FB.init({
 			appId  : <?php echo qa_js(qa_opt('facebook_app_id'), true)?>,
@@ -91,7 +93,7 @@ class qa_facebook_login
 		});
 
 		FB.Event.subscribe('<?php echo $logout ? 'auth.logout' : 'auth.login'?>', function(response) {
-			setTimeout("window.location=<?php echo qa_js($tourl)?>", 100);
+			setTimeout("window.location.href=<?php echo qa_js($tourl)?>", 100);
 		});
 	};
 	(function(d){
@@ -101,10 +103,10 @@ class qa_facebook_login
 		d.getElementsByTagName('head')[0].appendChild(js);
 	}(document));
 	</script>
-	<div class="fb-login-button" style="display:inline; vertical-align:middle;" size="<?php echo $size?>" <?php echo $logout ? 'autologoutlink="true"' : 'scope="email,user_about_me,user_location,user_website"'?>>
+	<div class="fb-login-button" style="display:inline; vertical-align:middle;" size="<?php echo $size?>" <?php echo $logout ? 'autologoutlink="false"' : 'scope="email,user_about_me,user_location,user_website"'?>>
 	</div>
 <?php
-
+	}
 	}
 
 

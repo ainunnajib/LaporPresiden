@@ -84,7 +84,8 @@ class qa_facebook_login
 	}	
 	?>
     function redirectlogin(response){
-		window.location.href=<?php echo qa_js($tourl)?>;
+        console.log(response)
+		//window.location.href=<?php echo qa_js($tourl)?>;
 	}		
 	window.fbAsyncInit = function() {
 		FB.init({

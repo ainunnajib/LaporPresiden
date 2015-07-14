@@ -57,15 +57,22 @@ class qa_facebook_login
 		else
 			$size='medium';
 
+	if ($logout){
+	?>	
+	 <a style="padding:2px 8px;text-decoration: none;color:white;border-radius:5px;font-weight:normal;" class="qa-form-tall-button qa-form-tall-button-answer" href="/logout">Logout</a>
+	<?php
+	}else{
 ?>
 	<div id="fb-root" style="display:inline;"></div>
 	<script>
+	<?php
+	if (isset($_SERVER['SERVER_SOFTWARE']) &&
+	(strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false || strpos($_SERVER['SERVER_SOFTWARE'],'Development') !== false)){	    
+	}else{
+	?>
 	/*redirect to www*/
-	$( document ).ready(function() {
-       
+	$( document ).ready(function() {       
        var full = window.location.host;
-       //console.log(full)
-       //window.location.host is subdomain.domain.com
        var parts = full.split('.');
        var sub = parts[0];
        if (sub.toLowerCase() !== 'www'){
@@ -73,8 +80,12 @@ class qa_facebook_login
        }
 	});
 	/*end redirect to www*/
-	
-	
+	<?php
+	}	
+	?>
+    function redirectlogin(response){
+		window.location.href=<?php echo qa_js($tourl)?>;
+	}		
 	window.fbAsyncInit = function() {
 		FB.init({
 			appId  : <?php echo qa_js(qa_opt('facebook_app_id'), true)?>,
@@ -82,12 +93,14 @@ class qa_facebook_login
 			cookie : true,
 			xfbml  : true,
 			oauth  : true
-		});
-
-		FB.Event.subscribe('<?php echo $logout ? 'auth.logout' : 'auth.login'?>', function(response) {
-			setTimeout("window.location=<?php echo qa_js($tourl)?>", 100);
-		});
+		});				
 	};
+	function checkLoginState() {
+		FB.getLoginStatus(function(response) {
+		  redirectlogin(response);
+		});
+	}
+	
 	(function(d){
 		var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
 		js = d.createElement('script'); js.id = id; js.async = true;
@@ -95,10 +108,11 @@ class qa_facebook_login
 		d.getElementsByTagName('head')[0].appendChild(js);
 	}(document));
 	</script>
-	<div class="fb-login-button" style="display:inline; vertical-align:middle;" size="<?php echo $size?>" <?php echo $logout ? 'autologoutlink="true"' : 'scope="email,user_about_me,user_location,user_website"'?>>
+			
+	<div class="fb-login-button" onlogin="checkLoginState();" style="display:inline; vertical-align:middle;" size="<?php echo $size?>" <?php echo $logout ? 'data-auto-logout-link="false"' : 'scope="email,user_about_me,user_location,user_website"'?>>
 	</div>
 <?php
-
+	}
 	}
 
 

@@ -59,7 +59,7 @@ class qa_facebook_login
 
 	if ($logout){
 	?>	
-	 <a style="padding:2px 8px;text-decoration: none;color:white;border-radius:5px;font-weight:normal;" class="qa-form-tall-button qa-form-tall-button-answer" href="/logout">Logout</a>
+	 <a style="color:white;" class="qa-user-link" href="/logout">Keluar</a>
 	<?php
 	}else{
 ?>
@@ -84,7 +84,7 @@ class qa_facebook_login
 	}	
 	?>
     function redirectlogin(response){
-		window.location.href=<?php echo qa_js($tourl)?>;
+        window.location.href=<?php echo qa_js($tourl)?>;
 	}		
 	window.fbAsyncInit = function() {
 		FB.init({
@@ -109,7 +109,7 @@ class qa_facebook_login
 	}(document));
 	</script>
 			
-	<div class="fb-login-button" onlogin="checkLoginState();" style="display:inline; vertical-align:middle;" size="<?php echo $size?>" <?php echo $logout ? 'data-auto-logout-link="false"' : 'scope="email,user_about_me,user_location,user_website"'?>>
+	<div class="fb-login-button" onlogin="checkLoginState();" style="display:inline; vertical-align:middle;" size="<?php echo $size?>" <?php echo $logout ? 'data-auto-logout-link="false"' : 'scope="public_profile,email"'?>>
 	</div>
 <?php
 	}

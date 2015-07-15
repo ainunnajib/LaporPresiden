@@ -233,7 +233,11 @@ h2 {
     white-space: nowrap;
 }
 .qa-search-field {
-	width:110px;height:10px;padding:9px 5px;float:left;    border:0;background:#fafafa;border:1px solid #dadada;-moz-border-radius:7px 0 0 7px;-webkit-border-radius:7px 0 0 7px;border-radius:7px 0 0 7px;border-right:none;
+	width:110px;height:10px;padding:9px 5px;float:left;    border:0;background:#fafafa;border:1px solid #dadada;
+	-moz-border-radius:7px 0 0 7px;
+	-webkit-border-radius:7px 0 0 7px;
+	border-radius:7px 0 0 7px;
+	border-right:none;
 }
 .qa-search-button{
 	background: none repeat scroll 0 0 #BFCDDB;
@@ -372,8 +376,8 @@ h2 {
 	display:inline;
 }
 .qa-page-link, .qa-page-selected, .qa-page-prev, .qa-page-next {
-	margin:3px 1px;
-	padding:3px 5px;
+	margin:1px 2px;
+	padding: 5px 10px;
 }
 .qa-page-link:hover, .qa-page-prev:hover, .qa-page-next:hover {
 	color: #D10907;
@@ -383,12 +387,12 @@ h2 {
 	color:#333;
 }
 .qa-page-prev, .qa-page-next {
-	color:#333;
-	background:#DDD;
+	color:#0f5381;
 }
 .qa-page-selected {
-	background-color: #DDDDDD;
-    color: #FFFFFF;
+	background-color: #0f5381;
+    color: white;
+	border-radius:50%;
 }
 .qa-page-ellipsis {
 	color:#666;
@@ -530,7 +534,7 @@ h2 {
 .qa-form-light-button, .qa-form-light-hover {
     background-color:white;
 	padding:2px 5px 2px 5px;
-	border-radius: 5px;
+	border-radius: 4px;
 	border:1px solid #0f5381;
 	cursor:pointer;
 	margin-right:6px;
@@ -549,23 +553,7 @@ h2 {
 	background-color:#0f5381;
 }
 
-.qa-lapor-button{
-    background-color:#c10808;
-	padding:5px 10px 5px 10px;
-	border-radius: 5px;
-	border:1px solid #c10808;
-	cursor:pointer;
-	margin:10px;
-	font-size:14px;
-	overflow: visible;
-	text-align:center;
-	color:white;
-}
-.qa-lapor-button:hover {
-	color:#c10808;
-	background-color:white;
-	box-shadow: 1px 2px 2px #CCCCCC;
-}
+
 
 /* Standard form (basic version - buttons only) */
 
@@ -1257,7 +1245,7 @@ border: 1px solid #AAAAAA;
     font-weight: bold;
 }
 .qa-logged-in-data .qa-user-link {
-    color: #EEEEEE;
+    color: white;
 }
 .qa-category-link {
 	color:#473A9F;
@@ -1265,7 +1253,7 @@ border: 1px solid #AAAAAA;
 }
 .qa-tag-link {
 	border: 1px solid #DD4B37 !important;
-    border-radius: 2px 2px 2px 2px;
+    border-radius: 4px;
 	font-size:11px;
 	color:#DD4B37 !important;
 	font-weight:bold;
@@ -1274,15 +1262,11 @@ border: 1px solid #AAAAAA;
 	display:-moz-inline-stack;
 	display:inline-block;
 	vertical-align:middle;
-	text-decoration:none !important;
-	transition: background 1s;
-	-moz-transition: background 1s; /* Firefox 4 */
-	-webkit-transition: background 1s; /* Safari and Chrome */
-	-o-transition: background 1s; /* Opera */
+	text-decoration:none !important;	
 } /* inline-block for IE, -moz-inline-stack for early FF */
 .qa-tag-link:hover {
     background:#DD4B37;
-    border-radius: 3px 3px 3px 3px;
+    border-radius: 4px;
     color: #FFFFFF !important;
     text-decoration: none;
 }
@@ -1384,7 +1368,7 @@ border: 1px solid #AAAAAA;
 .qa-sidebar {
     background: none repeat scroll 0 0 #f3f3f3;
     border: 1px solid #dddddd;
-    border-radius: 5px;
+    border-radius: 4px;
     font-size: 14px;
     margin: 24px 0;
     padding: 12px;
@@ -1402,36 +1386,84 @@ border: 1px solid #AAAAAA;
 }
 
 
-.qa-form-tall-button.qa-form-tall-button-ask {
-    background: none repeat scroll 0 0 #c10808;
+.qa-form-tall-button-answer,
+.qa-form-tall-button-comment,
+.qa-form-wide-button-saverecalc,
+.qa-form-wide-button-change,
+.qa-form-tall-button-ask,
+.qa-form-tall-button-save,
+.qa-form-wide-button-save,
+.qa-form-wide-button-account,
+.qa-form-wide-button-setbonus,
+.qa-form-tall-button-post {
+    background: none repeat scroll 0 0 #2e6da4;
+	color: #fff;
     border: medium none;
-    border-radius: 15px;
-    box-shadow: none;
-    color: #fff;
-    font-weight: bold;
-    height: 45px;
-    width: 120px;
+    border-radius: 4px;
+    box-shadow: none;    
+    font-size: 14px;
+    font-weight: 400;
+    padding: 6px 12px;
+    text-transform: capitalize;
+	line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+	cursor: pointer;
 }
 
-.qa-form-tall-button.qa-form-tall-button-ask:hover {
-    background: none repeat scroll 0 0 #bbb;
+.qa-form-tall-button-comment:hover,
+.qa-form-tall-button-answer:hover,
+.qa-form-wide-button-saverecalc:hover,
+.qa-form-wide-button-change:hover,
+.qa-form-tall-button-save:hover,
+.qa-form-tall-button-ask:hover,
+.qa-form-wide-button-save:hover ,
+.qa-form-wide-button-account:hover,
+.qa-form-wide-button-setbonus:hover,
+.qa-form-tall-button-post:hover{
+    background: none repeat scroll 0 0 #0f5381;
     cursor: pointer;
 }
 
 
-.qa-form-tall-button-answer, .qa-form-tall-button-comment, .qa-form-tall-button-cancel {
-    background: none repeat scroll 0 0 #0f5381;
-    border: medium none;
-    border-radius: 15px;
-    box-shadow: none;
+.qa-form-wide-button-change,
+.qa-form-wide-button-0,
+.qa-form-tall-button-add,
+.qa-form-tall-button-addlink,
+.qa-form-tall-button-addpage,
+.qa-form-wide-button-showdefaults,  
+.qa-form-tall-button-cancel, 
+.qa-form-tall-button-reset, 
+.qa-form-wide-button-reset,
+.qa-lapor-button {
+    background: none repeat scroll 0 0 #d43f3a;	
     color: #fff;
-    font-weight: bold;
-	padding: 15px;
-	text-transform: capitalize;
+    border: medium none;
+    border-radius: 4px;
+    box-shadow: none;    
+    font-size: 14px;
+    font-weight: 400;
+    padding: 6px 12px;
+    text-transform: capitalize;
+	line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+	cursor: pointer;
 }
 
-.qa-form-tall-button-answer:hover , .qa-form-tall-button-comment:hover , .qa-form-tall-button-cancel:hover {
-    background: none repeat scroll 0 0 #bbb;
+.qa-form-wide-button-change:hover,
+.qa-form-wide-button-0:hover,
+.qa-form-tall-button-add:hover,
+.qa-form-tall-button-addlink:hover,
+.qa-form-tall-button-addpage:hover,
+.qa-form-wide-button-showdefaults:hover,
+.qa-lapor-button:hover,  
+.qa-form-tall-button-cancel:hover, 
+.qa-form-tall-button-reset:hover ,
+.qa-form-wide-button-reset:hover{
+    background: none repeat scroll 0 0 #c10808;
     cursor: pointer;
 }
 
@@ -1509,7 +1541,7 @@ span.entry-title {
 }
 
 a.qa-nav-user-link {
-    color:#fff;
+    color:white;
 }
 
 /* Footer */
@@ -1598,7 +1630,7 @@ a.qa-nav-user-link {
    .qa-sidebar, .qa-nav-cat, .qa-feed, .qa-q-list-item, .qa-part-q-view, .qa-a-form, .qa-a-list, .qa-part-form{
      border: 1px solid #dddddd;
 	 padding:15px;
-	 border-radius: 5px;
+	 border-radius: 4px;
 	 box-shadow: 1px 2px 2px #CCCCCC;
 	 margin-bottom:10px;
    }
@@ -1717,7 +1749,7 @@ a.qa-nav-user-link {
 		width: 100%;
 		background-color:#efefef/*#DD4B37*/;
 		color:#EEE;
-		border-radius: 0 0 0 0;
+		border-radius: 0px;
 	}
 	.qa-nav-main-item:hover,.qa-nav-main-selected:hover,.qa-nav-main-item-opp:hover{
 		background-color:#D8331D;

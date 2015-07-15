@@ -102,6 +102,7 @@
 	$errorVerifikasi='';
 	$NamaNIKError='';
 	$NIKError='';
+	$EmailError='';
 	if (qa_clicked('doask')) {
 		require_once QA_INCLUDE_DIR.'app/post-create.php';
 		require_once QA_INCLUDE_DIR.'util/string.php';
@@ -109,6 +110,7 @@
 
 		$NoNIK_input=$_REQUEST['NoNIK'];
         $NamaNIK_input=$_REQUEST['NamaNIK'];
+        $EmailUser_input=$_REQUEST['EmailUser'];
         $NamaNIK_input = strtoupper($NamaNIK_input);
 		try {
 			if (!strlen($NamaNIK_input)){
@@ -119,7 +121,11 @@
 				$NIKError='Silahkan isi NIK Anda';
 				$errorVerifikasi='Data Tidak Lengkap';
 			}
-			if (strlen($NoNIK_input) && strlen($NamaNIK_input)) {
+			if (!strlen($EmailUser_input)){
+				$EmailError='Silahkan isi Email Anda';
+				$errorVerifikasi='Data Tidak Lengkap';
+			}
+			if (strlen($NoNIK_input) && strlen($NamaNIK_input) && strlen($EmailUser_input)) {
 				    $errorVerifikasi='NIK atau Nama Lengkap tidak valid. Mohon periksa kembali, NIK dan Nama Lengkap harus sesuai dengan KTP Anda yang terdaftar pada Pemilu 2014.';
 					$curl = curl_init();
                      curl_setopt_array($curl, array(
@@ -131,12 +137,43 @@
 					 if (strlen($testresponse)){
 						$arrayresponse = json_decode($testresponse, true);
 						$namaresponse=@$arrayresponse['nama'];
+						$Provinsi=@$arrayresponse['pro'];
+						$KabupatenKota=@$arrayresponse['kab'];
+						$Kecamatan=@$arrayresponse['kec'];
+						$KelurahanDesa=@$arrayresponse['kel'];
+						$kelamin=@$arrayresponse['jenis_kelamin'];
 						$namaresponse=strtoupper($namaresponse);
 						if ($NamaNIK_input==$namaresponse){
-							try {            
-								qa_db_user_profile_set($userid,'verified-name',$NamaNIK_input);
-							} catch (Exception $e) {}
 							$errorVerifikasi="";
+							try {
+								qa_db_user_set($userid,'email',$EmailUser_input);								
+								qa_db_user_profile_set($userid,'verified-name',$NamaNIK_input);
+								qa_db_user_profile_set($userid,'nik',$NoNIK_input);								
+								qa_db_user_profile_set($userid,'verified-provinsi',$Provinsi);
+								qa_db_user_profile_set($userid,'verified-kabkota',$KabupatenKota);
+								qa_db_user_profile_set($userid,'verified-kecamatan',$Kecamatan);
+								qa_db_user_profile_set($userid,'verified-desakelurahan',$KelurahanDesa);
+								qa_db_user_profile_set($userid,'verified-kelamin',$kelamin);
+							} catch (Exception $e) {$errorVerifikasi=$e->getMessage();}
+							try {
+								 $curl = curl_init();
+								 curl_setopt_array($curl, array(
+								 CURLOPT_RETURNTRANSFER => 1,
+								 CURLOPT_URL => "https://maps.google.com/maps/api/geocode/json?address=".urlencode($Provinsi.",+".$KabupatenKota.",+".$Kecamatan.",+".$KelurahanDesa)."&sensor=false",
+								 ));
+								 $testresponse = curl_exec($curl);
+								 curl_close($curl);
+								 if (strlen($testresponse)){
+									 $arrayresponse = json_decode($testresponse, true);
+									 $longitude=@$arrayresponse["results"][0]["geometry"]["location"]["lng"];
+									 $latitude=@$arrayresponse["results"][0]["geometry"]["location"]["lat"];
+									 if (strlen($longitude))
+									 qa_db_user_profile_set($userid,'longitude',$longitude);
+								 
+								     if (strlen($latitude))
+									 qa_db_user_profile_set($userid,'latitude',$latitude);
+								 }
+							} catch (Exception $e) {$errorVerifikasi=$e->getMessage();}							
 						}    
 					 }else{
 						$errorVerifikasi='Koneksi verifikasi tidak berhasil. Mohon dicoba kembali dalam beberapa saat lagi.';
@@ -317,7 +354,7 @@
 	
 	$field=array(
 		'type' => 'static',
-		'label' => 'Untuk bisa membuat laporan, silahkan Isi NIK dan Nama Lengkap sesuai dengan KTP Anda yang terdaftar pada Pemilu 2014. LaporPresiden.org tidak menyimpan data NIK Anda, verifikasi ini terjadi secara real-time dengan website Lembaga Negara.'
+		'label' => 'Untuk bisa membuat laporan, silahkan Isi NIK dan Nama Lengkap sesuai dengan KTP Anda yang terdaftar pada Pemilu 2014. LaporPresiden.org akan memverifikasi data NIK Anda dengan website Lembaga Negara.'
 	);
 
 	qa_array_insert($qa_content['form']['fields'], null, array('static1' => $field));
@@ -328,7 +365,6 @@
 		'value' => '',
 		'error' => $NIKError
 	);
-
 	qa_array_insert($qa_content['form']['fields'], null, array('NIK' => $field));
 	
 	$field=array(
@@ -337,12 +373,16 @@
 		'value' => '',
 		'error' => $NamaNIKError
 	);
+	qa_array_insert($qa_content['form']['fields'], null, array('NamaNIK' => $field));
 
-	qa_array_insert($qa_content['form']['fields'], null, array('NamaNIK' => $field));	
-	
-	
-	
-	
+    $field=array(
+		'label' => 'Email',
+		'tags' => 'name="EmailUser" id="EmailUser" autocomplete="off"',
+		'value' => qa_get_logged_in_email(),
+		'error' => $EmailError
+	);
+	qa_array_insert($qa_content['form']['fields'], null, array('EmailUser' => $field));	
+				
 	if (!isset($userid))
 		qa_set_up_name_field($qa_content, $qa_content['form']['fields'], @$in['name']);
 
@@ -356,11 +396,6 @@
 
 	$qa_content['focusid']='title';
 	
-	
-
-	
-
-
 	return $qa_content;
 
 

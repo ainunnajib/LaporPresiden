@@ -35,12 +35,35 @@ class qa_facebook_login_page
 	public function match_request($request)
 	{
 		//'facebook-login-android'
-		return ($request=='facebook-login' || $request=='facebook-login-android');
+		return ($request=='facebook-login-debug' ||$request=='facebook-login' || $request=='facebook-login-android');
+	}
+	
+	
+	public function getItemValue($user,$key){
+		try {
+			return @$user[$key];
+		}catch(Exception $e){
+			return "";
+		}
+	}
+	public function getItemValue2($user,$key1,$key2){
+		try {
+			return @$user[$key1][$key2];
+		}catch(Exception $e){
+			return "";
+		}
+	}
+	public function getItemValue3($user,$key1,$key2,$key3){
+		try {
+			return @$user[$key1][$key2][$key3];
+		}catch(Exception $e){
+			return "";
+		}
 	}
 
 	public function process_request($request)
 	{
-		if ($request=='facebook-login') {
+		if ($request=='facebook-login-debug' || $request=='facebook-login') {
 			$app_id=qa_opt('facebook_app_id');
 			$app_secret=qa_opt('facebook_app_secret');
 			$tourl=qa_get('to');
@@ -57,31 +80,43 @@ class qa_facebook_login_page
 				));
 
 				$fb_userid=$facebook->getUser();
-
+				
 				if ($fb_userid) {
 					try {
 						$user=$facebook->api('/me?fields=email,name,verified,location,website,about,picture');
-
+						if ($request=='facebook-login-debug') {
+							echo "email:".$this->getItemValue($user,"email");
+							echo "; name:".$this->getItemValue($user,"name");
+							echo "; verified:".$this->getItemValue($user,"verified");
+							echo "; location:".$this->getItemValue2($user,"location","name");
+							echo "; website:".$this->getItemValue($user,"website");
+							echo "; bio:".$this->getItemValue($user,"bio");
+							echo "; picture:".$this->getItemValue3($user,"picture","data","url");
+						}
 						if (is_array($user))
 							qa_log_in_external_user('facebook', $fb_userid, array(
-								'email' => @$user['email'],
-								'handle' => @$user['name'],
-								'confirmed' => @$user['verified'],
-								'name' => @$user['name'],
-								'location' => @$user['location']['name'],
-								'website' => @$user['website'],
-								'about' => @$user['bio'],
-								'avatar' => strlen(@$user['picture']['data']['url']) ? qa_retrieve_url($user['picture']['data']['url']) : null,
+								'email' => $this->getItemValue($user,"email"),
+								'handle' => $this->getItemValue($user,"name"),
+								'confirmed' => $this->getItemValue($user,"verified"),
+								'name' => $this->getItemValue($user,"name"),
+								'location' => $this->getItemValue2($user,"location","name"),
+								'website' => $this->getItemValue($user,"website"),
+								'about' => $this->getItemValue($user,"bio"),
+								'avatar' => strlen($this->getItemValue3($user,"picture","data","url")) ? qa_retrieve_url($user['picture']['data']['url']) : null,
 							));
 
 					} catch (FacebookApiException $e) {
+					  echo $e->getMessage();
 					}
 				} else {
-					qa_redirect_raw($facebook->getLoginUrl(array('redirect_uri' => $tourl)));
+					if ($request=='facebook-login') {
+					   qa_redirect_raw($facebook->getLoginUrl(array('redirect_uri' => $tourl)));
+					}
 				}
 			}
-
-			qa_redirect_raw($tourl);
+            if ($request=='facebook-login') {
+			   qa_redirect_raw($tourl);
+			}
 		/*facebook-login-android*/
 		}else if ($request=='facebook-login-android'){
 		    try {

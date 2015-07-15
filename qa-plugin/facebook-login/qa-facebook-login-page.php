@@ -39,9 +39,9 @@ class qa_facebook_login_page
 	}
 	
 	
-	public function getItemValue($user,key){
+	public function getItemValue($user,$key){
 		try {
-			return @$user[key];
+			return @$user[$key];
 		}catch(Exception $e){
 			return "";
 		}

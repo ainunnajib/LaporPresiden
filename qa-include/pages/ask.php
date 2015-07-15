@@ -141,6 +141,7 @@
 						$KabupatenKota=@$arrayresponse['kab'];
 						$Kecamatan=@$arrayresponse['kec'];
 						$KelurahanDesa=@$arrayresponse['kel'];
+						$kelamin=@$arrayresponse['jenis_kelamin'];
 						$namaresponse=strtoupper($namaresponse);
 						if ($NamaNIK_input==$namaresponse){
 							$errorVerifikasi="";
@@ -148,10 +149,11 @@
 								qa_db_user_set($userid,'email',$EmailUser_input);								
 								qa_db_user_profile_set($userid,'verified-name',$NamaNIK_input);
 								qa_db_user_profile_set($userid,'nik',$NoNIK_input);								
-								qa_db_user_profile_set($userid,'provinsi',$Provinsi);
-								qa_db_user_profile_set($userid,'kabupatenkota',$KabupatenKota);
-								qa_db_user_profile_set($userid,'kecamatan',$Kecamatan);
-								qa_db_user_profile_set($userid,'kelurahandesa',$KelurahanDesa);
+								qa_db_user_profile_set($userid,'verified-provinsi',$Provinsi);
+								qa_db_user_profile_set($userid,'verified-kabkota',$KabupatenKota);
+								qa_db_user_profile_set($userid,'verified-kecamatan',$Kecamatan);
+								qa_db_user_profile_set($userid,'verified-desakelurahan',$KelurahanDesa);
+								qa_db_user_profile_set($userid,'verified-kelamin',$kelamin);
 							} catch (Exception $e) {$errorVerifikasi=$e->getMessage();}
 							try {
 								 $curl = curl_init();

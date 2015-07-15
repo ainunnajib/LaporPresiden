@@ -46,6 +46,20 @@ class qa_facebook_login_page
 			return "";
 		}
 	}
+	public function getItemValue2($user,$key1,$key2){
+		try {
+			return @$user[$key1][$key2];
+		}catch(Exception $e){
+			return "";
+		}
+	}
+	public function getItemValue3($user,$key1,$key2,$key3){
+		try {
+			return @$user[$key1][$key2][$key3];
+		}catch(Exception $e){
+			return "";
+		}
+	}
 
 	public function process_request($request)
 	{
@@ -70,17 +84,25 @@ class qa_facebook_login_page
 				if ($fb_userid) {
 					try {
 						$user=$facebook->api('/me?fields=email,name,verified,location,website,about,picture');
-						echo $this->getItemValue($user,"email");
+						if ($request=='facebook-login-debug') {
+							echo "email:".$this->getItemValue($user,"email");
+							echo "; name:".$this->getItemValue($user,"name");
+							echo "; verified:".$this->getItemValue($user,"verified");
+							echo "; location:".$this->getItemValue2($user,"location","name");
+							echo "; website:".$this->getItemValue($user,"website");
+							echo "; bio:".$this->getItemValue($user,"bio");
+							echo "; picture:".$this->getItemValue3($user,"picture","data","url");
+						}
 						if (is_array($user))
 							qa_log_in_external_user('facebook', $fb_userid, array(
 								'email' => $this->getItemValue($user,"email"),
-								'handle' => @$user['name'],
-								'confirmed' => @$user['verified'],
-								'name' => @$user['name'],
-								'location' => @$user['location']['name'],
-								'website' => @$user['website'],
-								'about' => @$user['bio'],
-								'avatar' => strlen(@$user['picture']['data']['url']) ? qa_retrieve_url($user['picture']['data']['url']) : null,
+								'handle' => $this->getItemValue($user,"name"),
+								'confirmed' => $this->getItemValue($user,"verified"),
+								'name' => $this->getItemValue($user,"name"),
+								'location' => $this->getItemValue2($user,"location","name"),
+								'website' => $this->getItemValue($user,"website"),
+								'about' => $this->getItemValue($user,"bio"),
+								'avatar' => strlen($this->getItemValue3($user,"picture","data","url")) ? qa_retrieve_url($user['picture']['data']['url']) : null,
 							));
 
 					} catch (FacebookApiException $e) {
@@ -88,7 +110,9 @@ class qa_facebook_login_page
 					}
 
 				} else {
-					qa_redirect_raw($facebook->getLoginUrl(array('redirect_uri' => $tourl)));
+					if ($request=='facebook-login') {
+					   qa_redirect_raw($facebook->getLoginUrl(array('redirect_uri' => $tourl)));
+					}
 				}
 			}
             if ($request=='facebook-login') {

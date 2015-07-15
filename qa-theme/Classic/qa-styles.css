@@ -1386,7 +1386,16 @@ border: 1px solid #AAAAAA;
 }
 
 
-.qa-form-wide-button-saverecalc,.qa-form-wide-button-change,.qa-form-tall-button-ask,.qa-form-tall-button-save,.qa-form-wide-button-save,.qa-form-wide-button-account,.qa-form-wide-button-setbonus,.qa-form-tall-button-post {
+.qa-form-tall-button-answer,
+.qa-form-tall-button-comment,
+.qa-form-wide-button-saverecalc,
+.qa-form-wide-button-change,
+.qa-form-tall-button-ask,
+.qa-form-tall-button-save,
+.qa-form-wide-button-save,
+.qa-form-wide-button-account,
+.qa-form-wide-button-setbonus,
+.qa-form-tall-button-post {
     background: none repeat scroll 0 0 #2e6da4;
 	color: #fff;
     border: medium none;
@@ -1403,13 +1412,31 @@ border: 1px solid #AAAAAA;
 	cursor: pointer;
 }
 
-.qa-form-wide-button-saverecalc:hover,.qa-form-wide-button-change:hover,.qa-form-tall-button-save:hover,.qa-form-tall-button-ask:hover,.qa-form-wide-button-save:hover ,.qa-form-wide-button-account:hover,.qa-form-wide-button-setbonus:hover,.qa-form-tall-button-post:hover{
+.qa-form-tall-button-comment:hover,
+.qa-form-tall-button-answer:hover,
+.qa-form-wide-button-saverecalc:hover,
+.qa-form-wide-button-change:hover,
+.qa-form-tall-button-save:hover,
+.qa-form-tall-button-ask:hover,
+.qa-form-wide-button-save:hover ,
+.qa-form-wide-button-account:hover,
+.qa-form-wide-button-setbonus:hover,
+.qa-form-tall-button-post:hover{
     background: none repeat scroll 0 0 #0f5381;
     cursor: pointer;
 }
 
 
-.qa-form-wide-button-change,.qa-form-wide-button-0,.qa-form-tall-button-add,.qa-form-tall-button-addlink,.qa-form-tall-button-addpage,.qa-form-wide-button-showdefaults,.qa-form-tall-button-answer, .qa-form-tall-button-comment, .qa-form-tall-button-cancel, .qa-form-tall-button-reset, .qa-form-wide-button-reset,.qa-lapor-button {
+.qa-form-wide-button-change,
+.qa-form-wide-button-0,
+.qa-form-tall-button-add,
+.qa-form-tall-button-addlink,
+.qa-form-tall-button-addpage,
+.qa-form-wide-button-showdefaults,  
+.qa-form-tall-button-cancel, 
+.qa-form-tall-button-reset, 
+.qa-form-wide-button-reset,
+.qa-lapor-button {
     background: none repeat scroll 0 0 #d43f3a;	
     color: #fff;
     border: medium none;
@@ -1426,7 +1453,16 @@ border: 1px solid #AAAAAA;
 	cursor: pointer;
 }
 
-.qa-form-wide-button-change:hover,.qa-form-wide-button-0:hover,.qa-form-tall-button-add:hover,.qa-form-tall-button-addlink:hover,.qa-form-tall-button-addpage:hover,.qa-form-wide-button-showdefaults:hover,.qa-lapor-button:hover, .qa-form-tall-button-answer:hover , .qa-form-tall-button-comment:hover , .qa-form-tall-button-cancel:hover, .qa-form-tall-button-reset:hover ,.qa-form-wide-button-reset:hover{
+.qa-form-wide-button-change:hover,
+.qa-form-wide-button-0:hover,
+.qa-form-tall-button-add:hover,
+.qa-form-tall-button-addlink:hover,
+.qa-form-tall-button-addpage:hover,
+.qa-form-wide-button-showdefaults:hover,
+.qa-lapor-button:hover,  
+.qa-form-tall-button-cancel:hover, 
+.qa-form-tall-button-reset:hover ,
+.qa-form-wide-button-reset:hover{
     background: none repeat scroll 0 0 #c10808;
     cursor: pointer;
 }

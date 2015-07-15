@@ -1386,7 +1386,7 @@ border: 1px solid #AAAAAA;
 }
 
 
-.qa-form-tall-button-ask,.qa-form-tall-button-save,.qa-form-wide-button-save {
+.qa-form-tall-button-ask,.qa-form-tall-button-save,.qa-form-wide-button-save,.qa-form-wide-button-account,.qa-form-wide-button-setbonus,.qa-form-tall-button-post {
     background: none repeat scroll 0 0 #2e6da4;
 	color: #fff;
     border: medium none;
@@ -1403,7 +1403,7 @@ border: 1px solid #AAAAAA;
 	cursor: pointer;
 }
 
-.qa-form-tall-button-save:hover,.qa-form-tall-button-ask:hover,.qa-form-wide-button-save:hover {
+.qa-form-tall-button-save:hover,.qa-form-tall-button-ask:hover,.qa-form-wide-button-save:hover ,.qa-form-wide-button-account:hover,.qa-form-wide-button-setbonus:hover,.qa-form-tall-button-post:hover{
     background: none repeat scroll 0 0 #0f5381;
     cursor: pointer;
 }

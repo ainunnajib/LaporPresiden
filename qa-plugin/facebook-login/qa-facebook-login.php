@@ -59,7 +59,7 @@ class qa_facebook_login
 
 	if ($logout){
 	?>	
-	 <a style="padding:2px 8px;text-decoration: none;color:white;border-radius:5px;font-weight:normal;" class="qa-form-tall-button qa-form-tall-button-answer" href="/logout">Logout</a>
+	 <a  class="qa-user-link" href="/logout">Logout</a>
 	<?php
 	}else{
 ?>

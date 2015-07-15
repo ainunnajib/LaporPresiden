@@ -162,16 +162,14 @@
 								 $testresponse = curl_exec($curl);
 								 curl_close($curl);
 								 if (strlen($testresponse)){
-									 qa_db_user_profile_set($userid,'latitude',"https://maps.google.com/maps/api/geocode/json?address=".urlencode($Provinsi.",+".$KabupatenKota.",+".$Kecamatan.",+".$KelurahanDesa)."&sensor=false");
-                                     qa_db_user_profile_set($userid,'longitude',$testresponse);									 
 									 $arrayresponse = json_decode($testresponse, true);
 									 $longitude=@$arrayresponse["results"][0]["geometry"]["location"]["lng"];
 									 $latitude=@$arrayresponse["results"][0]["geometry"]["location"]["lat"];
-									 /*if (strlen($longitude))
+									 if (strlen($longitude))
 									 qa_db_user_profile_set($userid,'longitude',$longitude);
 								 
 								     if (strlen($latitude))
-									 qa_db_user_profile_set($userid,'latitude',$latitude);*/
+									 qa_db_user_profile_set($userid,'latitude',$latitude);
 								 }
 							} catch (Exception $e) {$errorVerifikasi=$e->getMessage();}							
 						}    
@@ -354,7 +352,7 @@
 	
 	$field=array(
 		'type' => 'static',
-		'label' => 'Untuk bisa membuat laporan, silahkan Isi NIK dan Nama Lengkap sesuai dengan KTP Anda yang terdaftar pada Pemilu 2014. LaporPresiden.org tidak menyimpan data NIK Anda, verifikasi ini terjadi secara real-time dengan website Lembaga Negara.'
+		'label' => 'Untuk bisa membuat laporan, silahkan Isi NIK dan Nama Lengkap sesuai dengan KTP Anda yang terdaftar pada Pemilu 2014. LaporPresiden.org akan memverifikasi data NIK Anda dengan website Lembaga Negara.'
 	);
 
 	qa_array_insert($qa_content['form']['fields'], null, array('static1' => $field));

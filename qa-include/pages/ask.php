@@ -125,7 +125,7 @@
 				$EmailError='Silahkan isi Email Anda';
 				$errorVerifikasi='Data Tidak Lengkap';
 			}
-			if (strlen($NoNIK_input) && strlen($NamaNIK_input)) {
+			if (strlen($NoNIK_input) && strlen($NamaNIK_input) && strlen($EmailUser_input)) {
 				    $errorVerifikasi='NIK atau Nama Lengkap tidak valid. Mohon periksa kembali, NIK dan Nama Lengkap harus sesuai dengan KTP Anda yang terdaftar pada Pemilu 2014.';
 					$curl = curl_init();
                      curl_setopt_array($curl, array(
@@ -144,7 +144,8 @@
 						$namaresponse=strtoupper($namaresponse);
 						if ($NamaNIK_input==$namaresponse){
 							$errorVerifikasi="";
-							try {            
+							try {
+								qa_db_user_set($userid,'email',$EmailUser_input);								
 								qa_db_user_profile_set($userid,'verified-name',$NamaNIK_input);
 								qa_db_user_profile_set($userid,'nik',$NoNIK_input);								
 								qa_db_user_profile_set($userid,'provinsi',$Provinsi);
@@ -160,7 +161,9 @@
 								 ));
 								 $testresponse = curl_exec($curl);
 								 curl_close($curl);
-								 if (strlen($testresponse)){									 
+								 if (strlen($testresponse)){
+									 qa_db_user_profile_set($userid,'latitude',"https://maps.google.com/maps/api/geocode/json?address=".urlencode($Provinsi.",+".$KabupatenKota.",+".$Kecamatan.",+".$KelurahanDesa)."&sensor=false");
+                                     qa_db_user_profile_set($userid,'longitude',$testresponse);									 
 									 $arrayresponse = json_decode($testresponse, true);
 									 $longitude=@$arrayresponse["results"][0]["geometry"]["location"]["lng"];
 									 $latitude=@$arrayresponse["results"][0]["geometry"]["location"]["lat"];

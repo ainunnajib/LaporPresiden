@@ -1386,7 +1386,7 @@ border: 1px solid #AAAAAA;
     border-bottom:1px solid #efefef;
 }
 
-
+.qa-form-tall-button-login,
 .qa-form-tall-button-answer,
 .qa-form-tall-button-comment,
 .qa-form-wide-button-saverecalc,
@@ -1413,6 +1413,7 @@ border: 1px solid #AAAAAA;
 	cursor: pointer;
 }
 
+.qa-form-tall-button-login:hover,
 .qa-form-tall-button-comment:hover,
 .qa-form-tall-button-answer:hover,
 .qa-form-wide-button-saverecalc:hover,

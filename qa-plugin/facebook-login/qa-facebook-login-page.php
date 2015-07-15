@@ -39,9 +39,9 @@ class qa_facebook_login_page
 	}
 	
 	
-	function getItemValue($user,key){
+	public function getItemValue($user,key){
 		try {
-			return $user['email'];
+			return @$user[key];
 		}catch(Exception $e){
 			return "";
 		}
@@ -73,7 +73,7 @@ class qa_facebook_login_page
 						echo @$this->getItemValue($user,"email");
 						if (is_array($user))
 							qa_log_in_external_user('facebook', $fb_userid, array(
-								'email' => @$this->getItemValue($user,"email"),
+								'email' => $this->getItemValue($user,"email"),
 								'handle' => @$user['name'],
 								'confirmed' => @$user['verified'],
 								'name' => @$user['name'],

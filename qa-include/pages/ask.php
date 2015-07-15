@@ -167,11 +167,11 @@
 									 $arrayresponse = json_decode($testresponse, true);
 									 $longitude=@$arrayresponse["results"][0]["geometry"]["location"]["lng"];
 									 $latitude=@$arrayresponse["results"][0]["geometry"]["location"]["lat"];
-									 if (strlen($longitude))
+									 /*if (strlen($longitude))
 									 qa_db_user_profile_set($userid,'longitude',$longitude);
 								 
 								     if (strlen($latitude))
-									 qa_db_user_profile_set($userid,'latitude',$latitude);
+									 qa_db_user_profile_set($userid,'latitude',$latitude);*/
 								 }
 							} catch (Exception $e) {$errorVerifikasi=$e->getMessage();}							
 						}    

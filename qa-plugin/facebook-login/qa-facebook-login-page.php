@@ -35,15 +35,21 @@ class qa_facebook_login_page
 	public function match_request($request)
 	{
 		//'facebook-login-android'
-		return ($request=='facebook-login' || $request=='facebook-login-android');
+		return ($request=='facebook-login-debug' ||$request=='facebook-login' || $request=='facebook-login-android');
 	}
 	
 	
-	
+	function getItemValue($user,key){
+		try {
+			return $user['email'];
+		}catch(Exception $e){
+			return "";
+		}
+	}
 
 	public function process_request($request)
 	{
-		if ($request=='facebook-login') {
+		if ($request=='facebook-login-debug' || $request=='facebook-login') {
 			$app_id=qa_opt('facebook_app_id');
 			$app_secret=qa_opt('facebook_app_secret');
 			$tourl=qa_get('to');
@@ -60,20 +66,14 @@ class qa_facebook_login_page
 				));
 
 				$fb_userid=$facebook->getUser();
-				echo $fb_userid;
-
+				
 				if ($fb_userid) {
 					try {
 						$user=$facebook->api('/me?fields=email,name,verified,location,website,about,picture');
-						echo @$user['email'];
-						echo @$user['name'];
-						echo @$user['verified'];
-						echo @$user['website'];
-						echo @$user['bio'];
-						echo @$user['picture'];
+						echo @$this->getItemValue($user,"email");
 						if (is_array($user))
 							qa_log_in_external_user('facebook', $fb_userid, array(
-								'email' => @$user['email'],
+								'email' => @$this->getItemValue($user,"email"),
 								'handle' => @$user['name'],
 								'confirmed' => @$user['verified'],
 								'name' => @$user['name'],
@@ -91,8 +91,9 @@ class qa_facebook_login_page
 					qa_redirect_raw($facebook->getLoginUrl(array('redirect_uri' => $tourl)));
 				}
 			}
-
-			//qa_redirect_raw($tourl);
+            if ($request=='facebook-login') {
+			   qa_redirect_raw($tourl);
+			}
 		/*facebook-login-android*/
 		}else if ($request=='facebook-login-android'){
 		    try {

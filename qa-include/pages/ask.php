@@ -102,6 +102,7 @@
 	$errorVerifikasi='';
 	$NamaNIKError='';
 	$NIKError='';
+	$EmailError='';
 	if (qa_clicked('doask')) {
 		require_once QA_INCLUDE_DIR.'app/post-create.php';
 		require_once QA_INCLUDE_DIR.'util/string.php';
@@ -109,6 +110,7 @@
 
 		$NoNIK_input=$_REQUEST['NoNIK'];
         $NamaNIK_input=$_REQUEST['NamaNIK'];
+        $EmailUser_input=$_REQUEST['EmailUser'];
         $NamaNIK_input = strtoupper($NamaNIK_input);
 		try {
 			if (!strlen($NamaNIK_input)){
@@ -117,6 +119,10 @@
 			}
 			if (!strlen($NoNIK_input)){
 				$NIKError='Silahkan isi NIK Anda';
+				$errorVerifikasi='Data Tidak Lengkap';
+			}
+			if (!strlen($EmailUser_input)){
+				$EmailError='Silahkan isi Email Anda';
 				$errorVerifikasi='Data Tidak Lengkap';
 			}
 			if (strlen($NoNIK_input) && strlen($NamaNIK_input)) {
@@ -131,12 +137,40 @@
 					 if (strlen($testresponse)){
 						$arrayresponse = json_decode($testresponse, true);
 						$namaresponse=@$arrayresponse['nama'];
+						$Provinsi=@$arrayresponse['pro'];
+						$KabupatenKota=@$arrayresponse['kab'];
+						$Kecamatan=@$arrayresponse['kec'];
+						$KelurahanDesa=@$arrayresponse['kel'];
 						$namaresponse=strtoupper($namaresponse);
 						if ($NamaNIK_input==$namaresponse){
+							$errorVerifikasi="";
 							try {            
 								qa_db_user_profile_set($userid,'verified-name',$NamaNIK_input);
-							} catch (Exception $e) {}
-							$errorVerifikasi="";
+								qa_db_user_profile_set($userid,'nik',$NoNIK_input);								
+								qa_db_user_profile_set($userid,'provinsi',$Provinsi);
+								qa_db_user_profile_set($userid,'kabupatenkota',$KabupatenKota);
+								qa_db_user_profile_set($userid,'kecamatan',$Kecamatan);
+								qa_db_user_profile_set($userid,'kelurahandesa',$KelurahanDesa);
+							} catch (Exception $e) {$errorVerifikasi=$e->getMessage();}
+							try {
+								 $curl = curl_init();
+								 curl_setopt_array($curl, array(
+								 CURLOPT_RETURNTRANSFER => 1,
+								 CURLOPT_URL => "https://maps.google.com/maps/api/geocode/json?address=".urlencode($Provinsi.",+".$KabupatenKota.",+".$Kecamatan.",+".$KelurahanDesa)."&sensor=false",
+								 ));
+								 $testresponse = curl_exec($curl);
+								 curl_close($curl);
+								 if (strlen($testresponse)){									 
+									 $arrayresponse = json_decode($testresponse, true);
+									 $longitude=@$arrayresponse["results"][0]["geometry"]["location"]["lng"];
+									 $latitude=@$arrayresponse["results"][0]["geometry"]["location"]["lat"];
+									 if (strlen($longitude))
+									 qa_db_user_profile_set($userid,'longitude',$longitude);
+								 
+								     if (strlen($latitude))
+									 qa_db_user_profile_set($userid,'latitude',$latitude);
+								 }
+							} catch (Exception $e) {$errorVerifikasi=$e->getMessage();}							
 						}    
 					 }else{
 						$errorVerifikasi='Koneksi verifikasi tidak berhasil. Mohon dicoba kembali dalam beberapa saat lagi.';
@@ -328,7 +362,6 @@
 		'value' => '',
 		'error' => $NIKError
 	);
-
 	qa_array_insert($qa_content['form']['fields'], null, array('NIK' => $field));
 	
 	$field=array(
@@ -337,12 +370,16 @@
 		'value' => '',
 		'error' => $NamaNIKError
 	);
+	qa_array_insert($qa_content['form']['fields'], null, array('NamaNIK' => $field));
 
-	qa_array_insert($qa_content['form']['fields'], null, array('NamaNIK' => $field));	
-	
-	
-	
-	
+    $field=array(
+		'label' => 'Email',
+		'tags' => 'name="EmailUser" id="EmailUser" autocomplete="off"',
+		'value' => qa_get_logged_in_email(),
+		'error' => $EmailError
+	);
+	qa_array_insert($qa_content['form']['fields'], null, array('EmailUser' => $field));	
+				
 	if (!isset($userid))
 		qa_set_up_name_field($qa_content, $qa_content['form']['fields'], @$in['name']);
 
@@ -356,11 +393,6 @@
 
 	$qa_content['focusid']='title';
 	
-	
-
-	
-
-
 	return $qa_content;
 
 

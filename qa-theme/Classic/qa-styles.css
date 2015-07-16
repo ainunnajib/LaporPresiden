@@ -1046,9 +1046,10 @@ border: 1px solid #AAAAAA;
 } 
 /* inline-block for IE */
 .qa-a-item-selected {
-	background-color:#FDFFED;
-	border:1px dashed #486a63;
-	padding:10px;
+	background-color: #fdffed;
+    border: medium none;
+    margin-left: -10px;
+    padding: 15px;
 }
 .qa-a-item-content {
 	font-size:14px;

@@ -156,22 +156,26 @@
 								qa_db_user_profile_set($userid,'verified-kelamin',$kelamin);
 							} catch (Exception $e) {$errorVerifikasi=$e->getMessage();}
 							try {
-								 $curl = curl_init();
-								 curl_setopt_array($curl, array(
-								 CURLOPT_RETURNTRANSFER => 1,
-								 CURLOPT_URL => "https://maps.google.com/maps/api/geocode/json?address=".urlencode($Provinsi.",+".$KabupatenKota.",+".$Kecamatan.",+".$KelurahanDesa)."&sensor=false",
-								 ));
-								 $testresponse = curl_exec($curl);
-								 curl_close($curl);
-								 if (strlen($testresponse)){
-									 $arrayresponse = json_decode($testresponse, true);
-									 $longitude=@$arrayresponse["results"][0]["geometry"]["location"]["lng"];
-									 $latitude=@$arrayresponse["results"][0]["geometry"]["location"]["lat"];
-									 if (strlen($longitude))
-									 qa_db_user_profile_set($userid,'longitude',$longitude);
+							     $longitude=qa_verified_name($postuserids,"longitude");
+								 $latitude=qa_verified_name($postuserids,"latitude");
+								 if (!(strlen($longitude) && strlen($latitude))){
+									 $curl = curl_init();
+									 curl_setopt_array($curl, array(
+									 CURLOPT_RETURNTRANSFER => 1,
+									 CURLOPT_URL => "https://maps.google.com/maps/api/geocode/json?address=".urlencode($Provinsi.",+".$KabupatenKota.",+".$Kecamatan.",+".$KelurahanDesa)."&sensor=false",
+									 ));
+									 $testresponse = curl_exec($curl);
+									 curl_close($curl);
+									 if (strlen($testresponse)){
+										 $arrayresponse = json_decode($testresponse, true);
+										 $longitude=@$arrayresponse["results"][0]["geometry"]["location"]["lng"];
+										 $latitude=@$arrayresponse["results"][0]["geometry"]["location"]["lat"];
+										 if (strlen($longitude))
+										 qa_db_user_profile_set($userid,'longitude',$longitude);
 								 
-								     if (strlen($latitude))
-									 qa_db_user_profile_set($userid,'latitude',$latitude);
+										 if (strlen($latitude))
+										 qa_db_user_profile_set($userid,'latitude',$latitude);
+									 }
 								 }
 							} catch (Exception $e) {$errorVerifikasi=$e->getMessage();}							
 						}    

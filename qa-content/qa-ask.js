@@ -298,4 +298,7 @@ function set_category_description(idprefix)
 }
 $(document).ready(function(){
 $("#createNewAsk").hide();
+$("#rightPanel").hide();
+$(".sub-nav").hide();
+$("#middlePanel").attr("class","col-md-9");
 });

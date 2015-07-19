@@ -49,7 +49,6 @@ a {
 
 .social-icons-footer-bottom li {
     display: inline;
-    float: left;
     margin-right: 7px !important;
     list-style: none;
     -webkit-transition: all .2s ease-in-out 0;
@@ -72,6 +71,10 @@ a {
     text-decoration: inherit;
     text-transform: none;
 }
+.social-icons-footer-bottom {
+  float: right;
+  margin: 6px 0 0;
+}
 .footer ul {
   list-style: none;
   padding-left:5px;
@@ -91,6 +94,7 @@ a {
     margin-right: 0 !important;
     width:auto;
     border:0px;
+    vertical-align: middle;
 }
 .footer .social li {
     background-color: transparent;
@@ -147,9 +151,12 @@ header .social li.rss:hover,footer .social li.rss:hover {
 .qa-main>h1{
  margin-top: 0px;
 }
-.qa-page-links,.qa-form-tall-buttons{
+.qa-page-links,.qa-form-tall-buttons,.qa-form-wide-buttons{
 padding-top:35px;
 float:right;
+}
+.qa-form-tall-data{
+padding-bottom:10px;
 }
 
 .qa-page-links-list,.qa-q-item-tag-list{
@@ -554,12 +561,21 @@ background-color:white;
 	 margin-top:100px;
    }
 }
-@media(max-width:768px) {
+@media(max-width:767px) {
    .main-content{
 	 margin-top:50px;
    }
    #logo3{
      max-height:55px;
+   }
+   .footer-top,.footer-bottom, .social-icons-footer-bottom {
+	  text-align: center;
+	  float:none;
+	  vertical-align: middle;
+   }
+   .social-icons-footer-bottom li {
+     float:none;
+     vertical-align: middle;
    }
 }
 

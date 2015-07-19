@@ -308,3 +308,6 @@ function qa_statuslapor(trackingid){
 	window.open('https://www.lapor.go.id/pengaduan/'+trackingid);
 	return false;
 }
+$(document).ready(function(){
+$("#createNewAsk").show();
+});

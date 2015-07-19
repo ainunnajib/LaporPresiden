@@ -178,6 +178,13 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 						$this->output('</div>');
 					$this->output('</div>');
 					
+					$this->output('<div class="row">');
+						$this->output('<div class="col-xs-12">', '');
+						$this->output_raw(@$this->content['sidepanel']);
+		                $this->feed();
+						$this->output('</div>');
+					$this->output('</div>');
+					
 					
 						
 					

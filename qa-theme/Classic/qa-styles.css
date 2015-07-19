@@ -147,6 +147,10 @@ header .social li.rss:hover,footer .social li.rss:hover {
 .qa-main>h1{
  margin-top: 0px;
 }
+.qa-page-links,.qa-form-tall-buttons{
+padding-top:35px;
+float:right;
+}
 
 .qa-page-links-list,.qa-q-item-tag-list{
 list-style: none;
@@ -165,21 +169,20 @@ padding:0px;
   border-collapse: collapse;
   margin-bottom: 1em;
 }
-.qa-top-tags-count,.qa-top-tags-label{
-border:1px solid #888;
-padding:10px
+.qa-top-users-label,.qa-top-users-score,.qa-top-tags-count,.qa-top-tags-label{
+border:1px solid #ddd;
+padding:10px;
+color:#333;
 }
 .qa-top-tags-count{
-  background-color: #c10808;
-  color: #eee;
-  border-color:#c10808;
-  border-bottom:1px solid #888;
+
 }
 
-.qa-top-tags-label{
+.qa-top-users-label,.qa-top-tags-label{
+background-color: #f5f5f5;
 }
-.qa-top-tags-spacer{
-padding:8px 3px;
+.qa-top-users-spacer,.qa-top-tags-spacer{
+padding:10px 3px;
 }
 
 #tag_hints a,.qa-page-links-list>li>a,.qa-q-item-tag-list>li>a{
@@ -187,26 +190,26 @@ text-decoration:none;
 }
 .qa-page-links-list>li>a{
 text-decoration:none;
-color: #888;
-padding:5px 10px;
+color: #337ab7;
+padding:10px;
 }
 .qa-page-links-list>li>a:hover{
 background-color: #eee;
-color:#c10808;
-border-radius:15px;
+color:#2eaef0;
+border-radius:50%;
 }
 .qa-q-item-tag-list>li>a{
 padding:10px;
 }
 .qa-page-selected{
-padding:5px 10px;
-background-color:#c10808;
-border-radius:15px;
+padding:10px;
+background-color:#2eaef0;
+border-radius:50%;
 color:#eee;
 }
 
 .qa-page-links-label{
-  color: #888;
+  color: #337ab7;
   font-weight: bold;
 }
 .qa-nav-cat-list, .sub-nav {
@@ -214,6 +217,14 @@ color:#eee;
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+#createNewAsk{
+margin-bottom:35px;
+}
+.sub-nav {
+ margin-bottom:15px;
+ margin-top:0px;
 }
 
 .qa-nav-cat-list>li{
@@ -359,8 +370,10 @@ padding:0px 10px;
 .qa-form-tall-label {
 	color:#253845;
 	padding:12px 8px 2px 8px;
-	font-weight:bold;
 	font-size:16px;
+}
+.qa-form-tall-label>label, .qa-form-tall-label label{
+font-weight:400;
 }
 .qa-a-form, .qa-part-form {
 background-color: white;
@@ -407,8 +420,10 @@ vertical-align:middle;
 	display:inline-block;
 }
 .qa-form-tall-note {
-	font-size:16px;
+	font-size:12px;
 	color: #888;
+	padding-top:5px;
+	padding-bottom:20px
 }
 .qa-form-tall-note a {
 	color:#293D39;

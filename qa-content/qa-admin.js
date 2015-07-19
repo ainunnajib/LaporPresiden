@@ -145,3 +145,6 @@ function qa_version_check(uri, version, elem)
 		}
 	);
 }
+$(document).ready(function(){
+$("#createNewAsk").hide();
+});

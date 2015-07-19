@@ -5,7 +5,7 @@
  */
 
 body {
-    background-color: #f8f8f8;
+    background-color: #f2f2f2;
 }
 
 a {
@@ -931,15 +931,22 @@ table.dataTable thead .sorting:after {
 }
 
 .panel-red a,.panel-red button {
-    color: #c10808;
-    border-color: #c10808;
+    color: white;
+    border-color: white;
+    background-color:transparent;
+}
+
+.panel-red input{
+   border-color: white;
 }
 
 .panel-red a:hover,
 .panel-red button:hover,
 .panel-red a:focus,
 .panel-red button:focus {
-    color: rgba(255,19,0,0.9);
+    color: white;
+    border-color: white;
+    background-color:transparent;
 }
 
 .panel-yellow {

@@ -80,7 +80,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 									<span class="icon-bar"></span>
 								  </button>', '');
 				    	$this->output('<a class="navbar-brand" style="padding-left:5px;padding-top:0px;z-index:1000000;" href="#">
-										 <img src="'.$logourl.'" id="logo3" border="0" alt="'.qa_html(qa_opt('site_title')).'" style="height:'.$logoheight.'px;">
+										 <img src="'.$this->rooturl.'assets/img/logo3.png" id="logo3" border="0" alt="'.qa_html(qa_opt('site_title')).'" style="height:'.$logoheight.'px;">
 									  </a>', '');
 					$this->output('</DIV>', '');
 					$this->output('<div id="navbar" class="navbar-collapse collapse">', '');

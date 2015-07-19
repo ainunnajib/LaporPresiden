@@ -57,12 +57,10 @@ class qa_facebook_login
 		else
 			$size='medium';
 
-	if ($logout){
+
+
+	if (!$logout){
 	?>	
-	 <a style="color:white;" class="qa-user-link" href="/logout">Keluar</a>
-	<?php
-	}else{
-?>
 	<div id="fb-root" style="display:inline;"></div>
 	<script>
 	<?php

@@ -174,8 +174,8 @@
 	{
 		if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-		return '<a href="'.qa_path_html('tag/'.$tag).'"'.($microformats ? ' rel="tag"' : '').' class="qa-tag-link'.
-			($favorited ? ' qa-tag-favorited' : '').'">'.qa_html($tag).'</a>';
+		return '<a href="'.qa_path_html('tag/'.$tag).'"'.($microformats ? ' rel="tag"' : '').' class="alert alert-success'.
+			($favorited ? ' qa-tag-favorited' : '').'" style="padding:2px 5px;text-decoration:none;font-size:11px;"><i class="fa fa-tag"></i> '.qa_html($tag).'</a>';
 	}
 
 
@@ -1484,7 +1484,7 @@
 	$exampletags are suggestions and $completetags are simply the most popular ones. Show up to $maxtags.
 */
 	{
-		$template='<a href="#" class="qa-tag-link" onclick="return qa_tag_click(this);">^</a>';
+		$template='<a href="#" class="alert alert-success" onclick="return qa_tag_click(this);" style="padding:2px 5px;text-decoration:none;font-size:11px;"><i class="fa fa-tag"></i> ^</a>';
 
 		$qa_content['script_rel'][]='qa-content/qa-ask.js?'.QA_VERSION;
 		$qa_content['script_var']['qa_tag_template']=$template;

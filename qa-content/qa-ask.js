@@ -296,3 +296,6 @@ function set_category_description(idprefix)
 		n.innerHTML=desc;
 	}
 }
+$(document).ready(function(){
+$("#createNewAsk").hide();
+});

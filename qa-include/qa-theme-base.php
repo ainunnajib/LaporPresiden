@@ -120,25 +120,6 @@ class qa_html_theme_base
 	}
 
 
-	public function output_split($parts, $class, $outertag='span', $innertag='span', $extraclass=null)
-/*
-	Output the three elements ['prefix'], ['data'] and ['suffix'] of $parts (if they're defined),
-	with appropriate CSS classes based on $class, using $outertag and $innertag in the markup.
-*/
-	{
-		if (empty($parts) && strtolower($outertag) != 'td')
-			return;
-
-		$this->output(
-			'<'.$outertag.' class="'.$class.(isset($extraclass) ? (' '.$extraclass) : '').'">',
-			(strlen(@$parts['prefix']) ? ('<'.$innertag.' class="'.$class.'-pad">'.$parts['prefix'].'</'.$innertag.'>') : '').
-			(strlen(@$parts['data']) ? ('<'.$innertag.' class="'.$class.'-data">'.$parts['data'].'</'.$innertag.'>') : '').
-			(strlen(@$parts['suffix']) ? ('<'.$innertag.' class="'.$class.'-pad">'.$parts['suffix'].'</'.$innertag.'>') : ''),
-			'</'.$outertag.'>'
-		);
-	}
-
-
 	public function set_context($key, $value)
 /*
 	Set some context, which be accessed via $this->context for a function to know where it's being used on the page
@@ -542,23 +523,7 @@ class qa_html_theme_base
 		}
 	}
 
-	public function nav_list($navigation, $class, $level=null)
-	{
-		$this->output('<ul class="qa-'.$class.'-list'.(isset($level) ? (' qa-'.$class.'-list-'.$level) : '').'">');
-
-		$index = 0;
-
-		foreach ($navigation as $key => $navlink) {
-			$this->set_context('nav_key', $key);
-			$this->set_context('nav_index', $index++);
-			$this->nav_item($key, $navlink, $class, $level);
-		}
-
-		$this->clear_context('nav_key');
-		$this->clear_context('nav_index');
-
-		$this->output('</ul>');
-	}
+	
 
 	public function nav_clear($navtype)
 	{
@@ -568,22 +533,7 @@ class qa_html_theme_base
 		);
 	}
 
-	public function nav_item($key, $navlink, $class, $level=null)
-	{
-		$suffix = strtr($key, array( // map special character in navigation key
-			'$' => '',
-			'/' => '-',
-		));
-
-		$this->output('<li class="qa-'.$class.'-item'.(@$navlink['opposite'] ? '-opp' : '').
-			(@$navlink['state'] ? (' qa-'.$class.'-'.$navlink['state']) : '').' qa-'.$class.'-'.$suffix.'">');
-		$this->nav_link($navlink, $class);
-
-		if (count(@$navlink['subnav']))
-			$this->nav_list($navlink['subnav'], $class, 1+$level);
-
-		$this->output('</li>');
-	}
+	
 
 	public function nav_link($navlink, $class)
 	{
@@ -612,7 +562,110 @@ class qa_html_theme_base
 
 	public function logged_in()
 	{
-		$this->output_split(@$this->content['loggedin'], 'qa-logged-in', 'div');
+		$this->output_split2(@$this->content['loggedin'], 'dropdown', 'li');
+	}
+	
+	public function output_split($parts, $class, $outertag='span', $innertag='span', $extraclass=null)
+/*
+	Output the three elements ['prefix'], ['data'] and ['suffix'] of $parts (if they're defined),
+	with appropriate CSS classes based on $class, using $outertag and $innertag in the markup.
+*/
+	{
+		if (empty($parts) && strtolower($outertag) != 'td')
+			return;
+
+		$this->output(
+			'<'.$outertag.' class="'.$class.(isset($extraclass) ? (' '.$extraclass) : '').'">',
+			(strlen(@$parts['prefix']) ? ('<'.$innertag.' class="'.$class.'-pad">'.$parts['prefix'].'</'.$innertag.'>') : '').
+			(strlen(@$parts['data']) ? ('<'.$innertag.' class="'.$class.'-data">'.$parts['data'].'</'.$innertag.'>') : '').
+			(strlen(@$parts['suffix']) ? ('<'.$innertag.' class="'.$class.'-pad">'.$parts['suffix'].'</'.$innertag.'>') : ''),
+			'</'.$outertag.'>'
+		);
+	}
+	
+	public function output_split2($parts, $class, $innertag='span', $extraclass=null)
+/*
+	Output the three elements ['prefix'], ['data'] and ['suffix'] of $parts (if they're defined),
+	with appropriate CSS classes based on $class, using $outertag and $innertag in the markup.
+*/
+	{
+		if (empty($parts) && strtolower($outertag) != 'td')
+			return;
+
+		$this->output((strlen(@$parts['data']) ? ('<'.$innertag.' class="'.$class.'">'.$parts['data'].'</'.$innertag.'>') : ''));
+	}
+	
+	public function nav_list2($navigation, $class, $level=null)
+	{
+		$index = 0;
+
+		foreach ($navigation as $key => $navlink) {
+			$this->set_context('nav_key', $key);
+			$this->set_context('nav_index', $index++);
+			$this->nav_item2($key, $navlink, $class, $level);
+		}
+
+		$this->clear_context('nav_key');
+		$this->clear_context('nav_index');
+
+		
+	}
+	
+	public function nav_item2($key, $navlink, $class, $level=null)
+	{
+		$suffix = strtr($key, array( // map special character in navigation key
+			'$' => '',
+			'/' => '-',
+		));
+        if ($suffix!=="login" && $suffix!=="register" && $suffix!=="logout" ) {
+			$this->output('<li class="'.$class.'">');
+			$this->nav_link($navlink, $class);
+
+			if (count(@$navlink['subnav']))
+				$this->nav_list($navlink['subnav'], $class, 1+$level);
+
+			$this->output('</li>');
+		}
+		if ($suffix=="logout"){
+			$this->output('<li class="'.$class.'">');
+			$this->output('<a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Keluar</a>');
+			$this->output('</li>');
+		}
+	}
+	
+	public function nav_item($key, $navlink, $class, $level=null)
+	{
+		$suffix = strtr($key, array( // map special character in navigation key
+			'$' => '',
+			'/' => '-',
+		));
+
+		$this->output('<li class="qa-'.$class.'-item'.(@$navlink['opposite'] ? '-opp' : '').
+			(@$navlink['state'] ? (' qa-'.$class.'-'.$navlink['state']) : '').' qa-'.$class.'-'.$suffix.'">');
+		$this->nav_link($navlink, $class);
+
+		if (count(@$navlink['subnav']))
+			$this->nav_list($navlink['subnav'], $class, 1+$level);
+
+		$this->output('</li>');
+	}
+	
+	public function nav_list($navigation, $class, $level=null)
+	{
+		$this->output('<ul class="qa-'.$class.'-list'.(isset($level) ? (' qa-'.$class.'-list-'.$level) : '').'">');
+
+		$index = 0;
+
+		foreach ($navigation as $key => $navlink) {
+			$this->set_context('nav_key', $key);
+			$this->set_context('nav_index', $index++);
+			$this->nav_item($key, $navlink, $class, $level);
+		}
+
+		$this->clear_context('nav_key');
+		$this->clear_context('nav_index');
+
+		$this->output('</ul>');
 	}
 
 	public function header_clear()
@@ -636,6 +689,43 @@ class qa_html_theme_base
 		$this->widgets('side', 'bottom');
 		$this->output('</div>', '');
 	}
+	public function sidepanel2()
+	{
+		$this->sidebar2();
+		$this->output_raw(@$this->content['sidepanel']);
+		$this->feed();
+		
+	}
+	public function sidebar2()
+	{
+		$sidebar = @$this->content['sidebar'];
+		if (!empty($sidebar)) {
+		    $this->panel("panel-default",true,$sidebar,false,"",false,"");
+		}
+	}
+	
+	function panel($style,$showheading,$headingcontent,$showbody,$bodycontent,$showfooter,$footercontent)
+		{
+			$this->output('<div class="panel '.$style.'">', '');
+			
+			if ($showheading){
+				$this->output('<div class="panel-heading">', '');
+				$this->output($headingcontent);
+				$this->output('</div>');
+			}
+			if ($showbody){
+				$this->output('<div class="panel-body">', '');
+				$this->output($bodycontent);
+				$this->output('</div>');
+			}
+			if ($showfooter){
+				$this->output('<div class="panel-footer">', '');
+				$this->output($footercontent);
+				$this->output('</div>');
+			}
+			
+			$this->output('</div>');
+		}
 
 	public function sidebar()
 	{
@@ -753,7 +843,7 @@ class qa_html_theme_base
 	{
 		if (strlen($error)) {
 			$this->output(
-				'<div class="qa-error">',
+				'<div class="alert alert-danger">',
 				$error,
 				'</div>'
 			);

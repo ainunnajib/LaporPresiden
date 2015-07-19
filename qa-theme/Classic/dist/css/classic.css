@@ -31,8 +31,32 @@ a {
 
 }
 
+.sub-nav {
+  font-size: 14px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 20px;
+}
 
-
+.sub-nav .sub {
+  display:inline-block;
+  padding:10px;
+}
+.sub-nav>li>a{
+	text-decoration: none;
+}
+.sub-nav>li>a:hover{
+	color:#c10808;
+}
+.qa-sub-link{
+  padding-top:10px;
+  border-top:5px solid transparent;
+}
+.qa-sub-selected{
+  color:#c10808;
+  border-top:5px solid #c10808;
+}
 .navbar-brand{
 padding: 2px 20px;
 margin: 0px;
@@ -533,3 +557,5 @@ table.dataTable thead .sorting:after {
 .panel-yellow a:hover {
     color: #df8a13;
 }
+
+

@@ -85,9 +85,12 @@ function qa_vote_click(elem)
 	var vote=parseInt(ens[2]);
 	var code=elem.form.elements.code.value;
 	var anchor=ens[3];
+	var innerHtml=$(elem).html();
+	$(elem).html('<i class="fa fa-spinner fa-spin"></i>');
 
 	qa_ajax_post('vote', {postid:postid, vote:vote, code:code},
 		function(lines) {
+		     $(elem).html(innerHtml);
 			if (lines[0]=='1') {
 				qa_set_inner_html(document.getElementById('voting_'+postid), 'voting', lines.slice(1).join("\n"));
 
@@ -199,8 +202,11 @@ function hybrid_progressShow()
 }
 
 $(document).ready(function(){
-   $('#side-menu').metisMenu();
-   $('#side-menu2').metisMenu();
+   $('.ux-vote-buttons').tooltip({
+        selector: "[data-toggle=tooltip]",
+        container: "body"
+    })
+    var width=0;
    $(window).bind("load resize", function() {
         topOffset = 10;
         width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
@@ -226,8 +232,15 @@ $(document).ready(function(){
         var scroll = $(window).scrollTop();
         if (scroll<=30){
            $("#logo3").css("height",(90-scroll)+"px");
+            $("#leftPanel").children().css("top",(90-scroll)+"px");
         }else{
            $("#logo3").css("height","60px");
+           if (scroll<=($(document).height()-680) && width>768){
+              $("#leftPanel").children().show();
+           	  $("#leftPanel").children().css("top","60px");
+           }else{
+              $("#leftPanel").children().hide();
+           }
         }
     });
    

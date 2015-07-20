@@ -24,7 +24,6 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 		function head_css()
 		{
 		    $this->output('<LINK REL="stylesheet" TYPE="text/css" HREF="'.$this->rooturl.'bower_components/bootstrap/dist/css/bootstrap.min.css'.'"/>');
-			$this->output('<LINK REL="stylesheet" TYPE="text/css" HREF="'.$this->rooturl.'bower_components/metisMenu/dist/metisMenu.min.css'.'"/>');
 			$this->output('<LINK REL="stylesheet" TYPE="text/css" HREF="'.$this->rooturl.'bower_components/font-awesome/css/font-awesome.min.css'.'"/>');
 			
 			if (qa_opt('qat_compression')==2) //Gzip
@@ -95,11 +94,10 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 			$this->body_prefix();
 			$this->notices();
 			$this->header($logourl);
-			$this->output('<div id="wrapper">', '');
+			$this->output('<div id="wrapper" class="container">', '');
 			$this->output('<div class="row">', '');
 				$this->output('<div class="col-md-3" id="leftPanel">', '');
-					$this->nav2('main');
-					$this->nav('cat', 1);
+					$this->nav2('main');		
 				$this->output('</div>');
 				$this->output('<div class="col-md-6" id="middlePanel">', '');
 				    $this->mainTop();
@@ -108,6 +106,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 				$this->output('</div>');
 				$this->output('<div class="col-md-3" id="rightPanel">', '');
 					$this->sidebar2();
+					$this->nav('cat', 1);
 					$this->facebookpage();
 					$this->sidepanelRaw();
 					$this->sidepanelFeed();
@@ -153,7 +152,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>
 								  </button>', '');
-				    	$this->output('<a class="navbar-brand" style="padding-left:5px;padding-top:0px;z-index:1000000;" href="#">
+				    	$this->output('<a class="navbar-brand" style="padding-left:15px;padding-top:0px;z-index:1000000;" href="/">
 										 <img src="'.$logourl.'" id="logo3" border="0" alt="'.qa_html(qa_opt('site_title')).'" style="height:'.$logoheight.'px;">
 									  </a>', '');
 					$this->output('</DIV>', '');
@@ -183,7 +182,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 				}else if ($navtype=='main'){
 					if ($maindefault==1){
 						$liStyle="";
-						$this->output('<div class="sidebar transparent" role="navigation"><ul class="nav " id="side-menu">', '');
+						$this->output('<div class="sidebar"><ul class="nav" id="side-menu">', '');
 					}else{
 					    $liStyle="dropdown small-show";
 					}
@@ -227,7 +226,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 					
 					
 			    if ($navtype=='cat'){
-			    	$this->output('<div class="sidebar transparent" role="navigation"><div class="sidebar-nav"><div class="panel panel-default">', '');
+			    	$this->output('<div class="sidebar"><div class="sidebar-nav"><div class="panel panel-default">', '');
 					$this->output('<div class="panel-heading">Kategori</div>');
 					$this->output('<div class="panel-body">', '');
 			    }

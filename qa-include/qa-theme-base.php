@@ -1629,7 +1629,7 @@ class qa_html_theme_base
 	public function q_list_form($q_list)
 	{
 		if (!empty($q_list['form'])) {
-			$this->output('<div class="qa-q-list-form">');
+			$this->output('<div class="ux-list-form">');
 			$this->form($q_list['form']);
 			$this->output('</div>');
 		}
@@ -1638,9 +1638,9 @@ class qa_html_theme_base
 	public function q_list($q_list)
 	{
 		if (isset($q_list['qs'])) {
-			$this->output('<div class="qa-q-list'.($this->list_vote_disabled($q_list['qs']) ? ' qa-q-list-vote-disabled' : '').'">', '');
+			$this->output('<div class="ux-list'.($this->list_vote_disabled($q_list['qs']) ? ' ux-list-vote-disabled' : '').'">', '');
 			$this->q_list_items($q_list['qs']);
-			$this->output('</div> <!-- END qa-q-list -->', '');
+			$this->output('</div> <!-- END ux-list -->', '');
 		}
 	}
 
@@ -1652,18 +1652,18 @@ class qa_html_theme_base
 
 	public function q_list_item($q_item)
 	{
-		$this->output('<div class="qa-q-list-item'.rtrim(' '.@$q_item['classes']).'" '.@$q_item['tags'].'>');
+		$this->output('<div class="ux-list-item'.rtrim(' '.@$q_item['classes']).'" '.@$q_item['tags'].'>');
 
 		$this->q_item_stats($q_item);
 		$this->q_item_main($q_item);
 		$this->q_item_clear();
 
-		$this->output('</div> <!-- END qa-q-list-item -->', '');
+		$this->output('</div> <!-- END ux-list-item -->', '');
 	}
 
 	public function q_item_stats($q_item)
 	{
-		$this->output('<div class="qa-q-item-stats">');
+		$this->output('<div class="ux-item-stats">');
 
 		$this->voting($q_item);
 		$this->a_count($q_item);
@@ -1673,7 +1673,7 @@ class qa_html_theme_base
 
 	public function q_item_main($q_item)
 	{
-		$this->output('<div class="qa-q-item-main">');
+		$this->output('<div class="ux-item-main">');
 
 		$this->view_count($q_item);
 		$this->q_item_title($q_item);
@@ -1689,7 +1689,7 @@ class qa_html_theme_base
 	public function q_item_clear()
 	{
 		$this->output(
-			'<div class="qa-q-item-clear">',
+			'<div class="ux-item-clear">',
 			'</div>'
 		);
 	}
@@ -1697,7 +1697,7 @@ class qa_html_theme_base
 	public function q_item_title($q_item)
 	{
 		$this->output(
-			'<div class="qa-q-item-title">',
+			'<div class="ux-item-title">',
 			'<a href="'.$q_item['url'].'">'.$q_item['title'].'</a>',
 			// add closed note in title
 			empty($q_item['closed']) ? '' : ' ['.$q_item['closed']['state'].']',
@@ -1708,7 +1708,7 @@ class qa_html_theme_base
 	public function q_item_content($q_item)
 	{
 		if (!empty($q_item['content'])) {
-			$this->output('<div class="qa-q-item-content">');
+			$this->output('<div class="ux-item-content">');
 			$this->output_raw($q_item['content']);
 			$this->output('</div>');
 		}
@@ -1717,7 +1717,7 @@ class qa_html_theme_base
 	public function q_item_buttons($q_item)
 	{
 		if (!empty($q_item['form'])) {
-			$this->output('<div class="qa-q-item-buttons">');
+			$this->output('<div class="ux-item-buttons">');
 			$this->form($q_item['form']);
 			$this->output('</div>');
 		}
@@ -1726,7 +1726,7 @@ class qa_html_theme_base
 	public function voting($post)
 	{
 		if (isset($post['vote_view'])) {
-			$this->output('<div class="qa-voting '.(($post['vote_view'] == 'updown') ? 'qa-voting-updown' : 'qa-voting-net').'" '.@$post['vote_tags'].'>');
+			$this->output('<div class="ux-voting '.(($post['vote_view'] == 'updown') ? 'ux-voting-updown' : 'ux-voting-net').'" '.@$post['vote_tags'].'>');
 			$this->voting_inner_html($post);
 			$this->output('</div>');
 		}
@@ -1735,45 +1735,55 @@ class qa_html_theme_base
 	public function voting_inner_html($post)
 	{
 		$this->vote_buttons($post);
-		$this->vote_count($post);
 		$this->vote_clear();
 	}
 
 	public function vote_buttons($post)
 	{
-		$this->output('<div class="qa-vote-buttons '.(($post['vote_view'] == 'updown') ? 'qa-vote-buttons-updown' : 'qa-vote-buttons-net').'">');
+		$this->output('<div class="ux-vote-buttons '.(($post['vote_view'] == 'updown') ? 'ux-vote-buttons-updown' : 'ux-vote-buttons-net').'">');
 
 		switch (@$post['vote_state'])
 		{
 			case 'voted_up':
-				$this->post_hover_button($post, 'vote_up_tags', '+', 'qa-vote-one-button qa-voted-up');
+				$this->post_hover_button($post, 'vote_up_tags', '+', 'ux-vote-one-button ux-voted-up');
+				$this->vote_count($post);
+				$this->output('<div style="height:40px;">&nbsp;</div>');
 				break;
 
 			case 'voted_up_disabled':
-				$this->post_disabled_button($post, 'vote_up_tags', '+', 'qa-vote-one-button qa-vote-up');
+				$this->post_disabled_button($post, 'vote_up_tags', '+', 'ux-vote-one-button ux-vote-up');
+				$this->vote_count($post);
+				$this->output('<div style="height:40px;">&nbsp;</div>');
 				break;
 
 			case 'voted_down':
-				$this->post_hover_button($post, 'vote_down_tags', '&ndash;', 'qa-vote-one-button qa-voted-down');
+			    $this->output('<div style="height:40px;">&nbsp;</div>');
+				$this->vote_count($post);
+				$this->post_hover_button($post, 'vote_down_tags', '&ndash;', 'ux-vote-one-button ux-voted-down');
 				break;
 
 			case 'voted_down_disabled':
-				$this->post_disabled_button($post, 'vote_down_tags', '&ndash;', 'qa-vote-one-button qa-vote-down');
+			    $this->output('<div style="height:40px;">&nbsp;</div>');
+				$this->vote_count($post);
+				$this->post_disabled_button($post, 'vote_down_tags', '&ndash;', 'ux-vote-one-button ux-vote-down');
 				break;
 
 			case 'up_only':
-				$this->post_hover_button($post, 'vote_up_tags', '+', 'qa-vote-first-button qa-vote-up');
-				$this->post_disabled_button($post, 'vote_down_tags', '', 'qa-vote-second-button qa-vote-down');
+				$this->post_hover_button($post, 'vote_up_tags', '+', 'ux-vote-first-button ux-vote-up');
+				$this->vote_count($post);
+				$this->post_disabled_button($post, 'vote_down_tags', '', 'ux-vote-second-button ux-vote-down');
 				break;
 
 			case 'enabled':
-				$this->post_hover_button($post, 'vote_up_tags', '+', 'qa-vote-first-button qa-vote-up');
-				$this->post_hover_button($post, 'vote_down_tags', '&ndash;', 'qa-vote-second-button qa-vote-down');
+				$this->post_hover_button($post, 'vote_up_tags', '+', 'ux-vote-first-button ux-vote-up');
+				$this->vote_count($post);
+				$this->post_hover_button($post, 'vote_down_tags', '&ndash;', 'ux-vote-second-button ux-vote-down');
 				break;
 
 			default:
-				$this->post_disabled_button($post, 'vote_up_tags', '', 'qa-vote-first-button qa-vote-up');
-				$this->post_disabled_button($post, 'vote_down_tags', '', 'qa-vote-second-button qa-vote-down');
+				$this->post_disabled_button($post, 'vote_up_tags', '', 'ux-vote-first-button ux-vote-up');
+				$this->vote_count($post);
+				$this->post_disabled_button($post, 'vote_down_tags', '', 'ux-vote-second-button ux-vote-down');
 				break;
 		}
 
@@ -1785,15 +1795,14 @@ class qa_html_theme_base
 		// You can also use $post['upvotes_raw'], $post['downvotes_raw'], $post['netvotes_raw'] to get
 		// raw integer vote counts, for graphing or showing in other non-textual ways
 
-		$this->output('<div class="qa-vote-count '.(($post['vote_view'] == 'updown') ? 'qa-vote-count-updown' : 'qa-vote-count-net').'"'.@$post['vote_count_tags'].'>');
+		$this->output('<div class="ux-vote-count '.(($post['vote_view'] == 'updown') ? 'ux-vote-count-updown' : 'ux-vote-count-net').'"'.@$post['vote_count_tags'].'>');
 
 		if ($post['vote_view'] == 'updown') {
-			$this->output_split($post['upvotes_view'], 'qa-upvote-count');
-			$this->output_split($post['downvotes_view'], 'qa-downvote-count');
-
+			$this->output_split($post['upvotes_view'], 'ux-upvote-count');
+			$this->output_split($post['downvotes_view'], 'ux-downvote-count');
 		}
 		else
-			$this->output_split($post['netvotes_view'], 'qa-netvote-count');
+			$this->output_split($post['netvotes_view'], 'ux-netvote-count');
 
 		$this->output('</div>');
 	}
@@ -1801,7 +1810,7 @@ class qa_html_theme_base
 	public function vote_clear()
 	{
 		$this->output(
-			'<div class="qa-vote-clear">',
+			'<div class="ux-vote-clear">',
 			'</div>'
 		);
 	}
@@ -1810,15 +1819,15 @@ class qa_html_theme_base
 	{
 		// You can also use $post['answers_raw'] to get a raw integer count of answers
 
-		$this->output_split(@$post['answers'], 'qa-a-count', 'span', 'span',
-			@$post['answer_selected'] ? 'qa-a-count-selected' : (@$post['answers_raw'] ? null : 'qa-a-count-zero'));
+		$this->output_split(@$post['answers'], 'ux-count', 'div', 'div',
+			@$post['answer_selected'] ? 'ux-a-count-selected' : (@$post['answers_raw'] ? null : 'ux-a-count-zero'));
 	}
 
 	public function view_count($post)
 	{
 		// You can also use $post['views_raw'] to get a raw integer count of views
 
-		$this->output_split(@$post['views'], 'qa-view-count');
+		$this->output_split(@$post['views'], 'ux-view-count');
 	}
 
 	public function avatar($item, $class, $prefix=null)
@@ -1837,17 +1846,17 @@ class qa_html_theme_base
 
 	public function a_selection($post)
 	{
-		$this->output('<div class="qa-a-selection">');
+		$this->output('<div class="ux-a-selection">');
 
 		if (isset($post['select_tags']))
-			$this->post_hover_button($post, 'select_tags', '', 'qa-a-select');
+			$this->post_hover_button($post, 'select_tags', '', 'ux-a-select');
 		elseif (isset($post['unselect_tags']))
-			$this->post_hover_button($post, 'unselect_tags', '', 'qa-a-unselect');
+			$this->post_hover_button($post, 'unselect_tags', '', 'ux-a-unselect');
 		elseif ($post['selected'])
-			$this->output('<div class="qa-a-selected">&nbsp;</div>');
+			$this->output('<div class="ux-a-selected">&nbsp;</div>');
 
 		if (isset($post['select_text']))
-			$this->output('<div class="qa-a-selected-text">'.@$post['select_text'].'</div>');
+			$this->output('<div class="ux-a-selected-text">'.@$post['select_text'].'</div>');
 
 		$this->output('</div>');
 	}
@@ -1855,8 +1864,16 @@ class qa_html_theme_base
 	public function post_hover_button($post, $element, $value, $class)
 	{
 		if (isset($post[$element]))
-			$this->output('<input '.$post[$element].' type="submit" value="'.$value.'" class="'.$class.'-button"/> ');
+			$this->output('<button data-toggle="tooltip" data-placement="right" data-original-'.$post[$element].' '.$post[$element].' type="submit" value="'.$value.'" class="'.$class.'-button"> ');
+			if ($value=="+"){
+			$this->output('<i class="fa fa-chevron-up"></i>');
+			}
+			if ($value=="&ndash;" || $value=="-"){
+			$this->output('<i class="fa fa-chevron-down"></i>');
+			}
+			$this->output('</button>');
 	}
+	
 
 	public function post_disabled_button($post, $element, $value, $class)
 	{
@@ -1950,6 +1967,7 @@ class qa_html_theme_base
 
 	public function post_meta_when($post, $class)
 	{
+		$this->output(' &nbsp;<i class="fa fa-clock-o"></i>');
 		$this->output_split(@$post['when'], $class.'-when');
 	}
 
@@ -1967,7 +1985,7 @@ class qa_html_theme_base
 				$this->output('<span class="'.$class.'-who-pad">'.$post['who']['prefix'].'</span>');
 
 			if (isset($post['who']['data']))
-				$this->output('<span class="'.$class.'-who-data">'.$post['who']['data'].'</span>');
+				$this->output('<i class="fa fa-user"></i> <span class="'.$class.'-who-data">'.$post['who']['data'].'</span>');
 
 			if (isset($post['who']['title']))
 				$this->output('<span class="'.$class.'-who-title">'.$post['who']['title'].'</span>');

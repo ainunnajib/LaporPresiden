@@ -205,6 +205,10 @@ $(document).ready(function(){
    $('.ux-vote-buttons').tooltip({
         selector: "[data-toggle=tooltip]",
         container: "body"
+    });
+    $('.qa-q-item-avatar-meta').tooltip({
+        selector: "[data-toggle=tooltip]",
+        container: "body"
     })
     var width=0;
    $(window).bind("load resize", function() {

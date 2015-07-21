@@ -16,6 +16,7 @@ a {
 
 #wrapper {
     margin-top:90px;
+    min-height:700px;
 }
 #leftPanel{
    padding:0px;
@@ -33,6 +34,7 @@ a {
 
 .ux-item-main{
 	padding:20px;
+	padding-top:2px;
 }
 .ux-list-item{
 margin-bottom:20px;
@@ -69,18 +71,17 @@ border:0px;
 background-color: transparent;
 padding:0px;
 margin:0px;
+color:#337ab7;
 }
-.ux-vote-up-button,.ux-voted-up-button{
-color:#c10808;
-}
+
 .ux-netvote-count-pad,.ux-count-pad,.qa-q-item-avatar-meta{
   font-size: 12px;
   color: #888;
   text-transform: capitalize;
 }
 .qa-q-item-avatar-meta{
-  font-size: 14px;
-  color:#414f5a;
+  font-size: 12px;
+  color:#9197a3;
 }
 .ux-netvote-count-pad,.ux-count-pad{
    margin-bottom: -4px;
@@ -98,11 +99,28 @@ color:#c10808;
 }
 .ux-item-title{
   font-size:24pt;
+  padding-top:25px;
 }
-.ux-item-title>a, .qa-q-item-avatar-meta>a{
+.ux-item-title>a, .qa-q-item-avatar-meta a, .ux-item-detil a{
 text-decoration:none;
 }
-.qa-form-wide-table>tr{
+.ux-item-detil i{
+font-size:13px;
+}
+.qa-q-item-avatar-meta{
+float:right;
+}
+.ux-item-detil{
+width:100%;
+text-align:center;
+padding-bottom:10px;
+font-size:14px;
+}
+.qa-q-item-avatar-meta i{
+color:#333;
+}
+
+table.qa-form-wide-table>tr, table.qa-form-wide-table tr{
 padding:15px;
 }
 .footer{
@@ -240,7 +258,7 @@ float:right;
 padding-bottom:10px;
 }
 .qa-q-item-tags{
-text-align:right;
+
 }
 .qa-page-links-list,.qa-q-item-tag-list{
 list-style: none;
@@ -508,28 +526,18 @@ font-size:0;
 margin:0px 8px 0px 4px;
 vertical-align:middle;
 }
-.qa-error {
-	background:#fee;
-	border:1px solid #c00;
-	color:#c00;
-	font-size:16px;
-	padding:.5em;
-	margin:1em 0;
-	font-weight:bold;
+
+.qa-form-tall-error,.qa-error a {
+	color: #843534;
 }
-.qa-error a {
-	color:#900;
-	text-decoration:underline;
-}
-.qa-error a:hover {
-	color:#f00;
-}
-.qa-form-tall-error {
+
+.qa-form-tall-error, .qa-error {
 	padding: 15px;
 	  margin-bottom: 20px;
 	  border: 1px solid transparent;
 	  border-radius: 4px;
-	display:inline-block;
+	display:block;
+	width:100%;
 	color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
@@ -684,6 +692,7 @@ background-color:white;
 #leftPanel .sidebar{
    position:fixed;
    width:25%;
+   max-width:300px;
 }
 
 .sidebar ul li {
@@ -1005,5 +1014,6 @@ table.dataTable thead .sorting:after {
 	#leftPanel .sidebar {
 	   position:static;
 	   width:100%;
+	   max-width:100%;
 	}
 }

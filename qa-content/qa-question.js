@@ -309,5 +309,5 @@ function qa_statuslapor(trackingid){
 	return false;
 }
 $(document).ready(function(){
-$("#createNewAsk").show();
+$("#createNewAsk").hide();
 });

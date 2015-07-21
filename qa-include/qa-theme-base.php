@@ -1674,15 +1674,13 @@ class qa_html_theme_base
 	public function q_item_main($q_item)
 	{
 		$this->output('<div class="ux-item-main">');
-
 		$this->view_count($q_item);
+		$this->post_avatar_meta($q_item, 'qa-q-item');
 		$this->q_item_title($q_item);
 		$this->q_item_content($q_item);
-
-		$this->post_avatar_meta($q_item, 'qa-q-item');
 		$this->post_tags($q_item, 'qa-q-item');
+		$this->output('<div class="ux-item-detil"><a href="'.$q_item['url'].'">Baca Detail atau Beri Tanggapan dan Komentar <i class="fa fa-chevron-right"></i></a></div>');
 		$this->q_item_buttons($q_item);
-
 		$this->output('</div>');
 	}
 
@@ -1698,7 +1696,8 @@ class qa_html_theme_base
 	{
 		$this->output(
 			'<div class="ux-item-title">',
-			'<a href="'.$q_item['url'].'">'.$q_item['title'].'</a>',
+			//'<a href="'.$q_item['url'].'">'.$q_item['title'].'</a>',
+			$q_item['title'],
 			// add closed note in title
 			empty($q_item['closed']) ? '' : ' ['.$q_item['closed']['state'].']',
 			'</div>'
@@ -1899,32 +1898,43 @@ class qa_html_theme_base
 
 	public function post_meta($post, $class, $prefix=null, $separator='<br/>')
 	{
-		$this->output('<span class="'.$class.'-meta">');
+		$toggleTittle=$post['what'];
+		if (strlen(@$post['who']['prefix']))
+		    $toggleTittle=$toggleTittle.' '.$post['who']['prefix'];
+		
+		$this->output('<span class="'.$class.'-meta" data-toggle="tooltip" data-placement="bottom" data-original-title="'.$toggleTittle.'">');
 
 		if (isset($prefix))
 			$this->output($prefix);
 
 		$order = explode('^', @$post['meta_order']);
 
-		foreach ($order as $element) {
+		/*foreach ($order as $element) {
 			switch ($element) {
 				case 'what':
-					$this->post_meta_what($post, $class);
+					//$this->post_meta_what($post, $class);
 					break;
 
 				case 'when':
 					$this->post_meta_when($post, $class);
+					$this->post_meta_spacer();
+					break;
+				
+				case 'who':
+					$this->post_meta_who($post, $class);
+					$this->post_meta_spacer();
 					break;
 
 				case 'where':
-					$this->post_meta_where($post, $class);
-					break;
-
-				case 'who':
-					$this->post_meta_who($post, $class);
-					break;
+					//$this->post_meta_where($post, $class);
+					break;		
 			}
-		}
+		}*/
+		$this->post_meta_who($post, $class);
+		$this->post_meta_spacer();
+		$this->post_meta_when($post, $class);
+		$this->post_meta_spacer();
+		$this->post_meta_where($post, $class);
 
 		$this->post_meta_flags($post, $class);
 
@@ -1964,10 +1974,13 @@ class qa_html_theme_base
 				$this->output('<span class="'.$classes.'">'.$post['what'].'</span>');
 		}
 	}
-
+    public function post_meta_spacer()
+	{
+	   $this->output('&nbsp;<span style="color:#e7e7e7">|&nbsp;</span>');
+	}
 	public function post_meta_when($post, $class)
 	{
-		$this->output(' &nbsp;<i class="fa fa-clock-o"></i>');
+		$this->output('<i class="fa fa-clock-o"></i>');
 		$this->output_split(@$post['when'], $class.'-when');
 	}
 
@@ -1981,8 +1994,8 @@ class qa_html_theme_base
 		if (isset($post['who'])) {
 			$this->output('<span class="'.$class.'-who">');
 
-			if (strlen(@$post['who']['prefix']))
-				$this->output('<span class="'.$class.'-who-pad">'.$post['who']['prefix'].'</span>');
+			//if (strlen(@$post['who']['prefix']))
+				//$this->output('<span class="'.$class.'-who-pad">'.$post['who']['prefix'].'</span>');
 
 			if (isset($post['who']['data']))
 				$this->output('<i class="fa fa-user"></i> <span class="'.$class.'-who-data">'.$post['who']['data'].'</span>');

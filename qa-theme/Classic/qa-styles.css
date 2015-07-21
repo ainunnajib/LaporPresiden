@@ -121,7 +121,10 @@ color:#333;
 }
 
 table.qa-form-wide-table>tr, table.qa-form-wide-table tr{
-padding:15px;
+line-height:35px;
+}
+table.qa-form-wide-table>tr>td, table.qa-form-wide-table tr td{
+padding-right:10px;
 }
 .footer{
     display: block;

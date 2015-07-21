@@ -133,3 +133,8 @@ function qa_pm_click(messageid, target, box)
 
 	return false;
 }
+$(document).ready(function(){
+$("#createNewAsk").hide();
+$("#rightPanel").hide();
+$("#middlePanel").attr("class","col-md-9");
+});

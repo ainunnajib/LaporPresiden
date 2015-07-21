@@ -98,14 +98,14 @@ color:#337ab7;
     user-select: none;
 }
 .ux-item-title{
-  font-size:24pt;
-  padding-top:25px;
+  font-size:20pt;
+  padding-top:50px;
 }
 .ux-item-title>a, .qa-q-item-avatar-meta a, .ux-item-detil a{
 text-decoration:none;
 }
 .ux-item-detil i{
-font-size:13px;
+font-size:10px;
 }
 .qa-q-item-avatar-meta{
 float:right;
@@ -113,7 +113,7 @@ float:right;
 .ux-item-detil{
 width:100%;
 text-align:center;
-padding-bottom:10px;
+padding:10px 0px;
 font-size:14px;
 }
 .qa-q-item-avatar-meta i{
@@ -987,9 +987,12 @@ table.dataTable thead .sorting:after {
    .sidebar {
      display:none;
    }
-   
    #logo3{
      max-height:55px;
+   }
+   .ux-item-title,.qa-q-item-tags,.qa-q-item-avatar-meta{
+   text-align: center;
+   width: 100%;
    }
    .footer-top,.footer-bottom, .social-icons-footer-bottom {
 	  text-align: center;

@@ -1986,6 +1986,8 @@ class qa_html_theme_base
 
 	public function post_meta_where($post, $class)
 	{
+	    $this->output('<i class="fa fa-sitemap"></i>');
+	    $post['where']['prefix']="";
 		$this->output_split(@$post['where'], $class.'-where');
 	}
 

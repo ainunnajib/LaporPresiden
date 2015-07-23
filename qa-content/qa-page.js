@@ -201,16 +201,78 @@ function hybrid_progressShow()
 	}catch(e){}	
 }
 
+
 $(document).ready(function(){
    $('.ux-vote-buttons').tooltip({
         selector: "[data-toggle=tooltip]",
         container: "body"
     });
-    $('.qa-q-item-avatar-meta').tooltip({
+    $('.ux-item-avatar-meta').tooltip({
         selector: "[data-toggle=tooltip]",
         container: "body"
     })
+    $('.ux-view-avatar-meta').tooltip({
+        selector: "[data-toggle=tooltip]",
+        container: "body"
+    })
+    $('.ux-c-item-meta').tooltip({
+        selector: "[data-toggle=tooltip]",
+        container: "body"
+    })
+    $('.qa-a-item-meta').tooltip({
+        selector: "[data-toggle=tooltip]",
+        container: "body"
+    })
+    $('.ux-favoriting').tooltip({
+        selector: "[data-toggle=tooltip]",
+        container: "body"
+    })
+    $('.ux-a-selection').tooltip({
+        selector: "[data-toggle=tooltip]",
+        container: "body"
+    })
+    $('.qa-top-users-table').tooltip({
+        selector: "[data-toggle=tooltip]",
+        container: "body"
+    })
+    var globalheight=20;
+    if ($(".jumbotron").length>0){
+    	globalheight=420;
+    	$("#wrapper").css("margin-top","395px");
+    }
     var width=0;
+    var setScroll=function(){
+        var scroll = $(window).scrollTop();
+        if (scroll<=globalheight && width>768){
+            $("#leftPanel").children().css("position","static");
+            if ($(".jumbotron").length>0){
+				var y=40;
+				var yy=35+(y*(scroll/globalheight));
+				if (yy>(y+35)){
+				    yy=y+35;
+				}
+				$(".jumbotron").css("background-position","0% "+yy+"%");
+            }
+        }else{
+           if (scroll<=($(document).height()-680) && width>768){
+              $("#leftPanel").children().show();
+           	  $("#leftPanel").children().css("position","fixed");
+           	  $("#leftPanel").children().css("top","52px");
+           }else{
+              $("#leftPanel").children().css("position","static");
+              $("#leftPanel").children().hide();
+           }
+        }
+        if (scroll>=1560 && width>768){
+            $("#facebookpage").show();
+            $("#facebookpage").css("position","fixed");
+           	$("#facebookpage").css("top","52px");
+           	$("#facebookpage").css("width","100%");
+        }else{
+            $("#facebookpage").css("position","static");
+            $("#facebookpage").css("width","auto");
+        }
+    }
    $(window).bind("load resize", function() {
         topOffset = 10;
         width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
@@ -230,26 +292,15 @@ $(document).ready(function(){
          
         $(".fb-page").children().css( "width", "100%" );
         $(".fb-page").children().children().css( "width", "100%" );
-        
+        setScroll();
     });
     $(window).scroll(function (event) {
-        var scroll = $(window).scrollTop();
-        if (scroll<=30){
-           $("#logo3").css("height",(90-scroll)+"px");
-            $("#leftPanel").children().css("top",(90-scroll)+"px");
-        }else{
-           $("#logo3").css("height","60px");
-           if (scroll<=($(document).height()-680) && width>768){
-              $("#leftPanel").children().show();
-           	  $("#leftPanel").children().css("top","60px");
-           }else{
-              $("#leftPanel").children().hide();
-           }
-        }
+        setScroll();
     });
-   
-   
-   
+    if (width>768){
+        $("#leftPanel").children().show();
+    }
+    
    hybrid_progressHide();	
 		var redirectToNewApps = {
 			waitFor: 5,

@@ -75,7 +75,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 			$this->output('</div>');
 		}
 		function facebookpage(){
-			$this->output('<div class="row" style="padding-bottom:20px;text-align:center;">');
+			$this->output('<div id="facebookpage" class="row" style="padding-bottom:20px;text-align:center;">');
 				$this->output('<div class="col-xs-12">', '');
 				$this->output('<div id="fb-root"></div>
 								<script>(function(d, s, id) {
@@ -91,16 +91,24 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 		}
 
 		function body_content(){
+		$isqlist=$this->isQ_list();
 			$this->body_prefix();
 			$this->notices();
-			$this->header($logourl);
-			$this->output('<div id="wrapper" class="container">', '');
+			$this->header();
+			$this->output('<div style="height:50px">&nbsp;</div>');
+			if ($isqlist){
+			   $this->output('<div class="jumbotron"></div>');
+			}
+			$this->output('<div id="wrapper" >', '');
+			$this->output('<div class="container">', '');
 			$this->output('<div class="row">', '');
 				$this->output('<div class="col-md-3" id="leftPanel">', '');
 					$this->nav2('main');		
 				$this->output('</div>');
 				$this->output('<div class="col-md-6" id="middlePanel">', '');
-				    $this->mainTop();
+				    if ($isqlist){
+				       $this->mainTop();
+				    }
 					$this->nav2('sub');
 					$this->main();
 				$this->output('</div>');
@@ -113,10 +121,12 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 				$this->output('</div>');
 			$this->output('</div>');
 			$this->output('</div>');
+			$this->output('</div>');
 			$this->footer();
 			$this->widgets('full', 'bottom');
 			$this->body_suffix();
 		}
+		
 		function sidepanelRaw(){
 		    $this->output('<div class="row">');
 			$this->output('<div class="col-xs-12">', '');
@@ -152,7 +162,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>
 								  </button>', '');
-				    	$this->output('<a class="navbar-brand" style="padding-left:15px;padding-top:0px;z-index:1000000;" href="/">
+				    	$this->output('<a class="navbar-brand" style="padding-left:0px;padding-top:0px;z-index:1000000;" href="/">
 										 <img src="'.$logourl.'" id="logo3" border="0" alt="'.qa_html(qa_opt('site_title')).'" style="height:'.$logoheight.'px;">
 									  </a>', '');
 					$this->output('</DIV>', '');

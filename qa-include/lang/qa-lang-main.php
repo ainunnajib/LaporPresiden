@@ -199,7 +199,7 @@
 		'vote_down_popup' => 'Klik untuk vote turun',
 		'vote_limit' => 'Terlalu banyak vote diterima - coba lagi dalam satu jam',
 		'vote_must_confirm' => 'Silakan ^5konfirmasi email Anda^6 untuk vote.',
-		'vote_must_login' => 'Silakan login FB Anda (kiri atas) untuk vote.',
+		'vote_must_login' => 'Silakan login FB Anda (kanan atas) untuk vote.',
 		'vote_not_allowed' => 'Vote ini tidak diperbolehkan',
 		'vote_up_popup' => 'Klik untuk vote naik',
 		'voted_down_popup' => 'Anda telah vote turun ini - klik untuk menghapus vote',

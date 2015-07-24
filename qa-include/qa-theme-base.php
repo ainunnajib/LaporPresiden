@@ -1718,12 +1718,14 @@ class qa_html_theme_base
 	public function q_item_main($q_item)
 	{
 		$this->output('<div class="ux-item-main">');
+		$this->output('<div class="ux-item-div">');
 		$this->view_count($q_item);
 		$this->post_avatar_meta($q_item, 'ux-item');
 		$this->q_item_title($q_item);
 		$this->q_item_content($q_item);
 		$this->post_tags($q_item, 'ux-item');
-		$this->output('<div class="ux-item-detil"><a href="'.$q_item['url'].'">Baca Detail atau Beri Tanggapan dan Komentar <i class="fa fa-chevron-right"></i></a></div>');
+		$this->output('</div>');
+		$this->output('<div class="ux-item-detil"><a href="'.$q_item['url'].'"><div>Baca Detail atau Beri Tanggapan dan Komentar <i class="fa fa-chevron-right"></i></div></a></div>');
 		$this->q_item_buttons($q_item);
 		$this->output('</div>');
 	}

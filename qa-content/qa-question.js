@@ -307,8 +307,8 @@ function qa_statuslapor(trackingid){
 	window.open('https://www.lapor.go.id/pengaduan/'+trackingid);
 	return false;
 }
-/*$(document).ready(function(){
-	$("#rightPanel").hide();
+$(document).ready(function(){
+	/*$("#rightPanel").hide();
 	$(".sub-nav").hide();
-	$("#middlePanel").attr("class","col-md-9");
-});*/
+	$("#middlePanel").attr("class","col-md-9");*/
+});

@@ -48,34 +48,35 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 		function mainTop(){
 			$this->output('<div id="createNewAsk" class="row">', '');
 				$this->output('<div class="col-md-12">', '');
-					$headingcontent='<div class="row">
-										<div class="col-md-8"><h3 style="padding:0px;margin:5px;">Ayo berpartisipasi</h3></div>
-										<div class="col-md-4">
-											<a class="btn btn-default btn-block" href="/ask"><i class="fa fa-pencil-square-o"></i> Lapor</a>
+					$headingcontent='   <div class="alert alert-transparent">Silahkan cari laporan yang sama sebelum membuat laporan baru.</div>
+										<div class="row">
+											<div class="col-md-12">
+												  <div class="sidebar-search">
+													   <form method="get" action="'.qa_path_html('search').'">
+															<div class="input-group custom-search-form">								
+																<input type="text" name="q" class="form-control" placeholder="Cari Laporan">
+																<span class="input-group-btn">
+																	<button class="btn btn-default" type="submit">
+																		<i class="fa fa-search"></i>
+																	</button>								
+																</span>
+															</div>
+														</form>
+												  </div>
+											</div>
 										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-12">
-											  <div class="sidebar-search" style="padding-top:10px;">
-												   <form method="get" action="'.qa_path_html('search').'">
-														<div class="input-group custom-search-form">								
-															<input type="text" name="q" class="form-control" placeholder="Cari Laporan">
-															<span class="input-group-btn">
-																<button class="btn btn-default" type="submit">
-																	<i class="fa fa-search"></i>
-																</button>								
-															</span>
-														</div>
-													</form>
-											  </div>
-										</div>
-									</div>';
+										<div class="row" style="padding-top:10px;">
+											<div class="col-xs-8"><h3>Ayo berpartisipasi</h3></div>
+											<div class="col-xs-4">
+												<a class="btn btn-default btn-block" href="/ask"><i class="fa fa-pencil-square-o"></i> Lapor</a>
+											</div>
+										</div>';
 					$this->panel("panel-red",true,$headingcontent,false,"",false,"");
 				$this->output('</div>');
 			$this->output('</div>');
 		}
 		function facebookpage(){
-			$this->output('<div id="facebookpage" class="row" style="padding-bottom:20px;text-align:center;">');
+			$this->output('<div id="facebookpage" class="row">');
 				$this->output('<div class="col-xs-12">', '');
 				$this->output('<div id="fb-root"></div>
 								<script>(function(d, s, id) {
@@ -85,7 +86,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 								  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=814638221947104";
 								  fjs.parentNode.insertBefore(js, fjs);
 								}(document, "script", "facebook-jssdk"));</script>');
-				$this->output('<div class="fb-page" style="width:100%;" data-href="https://www.facebook.com/LaporPresiden" data-width="100%" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/LaporPresiden"><a href="https://www.facebook.com/LaporPresiden">Lapor Presiden</a></blockquote></div></div>');
+				$this->output('<div class="fb-page" style="width:282px;" data-href="https://www.facebook.com/LaporPresiden" data-width="100%" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/LaporPresiden"><a href="https://www.facebook.com/LaporPresiden">Lapor Presiden</a></blockquote></div></div>');
 				$this->output('</div>');
 			$this->output('</div>');
 		}
@@ -168,8 +169,8 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 					$this->output('</DIV>', '');
 					$this->output('<div id="navbar" class="navbar-collapse collapse">', '');
 						$this->output('<ul class="nav navbar-top-links navbar-right" id="side-menu2">', '');
-							$this->nav2('user');
 							$this->nav2('main',null,2);
+							$this->nav2('user');
 						$this->output('</ul>', '');
 					$this->output('</DIV>', '');
 				$this->output('</DIV>', '');	
@@ -385,6 +386,12 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
                </div>
             </div>');
             $this->output('</div>');
+            $this->output('<!-- child of the body tag -->
+							<span id="top-link-block" class="hidden">
+								<a href="#top" class="well well-sm">
+									<i class="fa fa-chevron-up"></i> Gulir ke Atas
+								</a>
+							</span><!-- /top-link-block -->');
 			$this->output('<LINK REL="stylesheet" TYPE="text/css" HREF="'.$this->rooturl.'bower_components/font-awesome/css/font-awesome.min.css'.'"/>');
 			$this->output('<script src="'.$this->rooturl.'bower_components/jquery/dist/jquery.min.js"></script>');
 			$this->output('<script src="'.$this->rooturl.'bower_components/bootstrap/dist/js/bootstrap.min.js"></script>');

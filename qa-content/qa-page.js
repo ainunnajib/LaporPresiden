@@ -238,40 +238,47 @@ $(document).ready(function(){
     var globalheight=20;
     if ($(".jumbotron").length>0){
     	globalheight=420;
-    	$("#wrapper").css("margin-top","395px");
+    }else{
+        $("#wrapper").css("margin-top","0px");
     }
-    var width=0;
     var setScroll=function(){
+        var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
         var scroll = $(window).scrollTop();
-        if (scroll<=globalheight && width>768){
-            $("#leftPanel").children().css("position","static");
-            if ($(".jumbotron").length>0){
-				var y=40;
-				var yy=35+(y*(scroll/globalheight));
-				if (yy>(y+35)){
-				    yy=y+35;
+        
+        if (width>992){
+			if (scroll<=globalheight){
+				$("#leftPanel").children().css("position","static");
+				if ($(".jumbotron").length>0){
+					var y=40;
+					var yy=35+(y*(scroll/globalheight));
+					if (yy>(y+35)){
+						yy=y+35;
+					}
+					$(".jumbotron").css("background-position","0% "+yy+"%");
 				}
-				$(".jumbotron").css("background-position","0% "+yy+"%");
-            }
-        }else{
-           if (scroll<=($(document).height()-680) && width>768){
-              $("#leftPanel").children().show();
-           	  $("#leftPanel").children().css("position","fixed");
-           	  $("#leftPanel").children().css("top","52px");
-           }else{
-              $("#leftPanel").children().css("position","static");
-              $("#leftPanel").children().hide();
-           }
+			}else{
+			   if (scroll<=($(document).height()-680)){
+				  $("#leftPanel").children().css("position","fixed");
+				  $("#leftPanel").children().css("top","52px");
+			   }else{
+				  $("#leftPanel").children().css("position","static");
+			   }
+			}
+			if (scroll>=1560){
+			    if (scroll<=($(document).height()-830)){
+					$("#facebookpage").css("position","fixed");
+					$("#facebookpage").css("top","52px");
+				}else{
+					$("#facebookpage").css("position","static");
+				}
+			}else{
+				$("#facebookpage").css("position","static");
+			}
+        }else {
+           $("#leftPanel").children().css("position","static");
+           $("#facebookpage").css("position","static");
         }
-        if (scroll>=1560 && width>768){
-            $("#facebookpage").show();
-            $("#facebookpage").css("position","fixed");
-           	$("#facebookpage").css("top","52px");
-           	$("#facebookpage").css("width","100%");
-        }else{
-            $("#facebookpage").css("position","static");
-            $("#facebookpage").css("width","auto");
-        }
+        
     }
    $(window).bind("load resize", function() {
         topOffset = 10;
@@ -290,16 +297,24 @@ $(document).ready(function(){
             $("#navbar").css("max-height",(height) + "px");
         }
          
-        $(".fb-page").children().css( "width", "100%" );
-        $(".fb-page").children().children().css( "width", "100%" );
+        //$(".fb-page").children().css( "width", "100%" );
+        //$(".fb-page").children().children().css( "width", "100%" );
         setScroll();
     });
     $(window).scroll(function (event) {
         setScroll();
     });
-    if (width>768){
-        $("#leftPanel").children().show();
-    }
+    if ( ($(window).height() + 100) < $(document).height() ) {
+		$('#top-link-block').removeClass('hidden').affix({
+			// how far to scroll down before link "slides" into view
+			offset: {top:100}
+		});
+	}
+	$('#top-link-block').click(function(){
+		$('html,body').animate({scrollTop:0},'slow');
+		return false;
+	});
+    
     
    hybrid_progressHide();	
 		var redirectToNewApps = {

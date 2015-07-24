@@ -53,6 +53,7 @@ a {
     padding-top:30px;
     background-color: #f2f2f2;
     padding-bottom:30px;
+    margin-top:395px;
 }
 #leftPanel{
    padding:0px;
@@ -61,6 +62,39 @@ a {
 #createNewAsk{
   z-index:2000;
 }
+#createNewAsk h3{
+   padding:0px;
+   margin:5px;
+}
+#facebookpage{
+	padding-bottom:20px;
+	text-align:center;
+}
+.alert-transparent{
+	color: white;
+    background-color: transparent;
+    border:0px;
+    padding:5px 0px;
+    margin:0px;
+    font-size:13pt;
+}
+#top-link-block.affix-top {
+    position: absolute; /* allows it to "slide" up into view */
+    bottom: -82px;
+    right: 15px;
+}
+#top-link-block.affix {
+    position: fixed; /* keeps it on the bottom once in view */
+    bottom: 5px;
+    right: 15px;
+}
+#top-link-block a{
+    text-decoration:none;
+    background-color: #d32028;
+    border: 0px;
+    color:white;
+}
+
 .ux-main h1,.ux-title h1{
 	font-size:18pt;
 	text-transform: capitalize;
@@ -265,14 +299,24 @@ color:#337ab7;
 	padding-left:20px;
 	padding-right:20px;
     background-color: #f5f5f5;
-    border: 1px solid;
-    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
-    border-radius: 4px;
+}
+.ux-c-form{
+	border-top: 1px solid #ddd;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
 }
 .ux-c-form h2, .ux-a-form h2{
 	margin:0px;
 	padding-top:20px;
 	padding-bottom:20px;
+	font-size:12pt;
+}
+.ux-a-form{
+	margin-top:20px;
+	margin-bottom:20px;
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 4px;
 }
 
 .ux-view-meta,.qa-a-item-meta,.ux-c-item-meta{
@@ -323,19 +367,27 @@ color:#337ab7;
 .ux-item-title>a, .ux-item-avatar-meta a, .ux-item-detil a, .ux-view-avatar-meta a{
 text-decoration:none;
 }
-.ux-item-detil i{
-font-size:8pt;
-}
-.ux-list .ux-item-main{
-	padding: 20px;
+
+.ux-list .ux-item-div{
+	padding: 0px 20px;
     padding-top: 2px;
 }
+
 .ux-item-detil{
-width:100%;
-text-align:center;
-padding:10px 0px;
-font-size:10pt;
-margin-top:20px;
+	width:100%;
+	text-align:left;
+	padding:10px 20px;
+	font-size:13pt;
+	margin-top:50px;
+	background-color: #f5f5f5;
+    border-top:1px solid #ddd;
+    border-bottom-left-radius:4px;
+    border-bottom-right-radius:4px;
+}
+.ux-item-detil i{
+	float:right;
+	font-size:10pt;
+	padding-top:8px;
 }
 .ux-item-avatar-meta i{
 color:#333;
@@ -385,6 +437,7 @@ padding:0px 15px;
   color: #888;
   line-height: 38px;
   padding: 15px;
+  min-height:100px;
 }
 .social-icons-footer-bottom {
     float: right;
@@ -494,6 +547,7 @@ header .social li.rss:hover,footer .social li.rss:hover {
 .qa-page-links,.qa-form-tall-buttons,.qa-form-wide-buttons{
 padding-top:35px;
 float:right;
+padding-bottom:20px;
 }
 .qa-form-tall-data{
 padding-bottom:10px;
@@ -606,6 +660,7 @@ margin-top:5px;
 }
 .sub-nav>li>a{
     padding: 12px 0px;
+    font-size:11pt;
 }
 .sub-nav>li>a:hover{
 	color:#d32028;
@@ -733,7 +788,7 @@ width:100%;
 width: 100%;
 overflow:hidden;
 min-height:32px;
-font-size:16pt;
+font-size:14pt;
 border: 1px solid #ccc;
 border-radius: 4px;
 padding:0px 10px;
@@ -741,7 +796,7 @@ padding:0px 10px;
 .qa-form-tall-label {
 	color:#253845;
 	padding:12px 8px 2px 8px;
-	font-size:16pt;
+	font-size:14pt;
 }
 .qa-form-tall-label>label, .qa-form-tall-label label{
 font-weight:400;
@@ -1244,12 +1299,22 @@ table.dataTable thead .sorting:after {
      }
 }
 @media(max-width:767px) {   
+   .jumbotron{
+	  background-position-x:30%;
+	  height:220px;
+	}
+	#wrapper {
+	margin-top:220px;
+	}
    .sidebar {
      display:none;
    }
    #logo3{
      max-height:55px;
    }
+   #createNewAsk h3{
+	   font-size:17pt;
+	}
    .ux-item-title,.ux-item-tags,.ux-item-avatar-meta{
 	   text-align: center;
 	   width: 100%;
@@ -1277,8 +1342,12 @@ table.dataTable thead .sorting:after {
       width:35px;
       height:35px;
    }
-   
-   
+   .ux-item-detil i{
+		float:none;
+	}
+	.ux-item-detil{
+		text-align:center;
+	}
 }
 
 

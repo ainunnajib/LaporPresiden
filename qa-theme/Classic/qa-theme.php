@@ -57,7 +57,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 													  <div class="sidebar-search">
 														   <form method="get" action="'.qa_path_html('search').'">
 																<div class="input-group custom-search-form">								
-																	<input type="text" name="q" class="form-control" placeholder="Cari Laporan">
+																	<input type="text" name="q" id="q" class="form-control" placeholder="Cari Laporan">
 																	<span class="input-group-btn">
 																		<button class="btn btn-default" type="submit">
 																			<i class="fa fa-search"></i>
@@ -106,10 +106,10 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 			$this->output('<div id="wrapper" >', '');
 			$this->output('<div class="container">', '');
 			$this->output('<div class="row">', '');
-				$this->output('<div class="col-md-3" id="leftPanel">', '');
+				$this->output('<div class="col-md-2" id="leftPanel">', '');
 					$this->nav2('main');		
 				$this->output('</div>');
-				$this->output('<div class="col-md-6" id="middlePanel">', '');
+				$this->output('<div class="col-md-7" id="middlePanel">', '');
 				    if ($isqlist){
 				       $this->mainTop();
 				    }
@@ -392,7 +392,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
             $this->output('<!-- child of the body tag -->
 							<span id="top-link-block" class="hidden">
 								<a href="#top" class="well well-sm">
-									<i class="fa fa-chevron-up"></i> Gulir ke Atas
+									<i class="fa fa-chevron-up"></i> Gulir ke Atas untuk Mencari atau Membuat Laporan
 								</a>
 							</span><!-- /top-link-block -->');
 			$this->output('<LINK REL="stylesheet" TYPE="text/css" HREF="'.$this->rooturl.'bower_components/font-awesome/css/font-awesome.min.css'.'"/>');

@@ -309,14 +309,19 @@ $(document).ready(function(){
     $(window).scroll(function (event) {
         setScroll();
     });
-    if ( ($(window).height() + 100) < $(document).height() ) {
+    if ( ($(window).height() + 500) < $(document).height() ) {
 		$('#top-link-block').removeClass('hidden').affix({
 			// how far to scroll down before link "slides" into view
-			offset: {top:100}
+			offset: {top:500}
 		});
 	}
 	$('#top-link-block').click(function(){
-		$('html,body').animate({scrollTop:0},'slow');
+	    var to=20;
+	    if ($(".jumbotron").length>0){
+	        to=150;
+	    }
+		$('html,body').animate({scrollTop:to},'slow');
+		$("#q").focus();
 		return false;
 	});
     

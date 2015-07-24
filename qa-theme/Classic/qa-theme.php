@@ -49,24 +49,27 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 			$this->output('<div id="createNewAsk" class="row">', '');
 				$this->output('<div class="col-md-12">', '');
 					$headingcontent='   <div class="alert alert-transparent">Silahkan cari laporan yang sama sebelum membuat laporan baru.</div>
-										<div class="row">
-											<div class="col-md-12">
-												  <div class="sidebar-search">
-													   <form method="get" action="'.qa_path_html('search').'">
-															<div class="input-group custom-search-form">								
-																<input type="text" name="q" class="form-control" placeholder="Cari Laporan">
-																<span class="input-group-btn">
-																	<button class="btn btn-default" type="submit">
-																		<i class="fa fa-search"></i>
-																	</button>								
-																</span>
-															</div>
-														</form>
-												  </div>
-											</div>
-										</div>
+										
 										<div class="row" style="padding-top:10px;">
-											<div class="col-xs-8"><h3>Ayo berpartisipasi</h3></div>
+											<div class="col-xs-8">
+											<div class="row">
+												<div class="col-md-12">
+													  <div class="sidebar-search">
+														   <form method="get" action="'.qa_path_html('search').'">
+																<div class="input-group custom-search-form">								
+																	<input type="text" name="q" class="form-control" placeholder="Cari Laporan">
+																	<span class="input-group-btn">
+																		<button class="btn btn-default" type="submit">
+																			<i class="fa fa-search"></i>
+																		</button>								
+																	</span>
+																</div>
+															</form>
+													  </div>
+												</div>
+											</div>
+											
+											</div>
 											<div class="col-xs-4">
 												<a class="btn btn-default btn-block" href="/ask"><i class="fa fa-pencil-square-o"></i> Lapor</a>
 											</div>

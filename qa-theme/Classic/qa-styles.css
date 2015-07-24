@@ -37,6 +37,7 @@ a {
   width:100%;
   position:fixed;
   z-index:-10;
+  display:none;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (-webkit-min-device-pixel-ratio: 144), (min-resolution: 144dppx){
 .jumbotron{
@@ -77,6 +78,11 @@ a {
     padding:5px 0px;
     margin:0px;
     font-size:13pt;
+}
+.alert-tag {
+    color: #666;
+    background-color: #f5f5f5;
+    border-color: #e1e2e3;
 }
 #top-link-block.affix-top {
     position: absolute; /* allows it to "slide" up into view */
@@ -386,7 +392,6 @@ text-decoration:none;
 }
 .ux-item-detil i{
 	float:right;
-	font-size:10pt;
 	padding-top:8px;
 }
 .ux-item-avatar-meta i{
@@ -578,11 +583,16 @@ border:1px solid #ddd;
 padding:10px;
 color:#333;
 }
-.qa-top-tags-count{
-
+.qa-top-tags-count,.qa-top-users-score{
+  background-color: aliceblue;
 }
-
-.qa-top-users-label,.qa-top-tags-label{
+.qa-top-tags-label{
+   background-color: #f6f7f8;
+}
+.qa-top-tags-table .alert-tag{
+border:0px;
+}
+.qa-top-users-label{
 background-color: #f5f5f5;
 }
 .qa-top-users-spacer,.qa-top-tags-spacer{

@@ -235,9 +235,14 @@ $(document).ready(function(){
         selector: "[data-toggle=tooltip]",
         container: "body"
     })
-    var globalheight=20;
+    var globalheight=20; 
+    if (window.location.href.toString().split(window.location.host)[1]!=="/" && 
+        (window.location.href.toString().split(window.location.host)[1]).indexOf("/question")<0){
+    	$(".jumbotron").remove();
+    }
     if ($(".jumbotron").length>0){
     	globalheight=420;
+    	$(".jumbotron").show();
     }else{
         $("#wrapper").css("margin-top","0px");
     }

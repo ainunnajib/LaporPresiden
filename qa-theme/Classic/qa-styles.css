@@ -301,14 +301,14 @@ margin-left:-2px;
 .ux-netvote-count-data, .ux-netvote-count-pad{
 display:block;
 }
-.ux-vote-one-button,.ux-vote-first-button, .ux-vote-second-button{
+.ux-vote-one-button,.ux-vote-first-button, .ux-vote-second-button,.ux-voted-down-button{
 border:0px;
 background-color: transparent;
 padding:0px;
 margin:0px;
 color:#333;
 }
-.ux-vote-first-button{
+.ux-vote-first-button,.ux-voted-up-button{
 color:#d32028;
 }
 

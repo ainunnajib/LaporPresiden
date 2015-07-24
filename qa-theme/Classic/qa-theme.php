@@ -165,7 +165,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>
-								  </button>', '');
+								  </button><a class="search navbar-toggle collapsed" href="#" data-toggle="modal" data-target="#modalSearch"><i class="fa fa-pencil-square-o"></i></a>', '');
 				    	$this->output('<a class="navbar-brand" style="padding-left:0px;padding-top:0px;z-index:1000000;" href="/">
 										 <img src="'.$logourl.'" id="logo3" border="0" alt="'.qa_html(qa_opt('site_title')).'" style="height:'.$logoheight.'px;">
 									  </a>', '');
@@ -173,6 +173,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 					$this->output('<div id="navbar" class="navbar-collapse collapse">', '');
 						$this->output('<ul class="nav navbar-top-links navbar-right" id="side-menu2">', '');
 							$this->nav2('main',null,2);
+							$this->output('<li class="dropdown small-hide"><a class="search" href="#" data-toggle="modal" data-target="#modalSearch"><i class="fa fa-pencil-square-o"></i></a></li>', '');
 							$this->nav2('user');
 						$this->output('</ul>', '');
 					$this->output('</DIV>', '');
@@ -392,9 +393,53 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
             $this->output('<!-- child of the body tag -->
 							<span id="top-link-block" class="hidden">
 								<a href="#top" class="well well-sm">
-									<i class="fa fa-chevron-up"></i> Gulir ke Atas untuk Mencari atau Membuat Laporan
+									<i class="fa fa-chevron-up"></i> Gulir ke Atas
 								</a>
 							</span><!-- /top-link-block -->');
+			
+			$headingcontent='<div class="alert alert-transparent">Silahkan cari laporan yang sama sebelum membuat laporan baru.</div>
+										<div class="row" style="padding-top:10px;">
+											<div class="col-xs-8">
+											<div class="row">
+												<div class="col-md-12">
+													  <div class="sidebar-search">
+														   <form method="get" action="'.qa_path_html('search').'">
+																<div class="input-group custom-search-form">								
+																	<input type="text" name="q" id="q1" class="form-control" placeholder="Cari Laporan">
+																	<span class="input-group-btn">
+																		<button class="btn btn-default" type="submit">
+																			<i class="fa fa-search"></i>
+																		</button>								
+																	</span>
+																</div>
+															</form>
+													  </div>
+												</div>
+											</div>
+											
+											</div>
+											<div class="col-xs-4">
+												<a class="btn btn-default btn-block" href="/ask"><i class="fa fa-pencil-square-o"></i> Lapor</a>
+											</div>
+										</div>';
+			
+			
+			$this->output('
+							<div class="modal fade" id="modalSearch">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-header">
+								      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								  </div>
+								  <div class="modal-body">');
+		   $this->panel("panel-red",true,$headingcontent,false,"",false,"");
+		   $this->output('</div>
+								</div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+							</div><!-- /.modal -->');
+			
+			
+			
 			$this->output('<LINK REL="stylesheet" TYPE="text/css" HREF="'.$this->rooturl.'bower_components/font-awesome/css/font-awesome.min.css'.'"/>');
 			$this->output('<script src="'.$this->rooturl.'bower_components/jquery/dist/jquery.min.js"></script>');
 			$this->output('<script src="'.$this->rooturl.'bower_components/bootstrap/dist/js/bootstrap.min.js"></script>');

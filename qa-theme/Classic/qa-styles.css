@@ -73,6 +73,25 @@ a {
 	padding-bottom:20px;
 	text-align:center;
 }
+#modalSearch .modal-content, #modalSearch .modal-header{
+background-color:transparent;
+border:0px;
+box-shadow:none;
+}
+#modalSearch .modal-content{
+margin-top:90px;
+}
+#modalSearch  .close{
+	opacity: 1;
+    color: white;
+    left: 20px;
+    position: relative;
+    background-color: #d32028;
+    padding: 6px;
+    padding-top: 0px;
+    margin: 0px;
+    border-radius: 50%;
+}
 .alert-transparent{
 	color: white;
     background-color: transparent;
@@ -1222,6 +1241,19 @@ table.dataTable thead .sorting:after {
    border-color: white;
 }
 
+.navbar-header a{
+    border: 0px;
+    font-size: 14pt;
+    margin-bottom:0px;
+    margin-top:0px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.navbar-header a:hover,
+.navbar-header button:hover,
+.navbar-header a:focus,
+.navbar-header button:focus,
 .panel-red a:hover,
 .panel-red button:hover,
 .panel-red a:focus,
@@ -1248,10 +1280,6 @@ table.dataTable thead .sorting:after {
 .panel-yellow a:hover {
     color: #df8a13;
 }
-
-
-
-
 
 
 @media(min-width:768px) {

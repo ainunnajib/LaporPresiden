@@ -316,11 +316,8 @@ $(document).ready(function(){
 		});
 	}
 	$('#top-link-block').click(function(){
-	    var to=20;
-	    if ($(".jumbotron").length>0){
-	        to=150;
-	    }
-		$('html,body').animate({scrollTop:to},'slow');
+	    var to=0;
+	    $('html,body').animate({scrollTop:to},'slow');
 		$("#q").focus();
 		return false;
 	});

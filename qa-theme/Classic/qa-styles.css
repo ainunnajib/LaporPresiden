@@ -899,8 +899,8 @@ header .social li.rss:hover,footer .social li.rss:hover {
 .qa-form-tall-note a:hover {
     color:#396E63;
 }
-.navbar-brand{
-    padding: 2px 20px;
+.navbar-header a.navbar-brand{
+    padding: 0px;
     margin: 0px;
 }
 .navbar-red{

@@ -96,7 +96,14 @@ a {
    border-radius: 50%;
    font-weight: 400;
 }
-
+.navbar-header a{
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-right: 7px;
+}
 .alert-transparent{
     color: white;
     background-color: transparent;
@@ -1254,12 +1261,7 @@ table.dataTable thead .sorting:after {
     border-color: white;
 }
 
-.navbar-header a{
-    border: 0px;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    margin-right:6px;
-}
+
 .navbar-header a:hover,
 .navbar-header button:hover,
 .navbar-header a:focus,
@@ -1415,6 +1417,6 @@ table.dataTable thead .sorting:after {
         display:none;
     }
     #modalSearch  .close{
-	   padding: 6px;
-	   }
+	   display:none;
+	}
 }

@@ -91,6 +91,8 @@ a {
     padding-top: 0px;
     margin: 0px;
     border-radius: 50%;
+    text-shadow: none;
+    font-weight: 200;
 }
 .alert-transparent{
     color: white;
@@ -1247,13 +1249,9 @@ table.dataTable thead .sorting:after {
 
 .navbar-header a{
     border: 0px;
-    font-size: 14pt;
-    margin-bottom:0px;
-    margin-top:0px;
-    padding-bottom: 10px;
-    padding-top: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
 }
-
 .navbar-header a:hover,
 .navbar-header button:hover,
 .navbar-header a:focus,

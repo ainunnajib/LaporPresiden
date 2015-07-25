@@ -165,7 +165,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>
-								  </button><a class="search navbar-toggle collapsed" href="#" data-toggle="modal" data-target="#modalSearch"><i class="fa fa-pencil-square-o"></i></a>', '');
+								  </button><a class="search navbar-toggle collapsed" href="#" data-toggle="modal" data-target="#modalSearch">Cari/ Lapor</a>', '');
 				    	$this->output('<a class="navbar-brand" style="padding-left:0px;padding-top:0px;z-index:1000000;" href="/">
 										 <img src="'.$logourl.'" id="logo3" border="0" alt="'.qa_html(qa_opt('site_title')).'" style="height:'.$logoheight.'px;">
 									  </a>', '');
@@ -173,7 +173,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 					$this->output('<div id="navbar" class="navbar-collapse collapse">', '');
 						$this->output('<ul class="nav navbar-top-links navbar-right" id="side-menu2">', '');
 							$this->nav2('main',null,2);
-							$this->output('<li class="dropdown small-hide"><a class="search" href="#" data-toggle="modal" data-target="#modalSearch"><i class="fa fa-pencil-square-o"></i></a></li>', '');
+							$this->output('<li class="dropdown small-hide"><a class="search" href="#" data-toggle="modal" data-target="#modalSearch">Cari/ Lapor</a></li>', '');
 							$this->nav2('user');
 						$this->output('</ul>', '');
 					$this->output('</DIV>', '');

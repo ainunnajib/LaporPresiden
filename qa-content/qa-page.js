@@ -249,18 +249,23 @@ $(document).ready(function(){
     var setScroll=function(){
         var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
         var scroll = $(window).scrollTop();
-        
+        if ($(".jumbotron").length>0){
+			var y=40;
+			if (width>768 && width<=992){
+			    y=50;
+			} else if (width <= 768){
+			    y=60;
+			}
+			var yy=35+(y*(scroll/globalheight));
+			if (yy>(y+35)){
+				yy=y+35;
+			}
+			$(".jumbotron").css("background-position","0% "+yy+"%");
+		}
         if (width>992){
 			if (scroll<=globalheight){
 				$("#leftPanel").children().css("position","static");
-				if ($(".jumbotron").length>0){
-					var y=40;
-					var yy=35+(y*(scroll/globalheight));
-					if (yy>(y+35)){
-						yy=y+35;
-					}
-					$(".jumbotron").css("background-position","0% "+yy+"%");
-				}
+				
 			}else{
 			   if (scroll<=($(document).height()-680)){
 				  $("#leftPanel").children().css("position","fixed");

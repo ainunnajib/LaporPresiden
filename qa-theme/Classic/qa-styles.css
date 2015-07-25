@@ -104,6 +104,12 @@ a {
     padding-top: 15px;
     padding-bottom: 15px;
     margin-right: 7px;
+    text-decoration:none;
+}
+.navbar-header a.search:hover{
+    background-color:#eee;
+    color:#d32028;
+    border-radius:0px;
 }
 .alert-transparent{
     color: white;

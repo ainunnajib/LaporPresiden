@@ -74,26 +74,29 @@ a {
     text-align:center;
 }
 #modalSearch .modal-content, #modalSearch .modal-header{
-    background-color:transparent;
-    border:0px;
-    box-shadow:none;
+    background-color: transparent;
+    border: 0px;
+    box-shadow: none;
+    padding: 0px;
+    text-shadow: none;
 }
 #modalSearch .modal-content{
     margin-top:90px;
+    margin-left:-15px;
 }
 #modalSearch  .close{
-    opacity: 1;
-    color: white;
-    left: 20px;
-    position: relative;
-    background-color: #d32028;
-    padding: 6px;
-    padding-top: 0px;
-    margin: 0px;
-    border-radius: 50%;
-    text-shadow: none;
-    font-weight: 200;
+   opacity: 1;
+   margin:0px;
+   padding: 6px;
+   padding-top: 0px;
+   text-shadow: none;
+   box-shadow: none;
+   color: white;
+   background-color: #d32028; 
+   border-radius: 50%;
+   font-weight: 400;
 }
+
 .alert-transparent{
     color: white;
     background-color: transparent;
@@ -907,9 +910,13 @@ header .social li.rss:hover,footer .social li.rss:hover {
 .navbar-toggle, .navbar-toggle .icon-bar, .navbar-toggle-custom, .navbar-toggle-custom .icon-bar{
     color:white;
     border-color:white; 
+    padding-left: 6px;
+    padding-right: 6px;
 }
 .navbar-toggle .icon-bar, .navbar-toggle-custom .icon-bar{
-    background-color:white;
+    background-color: white;
+    width: 15px;
+    
 }
 
 .navbar-top-links {
@@ -1251,6 +1258,7 @@ table.dataTable thead .sorting:after {
     border: 0px;
     padding-top: 6px;
     padding-bottom: 6px;
+    margin-right:6px;
 }
 .navbar-header a:hover,
 .navbar-header button:hover,
@@ -1406,4 +1414,7 @@ table.dataTable thead .sorting:after {
     .ux-a-selected-text{
         display:none;
     }
+    #modalSearch  .close{
+	   padding: 6px;
+	   }
 }

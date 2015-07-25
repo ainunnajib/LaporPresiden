@@ -322,9 +322,7 @@ $(document).ready(function(){
 		});
 	}
 	$('#top-link-block').click(function(){
-	    var to=0;
-	    $('html,body').animate({scrollTop:to},'slow');
-		$("#q").focus();
+	    $('html,body').animate({scrollTop:0},'slow');
 		return false;
 	});
     

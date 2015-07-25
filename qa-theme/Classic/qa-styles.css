@@ -138,7 +138,7 @@ a {
     font-size:18pt;
     text-transform: capitalize;
 }
-.ux-main h2,.ux-title h2{
+.ux-main h2,.ux-title h2,.ux-main>h2,.ux-title>h2,.ux-main>h2>a,.ux-title>h2>a{
     font-size:16pt;
     text-transform: capitalize;
 }
@@ -146,7 +146,7 @@ a {
 .ux-title h1{
     margin-top:0px;
 }
-.ux-title h1 a,.ux-main h1 a,.ux-title h2 a,.ux-main h2 a{
+.ux-title h1 a,.ux-main h1 a,.ux-title h2 a,.ux-main h2 a,.ux-main>h2>a,.ux-title>h2>a{
     text-decoration:none;
 }
 .ux-title {

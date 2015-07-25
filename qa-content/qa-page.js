@@ -252,9 +252,10 @@ $(document).ready(function(){
         if ($(".jumbotron").length>0){
 			var y=40;
 			if (width>768 && width<=992){
-			    y=50;
-			} else if (width <= 768){
-			    y=60;
+			    y=110;
+			}
+			if (width <= 768){
+			    y=240;
 			}
 			var yy=35+(y*(scroll/globalheight));
 			if (yy>(y+35)){

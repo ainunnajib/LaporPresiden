@@ -99,10 +99,8 @@ a {
 }
 .navbar-header a{
     border: 0px;
-    padding: 0px;
+    padding: 15px 5px;
     margin: 0px;
-    padding-top: 15px;
-    padding-bottom: 15px;
     margin-right: 7px;
     text-decoration:none;
 }

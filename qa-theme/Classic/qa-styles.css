@@ -40,16 +40,16 @@ a {
     position:fixed;
     z-index:-10;
     display:none;
+    transition:background-position 1s ease 0.3s;
+	-webkit-transition: background-position 1s ease 0.3s;
+	-moz-transition: background-position 15s ease 0.3s;
+	-o-transition: background-position 1s ease 0.3s;
 }
 /*@media only screen and (-webkit-min-device-pixel-ratio: 1.5), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (-webkit-min-device-pixel-ratio: 144), (min-resolution: 144dppx){
 */
 @media only screen and (-webkit-min-device-pixel-ratio: 2), not all, not all, not all, only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) { 
     .jumbotron{
         background-image: url("/assets/img/jokowi-2.png");
-        /*transition:background-position 0.5s ease 0.2s;
-        -webkit-transition: background-position 0.5s ease 0.2s;
-        -moz-transition: background-position 0.5s ease 0.2s;
-        -o-transition: background-position 0.5s ease 0.2s;*/
     }
 }
 #wrapper {

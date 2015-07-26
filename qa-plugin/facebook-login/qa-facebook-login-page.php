@@ -108,7 +108,6 @@ class qa_facebook_login_page
 					} catch (FacebookApiException $e) {
 					  echo $e->getMessage();
 					}
-
 				} else {
 					if ($request=='facebook-login') {
 					   qa_redirect_raw($facebook->getLoginUrl(array('redirect_uri' => $tourl)));

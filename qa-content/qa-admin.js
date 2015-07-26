@@ -145,3 +145,7 @@ function qa_version_check(uri, version, elem)
 		}
 	);
 }
+$(document).ready(function(){
+$("#rightPanel").hide();
+$("#middlePanel").attr("class","col-md-9");
+});

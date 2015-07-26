@@ -276,7 +276,6 @@ function qa_scroll_page_to(scroll)
 }
 
 function qa_lapor(id,elm){
-	
 	$(elm).hide();
 	$("#SedangDiprosesBtn").show();
 	$.ajax({
@@ -308,3 +307,8 @@ function qa_statuslapor(trackingid){
 	window.open('https://www.lapor.go.id/pengaduan/'+trackingid);
 	return false;
 }
+$(document).ready(function(){
+	/*$("#rightPanel").hide();
+	$(".sub-nav").hide();
+	$("#middlePanel").attr("class","col-md-9");*/
+});

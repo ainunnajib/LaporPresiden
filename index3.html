@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Lapor Presiden</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../qa-theme/Classic/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="../qa-theme/Classic/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../qa-theme/Classic/dist/css/classic.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="../qa-theme/Classic/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    
+    
+    
+    
+        <!-- Fixed navbar -->
+		<nav class="navbar navbar-red navbar-fixed-top">
+		  <div class="container">
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" style="padding-left:5px;padding-top:0px;z-index:1000000;" href="#">
+			     <img src="../assets/img/logo3.png" id="logo3" border="0" alt="Lapor Presiden" style="height:85px;">
+			  </a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+			  <ul class="nav navbar-top-links navbar-right" id="side-menu2">
+				<li class="dropdown">
+                    <a href="#">Halo Nama User</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/updates">Update Saya</a>
+                </li>
+                <li class="dropdown">
+                    <a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Keluar</a>
+                </li>
+                
+                
+                <li class="dropdown small-show">
+                            <a href="#">Laporan<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="../questions">Terbaru</a>
+                                </li>
+                                <li>
+                                    <a href="../questions?sort=hot">Hot!</a>
+                                </li>
+								<li>
+                                    <a href="../questions?sort=votes">Votes Terbanyak</a>
+                                </li>
+								<li>
+                                    <a href="../questions?sort=answers">Tanggapan Terbanyak</a>
+                                </li>
+								<li>
+                                    <a href="../questions?sort=views">Yang Dilihat Terbanyak</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown small-show">
+                            <a href="#">Belum Ditanggapi<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/unanswered">Belum Ada Tanggapan</a>
+                                </li>
+                                <li>
+                                    <a href="/unanswered?by=selected">Belum Ada Tanggapan Dipilih</a>
+                                </li>
+								<li>
+                                    <a href="/unanswered?by=upvotes">Belum Ada Tanggapan Di-Vote Naik</a>
+                                </li>
+                            </ul>
+                            
+                        </li>
+                        <li class="dropdown small-show">
+							<a href="/tags">Label</a>
+						</li>
+						<li class="dropdown small-show">
+							<a href="/users">Pengguna</a>
+						</li>
+						<li class="dropdown small-show">
+                            <a href="#">Admin<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/admin/general">General</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/emails">Email</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <li class="dropdown small-show" style="margin-right:0px;">
+                            <a href="#">Rilis Bulanan<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/Lapor+Presiden+Mei+2015">Mei 2015</a>
+                                </li>
+                                <li>
+                                    <a href="/rilis-juni-2014">Juni 2015</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                
+			  </ul>
+			</div><!--/.nav-collapse -->
+		  </div>
+		</nav>
+		
+		<nav class="navbar navbar-fixed-top" style="top:50px;height:27px;padding:0px;margin:0px;border-radius:0px;">
+		  <div class="container">
+		  <div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				
+				<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-red" style="height:27px;padding:0px;margin:0px;border-radius:0px;">
+							<div class="panel-heading" style="height:27px;padding:2px;margin:0px;border-radius:0px;">                        
+								<div class="row">
+									<div class="col-md-8">
+									
+									
+										  <div class="row">
+										  <div class="col-md-12">
+											<div class="sidebar-search">
+													   <form method="get" action="../search">
+														<div class="input-group custom-search-form">								
+																<input type="text" name="q" class="form-control" placeholder="Cari Laporan" style="height:22px;">
+																<span class="input-group-btn">
+																<button class="btn btn-default  btn-xs" type="submit">
+																	<i class="fa fa-search"></i>
+																</button>								
+																</span>
+														</div>
+														</form>
+											</div>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<a class="btn btn-default btn-block btn-xs" href="/ask"><i class="fa fa-pencil-square-o"></i> Lapor</a>
+									</div>
+								</div>
+								
+							</div>
+					</div>
+			    </div>				
+			</div>
+				
+				
+			</div>
+			<div class="col-md-3"></div>
+		  </div>
+		  </div>
+		</nav>
+
+        <div id="wrapper">
+
+        <div style="padding:15px;margin-top:90px;">
+        <div class="row">
+        <div class="col-md-3">
+        
+        
+        <div class="sidebar transparent"  role="navigation">
+                <div class="sidebar-nav">
+                    <ul class="nav " id="side-menu">
+						<li>
+                            <a href="#">Laporan<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="../questions">Terbaru</a>
+                                </li>
+                                <li>
+                                    <a href="../questions?sort=hot">Hot!</a>
+                                </li>
+								<li>
+                                    <a href="../questions?sort=votes">Votes Terbanyak</a>
+                                </li>
+								<li>
+                                    <a href="../questions?sort=answers">Tanggapan Terbanyak</a>
+                                </li>
+								<li>
+                                    <a href="../questions?sort=views">Yang Dilihat Terbanyak</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Belum Ditanggapi<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/unanswered">Belum Ada Tanggapan</a>
+                                </li>
+                                <li>
+                                    <a href="/unanswered?by=selected">Belum Ada Tanggapan Dipilih</a>
+                                </li>
+								<li>
+                                    <a href="/unanswered?by=upvotes">Belum Ada Tanggapan Di-Vote Naik</a>
+                                </li>
+                            </ul>
+                            
+                        </li>
+                        <li>
+							<a href="/tags">Label</a>
+						</li>
+						<li>
+							<a href="/users">Pengguna</a>
+						</li>
+						<li>
+                            <a href="#">Admin<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/admin/general">General</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/emails">Email</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Rilis Bulanan<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/Lapor+Presiden+Mei+2015">Mei 2015</a>
+                                </li>
+                                <li>
+                                    <a href="/rilis-juni-2014">Juni 2015</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        
+        
+        
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-red">
+							<div class="panel-heading">                        
+								<div class="row">
+									<div class="col-md-8"><h3 style="padding:0px;margin:5px;">Ayo berpartisipasi</h3></div>
+									<div class="col-md-4">
+										<a class="btn btn-default btn-block" href="/ask"><i class="fa fa-pencil-square-o"></i> Lapor</a>
+									</div>
+								</div>
+								<div class="row">
+								  <div class="col-md-12">
+								  <div class="sidebar-search" style="padding-top:10px;">
+											   <form method="get" action="../search">
+												<div class="input-group custom-search-form">								
+														<input type="text" name="q" class="form-control" placeholder="Cari Laporan">
+														<span class="input-group-btn">
+														<button class="btn btn-default" type="submit">
+															<i class="fa fa-search"></i>
+														</button>								
+												</span>
+												</form>
+												</div>
+									</div>
+								  </div>
+								</div>
+							</div>
+					</div>
+			    </div>				
+			</div>
+			<div class="row">
+													
+													<div class="col-md-12">
+														
+														<ul class="sub-nav">
+															
+															<li class="sub">
+																<a href="../questions" class="qa-sub-link qa-sub-selected">Terbaru</a>
+															</li>
+															<li class="sub">
+																<a href="../questions?sort=hot" class="qa-sub-link">Hot!</a>
+															</li>
+															<li class="sub">
+																<a href="../questions?sort=votes" class="qa-sub-link">Votes Terbanyak</a>
+															</li>
+															<li class="sub">
+																<a href="../questions?sort=answers" class="qa-sub-link">Tanggapan Terbanyak</a>
+															</li>
+															<li class="sub">
+																<a href="../questions?sort=views" class="qa-sub-link">Yang Dilihat Terbanyak</a>
+															</li>
+														</ul>
+														
+													</div>
+												</div>
+			<div class="row">
+				<div class="col-md-12">
+				<div class="panel panel-default">
+                        <div class="panel-body">
+                        laporan disini</div>
+			    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+				<div class="panel panel-default">
+                        <div class="panel-body">
+                        laporan disini</div>
+			    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+				<div class="panel panel-default">
+                        <div class="panel-body">
+                        laporan disini</div>
+			    </div>
+				</div>
+			</div>
+        </div>
+        <div class="col-md-3">
+			<div class="panel panel-default">
+                        <div class="panel-heading">
+                            Selamat Datang di Lapor Presiden, di mana Anda sebagai rakyat dari seluruh Indonesia dapat mengajukan laporan seputar masalah dari berbagai aspek untuk diajukan ke Presiden dan menerima tanggapan dari anggota masyarakat lainnya.
+                        </div>
+			</div>
+			<div class="panel panel-default">
+                        <div class="panel-heading">
+                            Kategori
+                        </div>
+                        <div class="panel-body">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    Semua kategori
+                                    <span class="pull-right text-muted small"><em><img src="/qa-theme/Classic/images/feed-icon-14x14.png" width="16px" height="16px"></em></span>  
+                                </a>
+                            
+                                <a href="#" class="list-group-item">
+                                    Nasional (37)
+                                    <span class="pull-right text-muted small"><em><img src="/qa-theme/Classic/images/feed-icon-14x14.png" width="16px" height="16px"></em></span>  
+                                </a>
+                            </div>
+                         </div>
+                    </div>
+            <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="list-group">
+                                <a href="/assets/img/Mei-01.png" class="list-group-item">
+                                    <img src="/assets/img/Mei-01.png" width="100%">  
+                                </a>
+                            
+                                <a href="/assets/img/Mei-01.png" class="list-group-item">
+                                    <img src="/assets/img/Juni-02.png" width="100%">  
+                                </a>
+                            </div>
+                         </div>
+                    </div>
+        </div>
+        </div>
+            
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <div class="footer">
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../qa-theme/Classic/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../qa-theme/Classic/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../qa-theme/Classic/bower_components/metisMenu/dist/metisMenu.min.js"></script>    
+    <!-- Custom Theme JavaScript -->
+    <script src="../qa-theme/Classic/dist/js/classic3.js"></script>
+</body>
+
+</html>

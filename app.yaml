@@ -30,6 +30,22 @@ handlers:
   static_files: \1
   upload: .+\.(html)$
 
+- url: /(.+\.(woff))$
+  static_files: \1
+  upload: .+\.(woff)$
+
+- url: /(.+\.(ttf))$
+  static_files: \1
+  upload: .+\.(tff)$
+  
+- url: /(.+\.(otf))$
+  static_files: \1
+  upload: .+\.(otf)$
+  
+- url: /(.+\.(svg))$
+  static_files: \1
+  upload: .+\.(svg)$
+
 # Serve php scripts.
 - url: /.*
   script: mod_rewrite.php

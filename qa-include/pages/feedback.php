@@ -147,8 +147,7 @@
 				'type' => $feedbacksent ? 'static' : '',
 				'label' => qa_lang_html('misc/feedback_email'),
 				'tags' => 'name="email"',
-				'value' => qa_html(isset($inemail) ? $inemail : qa_get_logged_in_email()),
-				'note' => $feedbacksent ? null : qa_opt('email_privacy'),
+				'value' => qa_html(isset($inemail) ? $inemail : qa_get_logged_in_email())
 			),
 		),
 
@@ -167,6 +166,13 @@
 
 	if ($usecaptcha && !$feedbacksent)
 		qa_set_up_captcha_field($qa_content, $qa_content['form']['fields'], @$errors);
+	
+	$field=array(
+		'type' => 'custom',
+		'html' => '<div class="alert alert-info" style="margin-top: 5px;margin-bottom: 20px;"><i class="fa fa-info-circle"></i> '.qa_opt('email_privacy').'</div>'
+	);
+	
+	qa_array_insert($qa_content['form']['fields'], null, array('static1' => $field));
 
 
 	$qa_content['focusid']='message';

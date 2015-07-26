@@ -11,30 +11,21 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 		function head_metas()
 		{
 			qa_html_theme_base::head_metas();
+			$this->output('<meta http-equiv="X-UA-Compatible" content="IE=edge">');
 			$this->output('<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">');
+			$this->output('<meta name="description" content="Selamat Datang di Lapor Presiden, di mana Anda sebagai rakyat dari seluruh Indonesia dapat mengajukan laporan seputar masalah dari berbagai aspek untuk diajukan ke Presiden dan menerima tanggapan dari anggota masyarakat lainnya.">');
+			$this->output('<meta name="author" content="LaporPresiden.org">');
 		}
 		
 		function head_script()
 		{
 			qa_html_theme_base::head_script();
-			
-			$this->output('
-				<script type="text/javascript">
-				$(document).ready(function(){
-					$(".menu_show_hide").click(function(){
-					$(".qa-nav-main").slideToggle();
-					});
-
-				$(window).resize(function() {
-					if ($(window).width()>720) {$(".qa-nav-main").show();}
-				});
-				}
-				);
-				</script>');
-
 		}
 		function head_css()
 		{
+		    $this->output('<LINK REL="stylesheet" TYPE="text/css" HREF="'.$this->rooturl.'bower_components/bootstrap/dist/css/bootstrap.min.css'.'"/>');
+			$this->output('<LINK REL="stylesheet" TYPE="text/css" HREF="'.$this->rooturl.'bower_components/font-awesome/css/font-awesome.min.css'.'"/>');
+			
 			if (qa_opt('qat_compression')==2) //Gzip
 				$this->output('<LINK REL="stylesheet" TYPE="text/css" HREF="'.$this->rooturl.'qa-styles-gzip.php'.'"/>');
 			elseif (qa_opt('qat_compression')==1) //CSS Compression
@@ -54,60 +45,184 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 				);
 		}		
 		
+		function mainTop(){
+			$this->output('<div id="createNewAsk" class="row">', '');
+				$this->output('<div class="col-md-12">', '');
+					$headingcontent='   <div class="alert alert-transparent">Silahkan cari laporan yang sama sebelum membuat laporan baru.</div>
+										
+										<div class="row" style="padding-top:10px;">
+											<div class="col-xs-8">
+											<div class="row">
+												<div class="col-md-12">
+													  <div class="sidebar-search">
+														   <form method="get" action="'.qa_path_html('search').'">
+																<div class="input-group custom-search-form">								
+																	<input type="text" name="q" id="q" class="form-control" placeholder="Cari Laporan">
+																	<span class="input-group-btn">
+																		<button class="btn btn-default" type="submit">
+																			<i class="fa fa-search"></i>
+																		</button>								
+																	</span>
+																</div>
+															</form>
+													  </div>
+												</div>
+											</div>
+											
+											</div>
+											<div class="col-xs-4">
+												<a class="btn btn-default btn-block" href="/ask"><i class="fa fa-pencil-square-o"></i> Lapor</a>
+											</div>
+										</div>';
+					$this->panel("panel-red",true,$headingcontent,false,"",false,"");
+				$this->output('</div>');
+			$this->output('</div>');
+		}
+		function facebookpage(){
+			$this->output('<div id="facebookpage" class="row">');
+				$this->output('<div class="col-xs-12">', '');
+				$this->output('<div id="fb-root"></div>
+								<script>(function(d, s, id) {
+								  var js, fjs = d.getElementsByTagName(s)[0];
+								  if (d.getElementById(id)) return;
+								  js = d.createElement(s); js.id = id;
+								  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=814638221947104";
+								  fjs.parentNode.insertBefore(js, fjs);
+								}(document, "script", "facebook-jssdk"));</script>');
+				$this->output('<div class="fb-page" style="width:282px;" data-href="https://www.facebook.com/LaporPresiden" data-width="100%" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/LaporPresiden"><a href="https://www.facebook.com/LaporPresiden">Lapor Presiden</a></blockquote></div></div>');
+				$this->output('</div>');
+			$this->output('</div>');
+		}
 
-		function body_content()
-		{
+		function body_content(){
+		$isqlist=$this->isQ_list();
 			$this->body_prefix();
 			$this->notices();
-			
-			$this->output('<DIV CLASS="qa-top-header">', '');
-				$this->output('<DIV CLASS="container">', '');
-				    $this->output('<a href="#" class="menu_show_hide"><nav CLASS="navbar-toggle"><div class="icon-bar"></div><div class="icon-bar"></div><div class="icon-bar"></div></nav></a>', '');
-					$this->nav('user');
-					$this->nav_user_search();
-				$this->output('</DIV>', '');
-			$this->output('</DIV>', '');
-
 			$this->header();
-			$this->output('<DIV CLASS="qa-body-wrapper">', '');
-
-			$this->widgets('full', 'top');
-			
-			$this->output('<DIV CLASS="qa-sub-nav">');
-			$this->nav('sub');
-			$this->output('</DIV>');
-			
-			$this->widgets('full', 'high');
-			$this->sidepanel();
-			$this->main();
-			$this->widgets('full', 'low');
-			$this->output('</DIV> <!-- END body-wrapper -->');
-			
+			$this->output('<div style="height:50px">&nbsp;</div>');
+			if ($isqlist){
+			   $this->output('<div class="jumbotron"></div>');
+			}
+			$this->output('<div id="wrapper" >', '');
+			$this->output('<div class="container">', '');
+			$this->output('<div class="row">', '');
+				$this->output('<div class="col-md-2" id="leftPanel">', '');
+					$this->nav2('main');		
+				$this->output('</div>');
+				$this->output('<div class="col-md-7" id="middlePanel">', '');
+				    if ($isqlist){
+				       $this->mainTop();
+				    }
+					$this->nav2('sub');
+					$this->main();
+				$this->output('</div>');
+				$this->output('<div class="col-md-3" id="rightPanel">', '');
+					$this->sidebar2();
+					$this->nav('cat', 1);
+					$this->facebookpage();
+					$this->sidepanelRaw();
+					$this->sidepanelFeed();
+				$this->output('</div>');
+			$this->output('</div>');
+			$this->output('</div>');
+			$this->output('</div>');
 			$this->footer();
 			$this->widgets('full', 'bottom');
-
 			$this->body_suffix();
 		}
 		
-		function header()
-		{
-			$this->output('<DIV CLASS="qa-header">');
-			
-			$this->logo();
-			$this->nav_main_sub();
-			$this->header_clear();
-			
-			$this->output('</DIV> <!-- END qa-header -->', '');
+		function sidepanelRaw(){
+		    $this->output('<div class="row">');
+			$this->output('<div class="col-xs-12">', '');
+			$this->output('<div class="panel panel-default">', '');
+				$this->output('<div class="panel-body"><div class="list-group">', '');
+				$this->output_raw(@$this->content['sidepanel']);
+				$this->output('</div></div>');
+			$this->output('</div>');
+			$this->output('</div>');
+			$this->output('</div>');
 		}
-		
-		function nav_user_search()
-		{
+		function sidepanelFeed(){
+		    $this->output('<div class="row">');
+			$this->output('<div class="col-xs-12">', '');
+			$this->output('<div class="panel panel-default">', '');
+				$this->output('<div class="panel-body">', '');
+				$this->feed();
+				$this->output('</div>');
+			$this->output('</div>');
+			$this->output('</div>');
+			$this->output('</div>');
+		}
+		function header(){
+		    $logoshow=qa_opt('logo_show');
+			$logourl=qa_opt('logo_url');
+			$logoheight=qa_opt('logo_height');
+			$this->output('<nav class="navbar navbar-red navbar-fixed-top">', '');
+				$this->output('<div class="container">', '');
+					$this->output('<div class="navbar-header">', '');
+						$this->output('<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								  </button><a class="search navbar-toggle collapsed" href="#" data-toggle="modal" data-target="#modalSearch">Cari/ Lapor</a>', '');
+				    	$this->output('<a class="navbar-brand" style="padding-left:0px;padding-top:0px;z-index:1000000;" href="/">
+										 <img src="'.$logourl.'" id="logo3" border="0" alt="'.qa_html(qa_opt('site_title')).'" style="height:'.$logoheight.'px;">
+									  </a>', '');
+					$this->output('</DIV>', '');
+					$this->output('<div id="navbar" class="navbar-collapse collapse">', '');
+						$this->output('<ul class="nav navbar-top-links navbar-right" id="side-menu2">', '');
+							$this->nav2('main',null,2);
+							$this->output('<li class="dropdown small-hide"><a class="search" href="#" data-toggle="modal" data-target="#modalSearch">Cari/ Lapor</a></li>', '');
+							$this->nav2('user');
+						$this->output('</ul>', '');
+					$this->output('</DIV>', '');
+				$this->output('</DIV>', '');	
+			$this->output('</nav>', '');
+		}
+		function nav_user_search(){
 			$this->search();
 		}
-		
-		function nav_main_sub()
-		{
-			$this->nav('main');
+		function nav_main_sub(){
+			$this->nav2('main');
+		}
+		function nav2($navtype, $level=null,$maindefault=1){
+			$navigation=@$this->content['navigation'][$navtype];
+			$liStyle="";
+			
+			if (($navtype=='user') || isset($navigation)) {
+				if ($navtype=='user'){
+					$liStyle="dropdown";
+					$this->logged_in();
+				}else if ($navtype=='main'){
+					if ($maindefault==1){
+						$liStyle="";
+						$this->output('<div class="sidebar"><ul class="nav" id="side-menu">', '');
+					}else{
+					    $liStyle="dropdown small-show";
+					}
+				}else if ($navtype=='sub'){
+					$liStyle="sub";
+					$this->output('<div class="row"><div class="col-md-12"><ul class="sub-nav">', '');
+				}else{
+				    $liStyle=$navtype;
+				}
+				$this->set_context('nav_type', $navtype);
+				$this->nav_list2($navigation, $liStyle, $level);
+				
+				if ($navtype=='user'){
+					
+				}else if ($navtype=='main'){
+				    if ($maindefault==1){
+					   $this->output('</ul></div>', '');
+					}else{
+					}
+				}else if ($navtype=='sub'){
+					$this->output('</ul></div></div>');
+				}else{
+				    
+				}
+			}
 		}
 
 		function nav($navtype, $level=null)
@@ -119,10 +234,17 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 			
 			
 			if (($navtype=='user') || isset($navigation)) {
-				$this->output('<DIV CLASS="qa-nav-'.$navtype.'">');
+				
 				
 				if ($navtype=='user')
 					$this->logged_in();
+					
+					
+			    if ($navtype=='cat'){
+			    	$this->output('<div class="sidebar"><div class="sidebar-nav"><div class="panel panel-default">', '');
+					$this->output('<div class="panel-heading">Kategori</div>');
+					$this->output('<div class="panel-body">', '');
+			    }
 					
 				// reverse order of 'opposite' items since they float right
 				foreach (array_reverse($navigation, true) as $key => $navlink)
@@ -136,8 +258,9 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 				$this->nav_clear($navtype);
 				
 				$this->clear_context('nav_type');
-	
-				$this->output('</DIV>');
+				if ($navtype=='cat'){
+					$this->output('</div></div></div></div>', '');
+				}
 			}
 		}
 
@@ -210,32 +333,117 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 		}
 		function footer()
 		{
-			$this->output('<DIV CLASS="qa-wrap-footer">');
-			
 			// qa_html_theme_base::footer();
-
-			$this->output('<div class="qa-footer">
-							<div class="qa-nav-footer">
-								<div class="qa-nav-footer-clear"> </div>
-							</div>
-							<div class="social">
-								<ul>
-									<li><a href="https://www.facebook.com/LaporPresiden" target="blank"><span class="facebook icon-social"></span></a></li>
-									<li><a href="https://twitter.com/LaporPresiden" target="blank"><span class="twitter icon-social"></span></a></li>
-									<li><a href="https://play.google.com/store/apps/details?id=org.laporpresiden.android" target="blank"><span class="apps"></span></a></li>
-								</ul>
-							</div>
-							<div class="qa-attribution">
-								Oleh Tim Lapor Presiden. <a href="/feedback">Kirim Timbal Balik</a> |
-								Powered by <a href="http://www.question2answer.org/">Question2Answer</a> and <a href="http://cloudkilat.com">CloudKilat</a>
-								<br />
-								<a href="/privasi-dan-kebijakan">Privasi Dan Kebijakan</a> |
-								<a href="/tim-lapor-presiden">Tim Lapor Presiden</a>
-							</div>
-							<div class="qa-footer-clear"> </div>
-						</div>');
+			$this->output('<div class="footer">');
+			$this->output('<div class="footer-top">
+               <div class="container">
+                  <div class="row">
+                     <section class="col-lg-3 col-md-3 col-xs-12 col-sm-3 footer-one">
+                        <h4>Hubungi Kami</h4>
+                        <p>
+                        <ul>
+                            <li><a href="/feedback">Kirim Komentar atau Masukan</a></li>
+                        </ul>
+                        </p>
+                     </section>
+                     <section class="col-lg-3 col-md-3 col-xs-12 col-sm-3 footer-two">
+                        <h4>Powered by</h4>
+                        <p>
+                        <ul>
+                            <li><a href="http://www.question2answer.org/">Question2Answer</a></li>
+                            <li><a href="http://cloudkilat.com">CloudKilat</a></li>
+                        </ul>
+                        </p>
+                     </section>
+                     <section class="col-lg-3 col-md-3 col-xs-12 col-sm-3 footer-three">
+                        <h4>Privasi Dan Kebijakan</h4>
+                        <p>
+                        <ul>
+                            <li><a href="/privasi-dan-kebijakan">Privasi Dan Kebijakan</a></li>
+                        </ul>
+                        </p>
+                        
+                     </section>
+                     <section class="col-lg-3 col-md-3 col-xs-12 col-sm-3 footer-four">
+                        <h4>Tim Lapor Presiden</h4>
+                        <p>
+                        <ul>
+                            <li><a href="/tim-lapor-presiden">Tim Lapor Presiden</a></li>
+                        </ul>
+                        </p>
+                     </section>
+                  </div>
+               </div>
+            </div>');
+			$this->output('<div class="footer-bottom">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6 "> ©Copyright 2015. </div>
+                     <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6 ">
+                        <ul class="social social-icons-footer-bottom">
+                           <li class="facebook"><a href="https://www.facebook.com/LaporPresiden" data-toggle="tooltip" title="Facebook Lapor Presiden" style="cursor: pointer;" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                           <li class="twitter"><a  href="https://twitter.com/LaporPresiden" data-toggle="tooltip" title="Twitter Lapor Presiden" style="cursor: pointer;" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                           <li class="googleplay"><a href="https://play.google.com/store/apps/details?id=org.laporpresiden.android" target="blank"><span class="apps"></span></a></li>
+						</ul>
+                     </div>
+                  </div>
+               </div>
+            </div>');
+            $this->output('</div>');
+            $this->output('<!-- child of the body tag -->
+							<span id="top-link-block" class="hidden">
+								<a href="#top" class="well well-sm">
+									<i class="fa fa-chevron-up"></i> Gulir ke Atas
+								</a>
+							</span><!-- /top-link-block -->');
 			
-			$this->output('</DIV> <!-- END qa-footer -->', '');
+			$headingcontent='<div class="alert alert-transparent">Silahkan cari laporan yang sama sebelum membuat laporan baru.</div>
+										<div class="row" style="padding-top:10px;">
+											<div class="col-xs-8">
+											<div class="row">
+												<div class="col-md-12">
+													  <div class="sidebar-search">
+														   <form method="get" action="'.qa_path_html('search').'">
+																<div class="input-group custom-search-form">								
+																	<input type="text" name="q" id="q1" class="form-control" placeholder="Cari Laporan">
+																	<span class="input-group-btn">
+																		<button class="btn btn-default" type="submit">
+																			<i class="fa fa-search"></i>
+																		</button>								
+																	</span>
+																</div>
+															</form>
+													  </div>
+												</div>
+											</div>
+											
+											</div>
+											<div class="col-xs-4">
+												<a class="btn btn-default btn-block" href="/ask"><i class="fa fa-pencil-square-o"></i> Lapor</a>
+											</div>
+										</div>';
+			
+			
+			$this->output('
+							<div class="modal fade" id="modalSearch">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="modal-header">
+								      <a data-dismiss="modal" aria-label="Close" class="close"><i class="fa fa-times"></i></a>
+								  </div>
+								  <div class="modal-body">');
+		   $this->panel("panel-red",true,$headingcontent,false,"",false,"");
+		   $this->output('</div>
+								</div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+							</div><!-- /.modal -->');
+			
+			
+			
+			$this->output('<LINK REL="stylesheet" TYPE="text/css" HREF="'.$this->rooturl.'bower_components/font-awesome/css/font-awesome.min.css'.'"/>');
+			$this->output('<script src="'.$this->rooturl.'bower_components/jquery/dist/jquery.min.js"></script>');
+			$this->output('<script src="'.$this->rooturl.'bower_components/bootstrap/dist/js/bootstrap.min.js"></script>');
+			$this->output('<script src="'.$this->rooturl.'bower_components/metisMenu/dist/metisMenu.min.js"></script>');
 		}
 		
 	}

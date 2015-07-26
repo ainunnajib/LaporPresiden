@@ -296,3 +296,8 @@ function set_category_description(idprefix)
 		n.innerHTML=desc;
 	}
 }
+$(document).ready(function(){
+	$("#rightPanel").hide();
+	$(".sub-nav").hide();
+	$("#middlePanel").attr("class","col-md-9");
+});

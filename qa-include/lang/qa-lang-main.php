@@ -35,7 +35,7 @@
 		'1_second' => '1 detik',
 		'1_tag' => '1 label',
 		'1_user' => '1 pengguna',
-		'1_view' => '1 melihat',
+		'1_view' => '1 dilihat',
 		'1_vote' => '1 vote',
 		'1_week' => '1 minggu',
 		'1_year' => '1 tahun',

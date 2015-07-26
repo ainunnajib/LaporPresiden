@@ -159,6 +159,11 @@
 				'label' => qa_lang('main/nav_most_views'),
 				'url' => qa_path_html($request, array('sort' => 'views')),
 			),
+			
+			'tagscore' => array(
+				'label' => qa_lang('main/nav_tagscore'),
+				'url' => qa_path_html($request, array('sort' => 'tagscore')),
+			),
 		);
 
 		if (isset($navigation[$sort]))

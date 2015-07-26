@@ -258,10 +258,9 @@ $(document).ready(function(){
 			    y=240;
 			}
 			var yy=35+(y*(scroll/globalheight));
-			if (yy>(y+35)){
-				yy=y+35;
+			if (yy<=(y+35)){
+				$(".jumbotron").css("background-position","0% "+yy+"%");
 			}
-			$(".jumbotron").css("background-position","0% "+yy+"%");
 		}
         if (width>992){
 			if (scroll<=globalheight){

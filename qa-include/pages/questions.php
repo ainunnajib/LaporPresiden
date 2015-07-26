@@ -55,6 +55,10 @@
 		case 'views':
 			$selectsort='views';
 			break;
+		
+		case 'tagscore':
+			$selectsort='tagscore';
+			break;
 
 		default:
 			$selectsort='created';

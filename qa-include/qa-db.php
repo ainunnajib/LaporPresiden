@@ -70,7 +70,6 @@
 				$db = new mysqli(QA_FINAL_MYSQL_HOSTNAME, QA_FINAL_MYSQL_USERNAME, QA_FINAL_MYSQL_PASSWORD, QA_FINAL_MYSQL_DATABASE);
 			}
 		}
-
 		// must use procedural `mysqli_connect_error` here prior to 5.2.9
 		$conn_error = mysqli_connect_error();
 		if ($conn_error)

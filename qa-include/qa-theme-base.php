@@ -1871,8 +1871,10 @@ class qa_html_theme_base
 	public function view_count($post)
 	{
 		// You can also use $post['views_raw'] to get a raw integer count of views
-
-		$this->output_split(@$post['views'], 'ux-view-count');
+		if (strlen(@$post['views']['data'])) {
+		    $this->post_meta_spacer();
+			$this->output_split(@$post['views'], 'ux-view-count');
+		}
 	}
 
 	public function avatar($item, $class, $prefix=null)

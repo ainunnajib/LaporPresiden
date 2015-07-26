@@ -429,7 +429,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 							  <div class="modal-dialog">
 								<div class="modal-content">
 								  <div class="modal-header">
-								      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								      <a data-dismiss="modal" aria-label="Close" class="close"><i class="fa fa-times"></i></a>
 								  </div>
 								  <div class="modal-body">');
 		   $this->panel("panel-red",true,$headingcontent,false,"",false,"");

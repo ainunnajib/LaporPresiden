@@ -1742,8 +1742,8 @@ class qa_html_theme_base
 	{
 		$this->output(
 			'<div class="ux-item-title">',
-			//'<a href="'.$q_item['url'].'">'.$q_item['title'].'</a>',
-			$q_item['title'],
+			'<a href="'.$q_item['url'].'">'.$q_item['title'].'</a>',
+			//$q_item['title'],
 			// add closed note in title
 			empty($q_item['closed']) ? '' : ' ['.$q_item['closed']['state'].']',
 			'</div>'

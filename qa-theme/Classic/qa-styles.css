@@ -350,7 +350,7 @@ a {
     text-transform: capitalize;
 }
 .ux-item-avatar-meta{
-    float:right;
+    float:left;
 }
 
 .ux-view-avatar,.ux-view-meta,.qa-a-item-avatar,.qa-a-item-meta,.ux-c-item-avatar,.ux-c-item-meta{
@@ -428,8 +428,10 @@ a {
     font-size:20pt;
     padding-top:50px;
     text-transform: capitalize;
-    color:#0f5381;
     font-weight:500;
+}
+.ux-item-title,.ux-item-title>a{
+	color:#0f5381;
 }
 .ux-item-title>a, .ux-item-avatar-meta a, .ux-item-detil a, .ux-view-avatar-meta a{
     text-decoration:none;
@@ -476,8 +478,6 @@ a {
     color:#DAA520;
 }
 
-
-
 table.qa-form-wide-table>tr, table.qa-form-wide-table tr{
     line-height:35px;
 }
@@ -485,15 +485,10 @@ table.qa-form-wide-table>tr>td, table.qa-form-wide-table tr td{
     padding-right:10px;
 }
 
-
 .ux-view-stats .ux-voting{
     width:auto;
     padding:0px 15px;
 }
-
-
-
-
 
 .footer{
     display: block;
@@ -1387,6 +1382,9 @@ table.dataTable thead .sorting:after {
         right:auto;
     }
 }
+.navbar-brand img#logo3{
+	height:57px;
+}
 @media(max-width:767px) {   
     .jumbotron{
         background-position-x:30%;
@@ -1442,4 +1440,13 @@ table.dataTable thead .sorting:after {
     .ux-a-selected-text{
         display:none;
     }
+    .navbar-brand img#logo3{
+		height:52px;
+	}
+}
+
+@media screen and (max-width: 480px) {   
+	.navbar-brand img#logo3{
+		height:48px;
+	}
 }

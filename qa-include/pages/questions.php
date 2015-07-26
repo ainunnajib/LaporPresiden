@@ -104,6 +104,10 @@
 			$sometitle=$countslugs ? qa_lang_html_sub('main/viewed_qs_in_x', $categorytitlehtml) : qa_lang_html('main/viewed_qs_title');
 			break;
 
+		case 'tagscore':
+			$sometitle=$countslugs ? qa_lang_html_sub('main/tagscore_qs_in_x', $categorytitlehtml) : qa_lang_html('main/tagscore_qs_title');
+			break;
+
 		default:
 			$linkparams=array();
 			$sometitle=$countslugs ? qa_lang_html_sub('main/recent_qs_in_x', $categorytitlehtml) : qa_lang_html('main/recent_qs_title');

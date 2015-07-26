@@ -187,6 +187,7 @@
 		'view_q_must_login' => 'Silakan login FB Anda (kiri atas) untuk melihat laporan.',
 		'viewed_qs_in_x' => 'Laporan paling banyak dilihat di ^',
 		'viewed_qs_title' => 'Laporan paling banyak dilihat',
+		'tagscore_qs_title' => 'Laporan diurutkan berdasar skor label',
 		'vote_disabled_approve' => 'Akun Anda mesti disetujui sebelum dapat vote',
 		'vote_disabled_down' => 'Vote turun hanya tersedia untuk beberapa pengguna',
 		'vote_disabled_down_approve' => 'Akun Anda mesti diperbolehkan sebelum bisa vote turun',
@@ -205,6 +206,7 @@
 		'vote_up_popup' => 'Klik untuk vote naik',
 		'voted_down_popup' => 'Anda telah vote turun ini - klik untuk menghapus vote',
 		'voted_qs_in_x' => 'Laporan paling banyak vote di ^',
+		'tagscore_qs_in_x' => 'Laporan diurutkan berdasar skor label',
 		'voted_qs_title' => 'Laporan paling banyak vote',
 		'voted_up_popup' => 'Anda telah vote naik ini - klik untuk menghapus vote',
 		'written' => '', // blank in English - placeholder for other languages

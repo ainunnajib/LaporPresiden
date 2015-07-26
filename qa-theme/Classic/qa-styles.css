@@ -1382,6 +1382,9 @@ table.dataTable thead .sorting:after {
         right:auto;
     }
 }
+.navbar-brand img#logo3{
+	height:57px;
+}
 @media(max-width:767px) {   
     .jumbotron{
         background-position-x:30%;
@@ -1437,10 +1440,11 @@ table.dataTable thead .sorting:after {
     .ux-a-selected-text{
         display:none;
     }
+    .navbar-brand img#logo3{
+		height:52px;
+	}
 }
-.navbar-brand img#logo3{
-	height:52px;
-}
+
 @media screen and (max-width: 480px) {   
 	.navbar-brand img#logo3{
 		height:48px;

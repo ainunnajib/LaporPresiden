@@ -424,6 +424,7 @@ a {
     -moz-user-select: text;
     -ms-user-select: text;
     user-select: text;
+    color:#222;
 }
 .qa-a-item-content .entry-content{
     padding:20px;

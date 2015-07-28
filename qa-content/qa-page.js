@@ -274,7 +274,7 @@ $(document).ready(function(){
 			$("#keluar").html('<i class="fa fa-sign-out fa-fw"></i> Keluar');
 		}else{
 			if ($("#dropdown-updates").children().html()!=='<i class="fa fa-file-text-o"></i>'){
-			   var innerhtml=$("#userleggedin").children().html();
+			   var innerhtml=$("#dropdown-updates").children().html();
 			   $("#dropdown-updates").data("data",innerhtml).children().html('<i class="fa fa-file-text-o"></i>');
            }
            if ($("#userleggedin").children().html()!=='<i class="fa fa-user"></i>'){

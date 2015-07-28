@@ -310,7 +310,7 @@
 				break;
 
 			case 'tagscore':
-			    $sortsql='ORDER BY (select sum(w.tagcount)/count(w.wordid) from ^posttags pt,^words w  where 1=1 and pt.postid=^posts.postid and pt.wordid=w.wordid) ASC, ^posts.created DESC';
+			    $sortsql='ORDER BY (select sum(w.tagcount)/POW(count(w.wordid),2) from ^posttags pt,^words w  where 1=1 and pt.postid=^posts.postid and pt.wordid=w.wordid) ASC, ^posts.created DESC';
 				break;
 				
 			case 'created':

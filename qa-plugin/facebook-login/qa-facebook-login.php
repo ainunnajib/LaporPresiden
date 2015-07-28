@@ -41,12 +41,12 @@ class qa_facebook_login
 
 	public function logout_html($tourl)
 	{
-		$app_id=qa_opt('facebook_app_id');
+		/*$app_id=qa_opt('facebook_app_id');
 
 		if (!strlen($app_id))
 			return;
 
-		$this->facebook_html($tourl, true, 'menu');
+		$this->facebook_html($tourl, true, 'menu');*/
 	}
 
 
@@ -59,7 +59,7 @@ class qa_facebook_login
 
 
 
-	if (!$logout){
+	
 	?>	
 	<div id="fb-root" style="display:inline;"></div>
 	<script>
@@ -68,49 +68,48 @@ class qa_facebook_login
 	(strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false || strpos($_SERVER['SERVER_SOFTWARE'],'Development') !== false)){	    
 	}else{
 	?>
-	/*redirect to www*/
-	$( document ).ready(function() {       
-       var full = window.location.host;
-       var parts = full.split('.');
-       var sub = parts[0];
-       if (sub.toLowerCase() !== 'www'){
-           window.location.href = "https://www." + window.location.href.substring(window.location.protocol.length+2);
-       }
-	});
-	/*end redirect to www*/
+		/*redirect to www*/
+		$( document ).ready(function() {       
+		   var full = window.location.host;
+		   var parts = full.split('.');
+		   var sub = parts[0];
+		   if (sub.toLowerCase() !== 'www'){
+			   window.location.href = "https://www." + window.location.href.substring(window.location.protocol.length+2);
+		   }
+		});
+		/*end redirect to www*/
 	<?php
 	}	
 	?>
-    function redirectlogin(response){
-        window.location.href=<?php echo qa_js($tourl)?>;
-	}		
-	window.fbAsyncInit = function() {
-		FB.init({
-			appId  : <?php echo qa_js(qa_opt('facebook_app_id'), true)?>,
-			status : true,
-			cookie : true,
-			xfbml  : true,
-			oauth  : true
-		});				
-	};
-	function checkLoginState() {
-		FB.getLoginStatus(function(response) {
-		  redirectlogin(response);
-		});
-	}
-	
-	(function(d){
-		var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-		js = d.createElement('script'); js.id = id; js.async = true;
-		js.src = "//connect.facebook.net/en_US/all.js";
-		d.getElementsByTagName('head')[0].appendChild(js);
-	}(document));
-	</script>
+		function redirectlogin(response){
+			window.location.href=<?php echo qa_js($tourl)?>;
+		}		
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId  : <?php echo qa_js(qa_opt('facebook_app_id'), true)?>,
+				status : true,
+				cookie : true,
+				xfbml  : true,
+				oauth  : true
+			});				
+		};
+		function checkLoginState() {
+			FB.getLoginStatus(function(response) {
+			  redirectlogin(response);
+			});
+		}
+		(function(d){
+			var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+			js = d.createElement('script'); js.id = id; js.async = true;
+			js.src = "//connect.facebook.net/en_US/all.js";
+			d.getElementsByTagName('head')[0].appendChild(js);
+		}(document));
+		</script>
 			
-	<div class="fb-login-button" onlogin="checkLoginState();" style="display:inline; vertical-align:middle;" size="<?php echo $size?>" <?php echo $logout ? 'data-auto-logout-link="false"' : 'scope="public_profile,email"'?>>
-	</div>
+		<div class="fb-login-button" onlogin="checkLoginState();" style="display:inline; vertical-align:middle;" size="<?php echo $size?>" <?php echo $logout ? 'data-auto-logout-link="false"' : 'scope="public_profile,email"'?>>
+		</div>
 <?php
-	}
+	
 	}
 
 

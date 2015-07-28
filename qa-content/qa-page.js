@@ -262,6 +262,27 @@ $(document).ready(function(){
 				$(".jumbotron").css("background-position","0% "+yy+"%");
 			}
 		}
+		if (width>=768){
+			try{
+			    var innerhtml=$("#userleggedin").data("data");
+				$("#userleggedin").children().html(innerhtml);
+			}catch(e){}
+			try{
+			    var innerhtml=$("#dropdown-updates").data("data");
+				$("#dropdown-updates").children().html(innerhtml);
+			}catch(e){}
+			$("#keluar").html('<i class="fa fa-sign-out fa-fw"></i> Keluar');
+		}else{
+			if ($("#dropdown-updates").children().html()!=='<i class="fa fa-file-text-o"></i>'){
+			   var innerhtml=$("#userleggedin").children().html();
+			   $("#dropdown-updates").data("data",innerhtml).children().html('<i class="fa fa-file-text-o"></i>');
+           }
+           if ($("#userleggedin").children().html()!=='<i class="fa fa-user"></i>'){
+			   var innerhtml=$("#userleggedin").children().html();
+			   $("#userleggedin").data("data",innerhtml).children().html('<i class="fa fa-user"></i>');
+           }
+           $("#keluar").html('<i class="fa fa-sign-out fa-fw"></i>');
+		}
         if (width>992){
 			if (scroll<=globalheight){
 				$("#leftPanel").children().css("position","static");
@@ -290,7 +311,7 @@ $(document).ready(function(){
         }
         
     }
-   $(window).bind("load resize", function() {
+    var loadResize=function(){
         topOffset = 10;
         width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
         if (width < 992) {
@@ -310,10 +331,10 @@ $(document).ready(function(){
         //$(".fb-page").children().css( "width", "100%" );
         //$(".fb-page").children().children().css( "width", "100%" );
         setScroll();
-    });
-    $(window).scroll(function (event) {
-        setScroll();
-    });
+    }
+   $(window).bind("load resize", loadResize);
+   $(window).scroll(setScroll);
+   loadResize();
     if ( ($(window).height() + 500) < $(document).height() ) {
 		$('#top-link-block').removeClass('hidden').affix({
 			// how far to scroll down before link "slides" into view

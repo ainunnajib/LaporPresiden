@@ -562,7 +562,7 @@ class qa_html_theme_base
 
 	public function logged_in()
 	{
-		$this->output_split2(@$this->content['loggedin'], 'dropdown', 'li');
+	    $this->output_split2(@$this->content['loggedin'], 'dropdown', 'li');
 	}
 	
 	public function output_split($parts, $class, $outertag='span', $innertag='span', $extraclass=null)
@@ -589,10 +589,12 @@ class qa_html_theme_base
 	with appropriate CSS classes based on $class, using $outertag and $innertag in the markup.
 */
 	{
-		if (empty($parts) && strtolower($outertag) != 'td')
+		if (empty($parts)){
 			return;
+		}
 
-		$this->output((strlen(@$parts['data']) ? ('<'.$innertag.' class="'.$class.'">'.$parts['data'].'</'.$innertag.'>') : ''));
+		$this->output((strlen(@$parts['data']) ? ('<'.$innertag.' class="'.$class.'" id="userleggedin">'.$parts['data'].'</'.$innertag.'>') : ''));
+			
 	}
 	
 	public function nav_list2($navigation, $class, $level=null)
@@ -618,7 +620,7 @@ class qa_html_theme_base
 			'/' => '-',
 		));
         if ($suffix!=="login" && $suffix!=="register" && $suffix!=="logout" ) {
-			$this->output('<li class="'.$class.'">');
+			$this->output('<li class="'.$class.'" id="'.$class.'-'.$suffix.'">');
 			$this->nav_link($navlink, $class);
 
 			if (count(@$navlink['subnav']))
@@ -626,9 +628,9 @@ class qa_html_theme_base
 
 			$this->output('</li>');
 		}
-		if ($suffix=="logout"){
-			$this->output('<li class="'.$class.'">');
-			$this->output('<a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Keluar</a>');
+		if ($suffix==="logout" ) {
+			$this->output('<li class="'.$class.'" >');
+			$this->output('<a href="/logout" id="keluar"><i class="fa fa-sign-out fa-fw"></i> Keluar</a>');
 			$this->output('</li>');
 		}
 	}

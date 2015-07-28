@@ -99,7 +99,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 			$this->body_prefix();
 			$this->notices();
 			$this->header();
-			$this->output('<div style="height:50px">&nbsp;</div>');
+			$this->output('<div class="nav-spacer">&nbsp;</div>');
 			if ($isqlist){
 			   $this->output('<div class="jumbotron"></div>');
 			}
@@ -107,7 +107,7 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 			$this->output('<div class="container">', '');
 			$this->output('<div class="row">', '');
 				$this->output('<div class="col-md-2" id="leftPanel">', '');
-					$this->nav2('main');		
+				    $this->nav2('main');		
 				$this->output('</div>');
 				$this->output('<div class="col-md-7" id="middlePanel">', '');
 				    if ($isqlist){
@@ -160,24 +160,22 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 			$this->output('<nav class="navbar navbar-red navbar-fixed-top">', '');
 				$this->output('<div class="container">', '');
 					$this->output('<div class="navbar-header">', '');
-						$this->output('<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						$this->output('<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
 									<span class="sr-only">Toggle navigation</span>
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>
-								  </button><a class="search navbar-toggle collapsed" href="#" data-toggle="modal" data-target="#modalSearch">Cari/ Lapor</a>', '');
+								  </button>', '');
 				    	$this->output('<a class="navbar-brand" style="padding-left:0px;padding-top:0px;z-index:1000000;" href="/">
 										 <img src="'.$logourl.'" id="logo3" border="0" alt="'.qa_html(qa_opt('site_title')).'" style="height:'.$logoheight.'px;">
 									  </a>', '');
 					$this->output('</DIV>', '');
-					$this->output('<div id="navbar" class="navbar-collapse collapse">', '');
-						$this->output('<ul class="nav navbar-top-links navbar-right" id="side-menu2">', '');
-							$this->nav2('main',null,2);
-							$this->output('<li class="dropdown small-hide"><a class="search" href="#" data-toggle="modal" data-target="#modalSearch">Cari/ Lapor</a></li>', '');
-							$this->nav2('user');
-						$this->output('</ul>', '');
+					$this->output('<div class="text-right">', '');
+					$this->output('<ul class="nav navbar-top-links navbar-right">', '');
+					$this->output('<li class="dropdown"><a class="search" href="#" data-toggle="modal" data-target="#modalSearch">Cari/ Lapor</a></li>', '');
+					$this->nav2('user');		
+					$this->output('</ul>', '');
 					$this->output('</DIV>', '');
-				$this->output('</DIV>', '');	
 			$this->output('</nav>', '');
 		}
 		function nav_user_search(){
@@ -195,28 +193,21 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
 					$liStyle="dropdown";
 					$this->logged_in();
 				}else if ($navtype=='main'){
-					if ($maindefault==1){
-						$liStyle="";
-						$this->output('<div class="sidebar"><ul class="nav" id="side-menu">', '');
-					}else{
-					    $liStyle="dropdown small-show";
-					}
+					$this->output('<div class="sidebar-nav navbar-collapse"><ul class="nav">', '');
 				}else if ($navtype=='sub'){
 					$liStyle="sub";
 					$this->output('<div class="row"><div class="col-md-12"><ul class="sub-nav">', '');
 				}else{
 				    $liStyle=$navtype;
 				}
+				
 				$this->set_context('nav_type', $navtype);
 				$this->nav_list2($navigation, $liStyle, $level);
 				
 				if ($navtype=='user'){
 					
 				}else if ($navtype=='main'){
-				    if ($maindefault==1){
-					   $this->output('</ul></div>', '');
-					}else{
-					}
+				    $this->output('</ul></div>', '');
 				}else if ($navtype=='sub'){
 					$this->output('</ul></div></div>');
 				}else{

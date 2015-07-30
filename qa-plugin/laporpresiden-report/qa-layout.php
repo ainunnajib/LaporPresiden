@@ -6,6 +6,47 @@
             return ($template!='admin');
         }
 
+        function bulan($param){
+            switch ($param) {
+                case '01':
+                    $return = 'Januari';
+                break;
+                case '02':
+                    $return = 'Februari';
+                break;
+                case '03':
+                    $return = 'Maret';
+                break;
+                case '04':
+                    $return = 'April';
+                break;
+                case '05':
+                    $return = 'Mei';
+                break;
+                case '06':
+                    $return = 'Juni';
+                break;
+                case '07':
+                    $return = 'Juli';
+                break;
+                case '08':
+                    $return = 'Agustus';
+                break;
+                case '09':
+                    $return = 'September';
+                break;
+                case '10':
+                    $return = 'Oktober';
+                break;
+                case '11':
+                    $return = 'November';
+                break;
+                case '12':
+                    $return = 'Desember';
+                break;
+                return $return;
+            }
+        }
         function admin_form()
         {
             //Create the form for display
@@ -15,6 +56,7 @@
                     switch (qa_post_text('status')) {
                         case 'terbaru':
                             $title = 'Terbaru';
+                            $title_head = 'Terbaru';
 
                             $data = qa_db_read_all_assoc(
                                 qa_db_query_sub(
@@ -25,22 +67,60 @@
                         case 'range':
                             $bulan = qa_post_text('bulan');
                             $tahun = qa_post_text('tahun');
-                            $title = 'Pada bulan '.$bulan.' tahun '.$tahun;
+                            $tags = qa_post_text('tags_range');
+                            $title = 'Sesuai bulan';
                             switch (qa_post_text('jenis_laporan')) {
                                 case 'terbaru':
-                                    $data = qa_db_read_all_assoc(
-                                        qa_db_query_sub(
-                                            "SELECT *, post.created as tanggal FROM ^posts as post,^users as usr WHERE post.userid = usr.userid AND post.type='Q' AND post.created LIKE '%$tahun-$bulan%' ORDER BY post.created DESC"
-                                        )
-                                    );
+                                    if($tags == 'all'){
+                                        $title_head = 'Pada bulan '.$bulan.' tahun '.$tahun.' Terbaru';
+                                        $data = qa_db_read_all_assoc(
+                                            qa_db_query_sub(
+                                                "SELECT *, post.created as tanggal FROM ^posts as post,^users as usr WHERE post.userid = usr.userid AND post.type='Q' AND post.created LIKE '%$tahun-$bulan%' ORDER BY post.created DESC"
+                                            )
+                                        );   
+                                    }else{
+                                        $nama_tags = qa_db_read_all_assoc(
+                                            qa_db_query_sub(
+                                                "SELECT * FROM ^words WHERE wordid = '$tags'"
+                                            )
+                                        );
+                                        foreach ($nama_tags as $key => $value) {
+                                            $title_head = 'Pada bulan '.$bulan.' tahun '.$tahun.' Terbaru dan dengan tags "'.$value['word'].'"';
+                                        }
+                                        
+                                        $data = qa_db_read_all_assoc(
+                                            qa_db_query_sub(
+                                                "SELECT *, post.created as tanggal FROM ^posts as post,^users as usr, ^posttags as post_tag WHERE post.userid = usr.userid AND post.type='Q' AND post_tag.postid = post.postid AND post_tag.wordid = '$tags' AND post.created LIKE '%$tahun-$bulan%' ORDER BY post.created DESC"
+                                            )
+                                        );
+                                    }
+                                    
                                 break;
                                 case 'votes':
-                                    $data = qa_db_read_all_assoc(
-                                        qa_db_query_sub(
-                                            "SELECT *, post.created as tanggal FROM ^posts as post,^users as usr WHERE post.userid = usr.userid AND post.type='Q' AND post.created LIKE '%$tahun-$bulan%' ORDER BY post.netvotes DESC"
-                                        )
-                                    );
-                                break;   
+                                    if($tags == 'all'){
+                                        $title_head = 'Pada bulan '.$bulan.' tahun '.$tahun.' Sesuai votes';
+                                        $data = qa_db_read_all_assoc(
+                                            qa_db_query_sub(
+                                                "SELECT *, post.created as tanggal FROM ^posts as post,^users as usr WHERE post.userid = usr.userid AND post.type='Q' AND post.created LIKE '%$tahun-$bulan%' ORDER BY post.netvotes DESC"
+                                            )
+                                        );
+                                    }else{
+                                        $nama_tags = qa_db_read_all_assoc(
+                                            qa_db_query_sub(
+                                                "SELECT * FROM ^words WHERE wordid = '$tags'"
+                                            )
+                                        );
+                                        foreach ($nama_tags as $key => $value) {
+                                            $title_head = 'Pada bulan '.$bulan.' tahun '.$tahun.' Sesuai votes dan dengan tags "'.$value['word'].'"';
+                                        }
+                                        
+                                        $data = qa_db_read_all_assoc(
+                                            qa_db_query_sub(
+                                                "SELECT *, post.created as tanggal FROM ^posts as post,^users as usr, ^posttags as post_tag WHERE post.userid = usr.userid AND post.type='Q' AND post_tag.postid = post.postid AND post_tag.wordid = '$tags' AND post.created LIKE '%$tahun-$bulan%' ORDER BY post.netvotes DESC"
+                                            )
+                                        );
+                                    }
+                                break;
                             }
                         break;
                         case 'tags':
@@ -52,6 +132,7 @@
                             );
                             foreach ($nama_tags as $key => $value) {
                                 $title = 'Sesuai Tags "'.$value['word'].'"';
+                                $title_head = 'Sesuai Tags "'.$value['word'].'"';
                             }
                             
                             $data = qa_db_read_all_assoc(
@@ -66,9 +147,9 @@
                         $result .= '<body>';
                             if(qa_post_text('type') == 'pdf'){
                                 $result .= '<img src="http://lappres.ku/coba/assets/img/logo-report.png" style="width:250px;float:left;" />';
-                                $result .= '<h1 style="text-align:right;">Laporan '.$title.' dari LaporPresiden.org</h1>';    
+                                $result .= '<h1 style="text-align:right;">Laporan '.$title_head.' dari LaporPresiden.org</h1>';    
                             }else{
-                                $result .= '<h1 style="text-align:center;">Laporan '.$title.' dari LaporPresiden.org</h1>';
+                                $result .= '<h1 style="text-align:center;">Laporan '.$title_head.' dari LaporPresiden.org</h1>';
                             }
                             
                             $result .= '<hr /><br /><br />';
@@ -141,6 +222,32 @@
             $fields[] = array(
                 'type' => 'blank',
             );
+            //================================//
+            $fields[] = array(
+                'label' => 'Download Laporan sesuai tag',
+                'value' => '<input type="radio" name="status" value="tags">',
+                'type' => 'static',
+            );
+            
+            $data_tags = qa_db_read_all_assoc(
+                qa_db_query_sub(
+                    "SELECT *, post_tag.wordid as word_id FROM ^posttags as post_tag, ^words as word WHERE post_tag.wordid = word.wordid GROUP BY post_tag.wordid"
+                )
+            );
+            $tags = array();
+            foreach ($data_tags as $key => $value) {
+                $tags .= '<option value="'.$value['word_id'].'">'.$value['word'].'</option>';
+            }
+            $fields[] = array(
+                'label' => 'Pilih Tags',
+                'value' => '<select name="tags">
+                                '.$tags.'
+                            </select>',
+                'type' => 'static',
+            );
+            $fields[] = array(
+                'type' => 'blank',
+            );
             //===========================//
             $fields[] = array(
                 'label' => 'Download Laporan range',
@@ -152,6 +259,23 @@
                 'value' => 'Jenis Laporan <select name="jenis_laporan">
                                 <option value="terbaru">Terbaru</option>
                                 <option value="votes">Votes</option>
+                            </select>',
+                'type' => 'static',
+            );
+            $data_tags = qa_db_read_all_assoc(
+                qa_db_query_sub(
+                    "SELECT *, post_tag.wordid as word_id FROM ^posttags as post_tag, ^words as word WHERE post_tag.wordid = word.wordid GROUP BY post_tag.wordid"
+                )
+            );
+            $tags = array();
+            foreach ($data_tags as $key => $value) {
+                $tags .= '<option value="'.$value['word_id'].'">'.$value['word'].'</option>';
+            }
+            $fields[] = array(
+                'label' => 'Pilih Tags',
+                'value' => '<select name="tags_range">
+                                <option value="all">All</option>
+                                '.$tags.'
                             </select>',
                 'type' => 'static',
             );
@@ -181,32 +305,6 @@
                 'label' => 'Pilih Tahun',
                 'value' => '<select name="tahun">
                                 '.$tahun.'
-                            </select>',
-                'type' => 'static',
-            );
-            $fields[] = array(
-                'type' => 'blank',
-            );
-            //================================//
-            $fields[] = array(
-                'label' => 'Download Laporan sesuai tag',
-                'value' => '<input type="radio" name="status" value="tags">',
-                'type' => 'static',
-            );
-            
-            $data_tags = qa_db_read_all_assoc(
-                qa_db_query_sub(
-                    "SELECT *, post_tag.wordid as word_id FROM ^posttags as post_tag, ^words as word WHERE post_tag.wordid = word.wordid GROUP BY post_tag.wordid"
-                )
-            );
-            $tags = array();
-            foreach ($data_tags as $key => $value) {
-                $tags .= '<option value="'.$value['word_id'].'">'.$value['word'].'</option>';
-            }
-            $fields[] = array(
-                'label' => 'Pilih Tags',
-                'value' => '<select name="tags">
-                                '.$tags.'
                             </select>',
                 'type' => 'static',
             );

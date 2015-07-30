@@ -146,7 +146,7 @@
                     $result = '<html>';
                         $result .= '<body>';
                             if(qa_post_text('type') == 'pdf'){
-                                $result .= '<img src="http://lappres.ku/coba/assets/img/logo-report.png" style="width:250px;float:left;" />';
+                                $result .= '<img src="/assets/img/logo-report.png" style="width:250px;float:left;" />';
                                 $result .= '<h1 style="text-align:right;">Laporan '.$title_head.' dari LaporPresiden.org</h1>';    
                             }else{
                                 $result .= '<h1 style="text-align:center;">Laporan '.$title_head.' dari LaporPresiden.org</h1>';

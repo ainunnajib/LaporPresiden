@@ -185,6 +185,11 @@ a {
     display:inline-block;
     width:78%;
     vertical-align:middle;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
 }
 .ux-stat{
     display:inline-block;

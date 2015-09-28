@@ -130,18 +130,24 @@
 					$curl = curl_init();
                      curl_setopt_array($curl, array(
                      CURLOPT_RETURNTRANSFER => 1,
-					 CURLOPT_URL => "https://data.kpu.go.id/search.php?cmd=cari&nik=".$NoNIK_input,
+					 /*CURLOPT_URL => "https://data.kpu.go.id/search.php?cmd=cari&nik=".$NoNIK_input,*/
+                     CURLOPT_URL => "https://www.kawalpilkada.id/ceknik/json/".$NoNIK_input,
                      ));
                      $testresponse = curl_exec($curl);
                      curl_close($curl);
 					 if (strlen($testresponse)){
-						$arrayresponse = json_decode($testresponse, true);
-						$namaresponse=@$arrayresponse['nama'];
+						/*$namaresponse=@$arrayresponse['nama'];
 						$Provinsi=@$arrayresponse['pro'];
 						$KabupatenKota=@$arrayresponse['kab'];
 						$Kecamatan=@$arrayresponse['kec'];
 						$KelurahanDesa=@$arrayresponse['kel'];
-						$kelamin=@$arrayresponse['jenis_kelamin'];
+						$kelamin=@$arrayresponse['jenis_kelamin'];*/
+						$namaresponse=@$arrayresponse['nama'];
+						$Provinsi=@$arrayresponse['provinsi'];
+						$KabupatenKota=@$arrayresponse['kabupaten-kota'];
+						$Kecamatan=@$arrayresponse['kecamatan'];
+						$KelurahanDesa=@$arrayresponse['kelurahan'];
+						$kelamin=@$arrayresponse['jenis kelamin'];
 						$namaresponse=strtoupper($namaresponse);
 						if ($NamaNIK_input==$namaresponse){
 							$errorVerifikasi="";

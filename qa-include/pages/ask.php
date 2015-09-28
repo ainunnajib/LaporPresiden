@@ -126,7 +126,7 @@
 				$errorVerifikasi='Data Tidak Lengkap';
 			}
 			if (strlen($NoNIK_input) && strlen($NamaNIK_input) && strlen($EmailUser_input)) {
-				    $errorVerifikasi='NIK atau Nama Lengkap tidak valid. Mohon periksa kembali, NIK dan Nama Lengkap harus sesuai dengan KTP Anda yang terdaftar pada Pemilu 2014.';
+				    $errorVerifikasi='NIK atau Nama Lengkap tidak valid. Mohon periksa kembali, NIK dan Nama Lengkap harus sesuai dengan KTP Anda yang terdaftar pada http://data.kpu.go.id/dps2015.php';
 					$curl = curl_init();
                      curl_setopt_array($curl, array(
                      CURLOPT_RETURNTRANSFER => 1,
@@ -365,7 +365,7 @@
 	
 	$field=array(
 		'type' => 'custom',
-		'html' => '<div class="alert alert-info" style="margin-top: 30px;margin-bottom: 0px;"><i class="fa fa-info-circle"></i> Untuk bisa membuat laporan, silahkan Isi NIK dan Nama Lengkap sesuai dengan KTP Anda yang terdaftar pada Pemilu 2014. LaporPresiden.org akan memverifikasi data NIK Anda dengan website Lembaga Negara.</div>'
+		'html' => '<div class="alert alert-info" style="margin-top: 30px;margin-bottom: 0px;"><i class="fa fa-info-circle"></i> Untuk bisa membuat laporan, silahkan Isi NIK dan Nama Lengkap sesuai dengan KTP Anda yang terdaftar pada http://data.kpu.go.id/dps2015.php. LaporPresiden.org akan memverifikasi data NIK Anda dengan website Lembaga Negara.</div>'
 	);
 
 	qa_array_insert($qa_content['form']['fields'], null, array('static1' => $field));

@@ -1,4 +1,4 @@
-/*
+/* last updated date: 28 Sep 2015
 	Question2Answer by Gideon Greenspan and contributors
 
 	http://www.question2answer.org/

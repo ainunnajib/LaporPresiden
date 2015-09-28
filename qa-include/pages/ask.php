@@ -136,6 +136,7 @@
                      $testresponse = curl_exec($curl);
                      curl_close($curl);
 					 if (strlen($testresponse)){
+						$arrayresponse = json_decode($testresponse, true);
 						/*$namaresponse=@$arrayresponse['nama'];
 						$Provinsi=@$arrayresponse['pro'];
 						$KabupatenKota=@$arrayresponse['kab'];

@@ -355,14 +355,6 @@ qa_register_layer('/qa-admin-options.php', 'Theme Options', $theme_dir , $theme_
                         </p>
                         
                      </section>
-                     <section class="col-lg-3 col-md-3 col-xs-12 col-sm-3 footer-four">
-                        <h4>Tim Lapor Presiden</h4>
-                        <p>
-                        <ul>
-                            <li><a href="/tim-lapor-presiden">Tim Lapor Presiden</a></li>
-                        </ul>
-                        </p>
-                     </section>
                   </div>
                </div>
             </div>');
